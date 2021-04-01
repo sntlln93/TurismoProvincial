@@ -20,6 +20,12 @@
             color: rgb(255, 177, 88);
         }
 
+        @media (max-width: 600px){
+            .district-container {
+                width: 100%;
+            }
+        }
+
     </style>
 @endsection
 
@@ -31,7 +37,7 @@
 
     <div class="articles district">
         @foreach($districts as $district)
-            <div class="article">
+            <div class="article district-container">
                 <div class="article-info">
                     <div>
                         <p><b>{{ $district->name }}</b></p>

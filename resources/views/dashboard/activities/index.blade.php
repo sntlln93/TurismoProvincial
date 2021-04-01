@@ -56,7 +56,7 @@
                         @error('amount') <small class="error-message">{{ $message }}</small> @enderror
 
                         <div>
-                            <h4>Lugar:</h4>
+                            <h4>Atractivo turístico:</h4>
                             <select name="location_id" id="" class="@error('location_id') error-input @enderror">
                                 <option></option>
                                 @foreach($locations as $address)
