@@ -26,9 +26,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
 
@@ -41,9 +41,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -55,9 +55,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -69,9 +69,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -83,9 +83,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -97,9 +97,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -111,9 +111,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -125,23 +125,23 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
             'id' => 9,
-            'name' => 'Gral. Ángel V. Peñaloza',
+            'name' => 'Gral. Ángel Vicente Peñaloza',
             'mayor' => 'Ricardo Romero',
             'description' => 'En virtud de la ley provincial 2890 de 1964, el departamento debe su nombre al caudillo riojano Ángel Vicente Peñaloza. Antes de esa fecha se denominaba oficialmente departamento Vélez Sarfield.',
-            'slug' => 'gral-angel-v-penaloza',
+            'slug' => 'gral-angel-vicente-peñaloza',
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -153,9 +153,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -168,9 +168,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -182,9 +182,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -196,9 +196,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -210,9 +210,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -224,9 +224,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -238,9 +238,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -252,9 +252,9 @@ class DistrictTableSeeder extends Seeder
         ]);
 
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
 
         $district = District::create([
@@ -266,9 +266,9 @@ class DistrictTableSeeder extends Seeder
         ]);
         
         Image::create([
-            'path' => 'img/districts/capital.jpg',
+            'path' => 'img/districts/web/'.$district->slug.'.jpg',
             'imageable_id' => $district->id,
-            'imageable_type' => 'App\\District',
+            'imageable_type' => 'App\\Models\\District',
         ]);
     }
 }

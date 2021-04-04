@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\DB;
 use App\Models\City;
 use App\Models\Location;
 use App\Models\Service;
+use App\Models\Image;
 
 class District extends Model
 {
     protected $fillable = ['name', 'mayor'];
-    protected $appends = ['image'];
 
     public function users()
     {
@@ -64,7 +64,6 @@ class District extends Model
     {
         return $this->servicesByType("Alojamiento");
     }
-    
 
     public function getTransportAttribute()
     {
@@ -89,20 +88,8 @@ class District extends Model
         return Service::find($services);
     }
 
-    public function getImageAttribute(){
-        $image = DB::table('images')
-            ->select('path')
-            ->join('addresses', 'images.imageable_id', 'addresses.addressable_id')
-            ->join('cities', 'addresses.city_id', 'cities.id')
-            ->where('cities.district_id', $this->id)
-            ->where('images.imageable_type', 'App\\Location')
-            ->where('addresses.addressable_type', 'App\\Location')
-            ->first();
-
-        if($image){
-            return asset('storage/'.$image->path);
-        }
-
-        return asset('img/no-image.png');
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 }

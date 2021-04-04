@@ -1,25 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Type;
-
-Route::get('/test', function () {
-    $types = Type::where("type_id", null)->get();
-    
-    foreach($types as $type){
-        echo "<h5>-".$type->name."-</h5><br>";
-        foreach($type->subtypes as $subtype){
-
-            echo "<b>".$subtype->name."</b><br>";
-            foreach($subtype->services as $service){
-                echo $service->name."<br>";
-
-            }
-        }
-        echo "<br>";
-    }
-});
-
 
 //dashboard routes
 Route::get('panel-de-administracion/', 'App\Http\Controllers\Dashboard\HomeController@index')->name('dashboard')->middleware('auth');

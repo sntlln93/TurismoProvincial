@@ -35,13 +35,13 @@
     </header>
     
     <main class="principal" >
-        <h2 class="welcome">¡BIENVENIDOS!</h2>
+        <h2 class="welcome">¡BIENVENID@!</h2>
         <p>Seleccione un departamento para entrar a su página web y encontrar toda la oferta turistica que tiene para usted.</p>
 
         <div class="districts">
             @foreach($districts as $district)
             <a class="information" href="{{ url($district->slug) }}">
-                <img class="image" src="{{ $district->image ? $district->image : asset('img/no-image.png') }}" alt="{{ $district->slug }}">
+                <img class="image" src="{{ $district->image ? $district->image->path : asset('img/no-image.png') }}" alt="{{ $district->slug }}">
                 <div class="name">
                     <h2>{{ $district->name }}</h2>
                 </div>
