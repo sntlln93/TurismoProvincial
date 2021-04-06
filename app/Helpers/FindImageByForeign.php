@@ -1,7 +1,7 @@
 <?php
 
-use App\Image;
-use App\Location;
+use App\Models\Image;
+use App\Models\Location;
 
 function findAll($imageable_id, $imageable_type)
 {
