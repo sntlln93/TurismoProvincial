@@ -21,7 +21,7 @@ class LocationController extends Controller
             return redirect("panel-de-administracion/users");
         }
         
-        $locations = Auth::user()->district->addresses->where('addressable_type', 'App\\Location');
+        $locations = Auth::user()->district->addresses->where('addressable_type', 'App\\Models\\Location');
         $cities = Auth::user()->district->cities;
 
         return view('dashboard.locations.index')
@@ -65,7 +65,7 @@ class LocationController extends Controller
             'number' => $location_data['number'],
             'city_id' => $location_data['city_id'],
             'addressable_id' => $location->id,
-            'addressable_type' => 'App\\Location',
+            'addressable_type' => 'App\\Models\\Location',
             'lat' => null,
             'lon' => null,
         ]);
@@ -99,14 +99,14 @@ class LocationController extends Controller
             'number' => $location_data['number'],
             'city_id' => $location_data['city_id'],
             'addressable_id' => $location->id,
-            'addressable_type' => 'App\\Location'
+            'addressable_type' => 'App\\Models\\Location'
         ]);
 
         foreach ($location_data['photos'] as $photo) {
             Image::create([
                 'path' => $photo->store('locations', 'public'),
                 'imageable_id' => $location->id,
-                'imageable_type' => 'App\\Location'
+                'imageable_type' => 'App\\Models\\Location'
             ]);
         }
 

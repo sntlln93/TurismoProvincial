@@ -31,7 +31,7 @@
                 <div class="accordion-body">
                     @foreach($type->services as $service)
                         <div class="article">
-                            <img src="{{ findOne($service->id, 'App\\Service')->first() }}" alt="{{ $service->slug }}">
+                            <img src="{{ findOne($service->id, 'App\\Models\\Service')->first() }}" alt="{{ $service->slug }}">
                             <div class="article-info">
                                 <b>Nombre:</b> {{ $service->name }}</br>
                                 @if($service->address)

@@ -17,7 +17,7 @@
     </div>
 
     <div class="info gastronomy">
-        <img src="{{ findOne($food_service->id, 'App\\Service')->first() }}" alt="{{ $food_service->slug }}">
+        <img src="{{ findOne($food_service->id, 'App\\Models\\Service')->first() }}" alt="{{ $food_service->slug }}">
         <div class="info-icon">
             <div class="dato">
                 <i class="icon-map-o"></i><h4><b>Localidad:</b> {{ $food_service->address->city->name }}</h4>
@@ -44,7 +44,7 @@
         <h2>Algunas fotos de sus instalaciones</h2>
     </div>
     <div class="box galery">
-        @foreach(findOne($food_service->id, 'App\\Service') as $image)
+        @foreach(findOne($food_service->id, 'App\\Models\\Service') as $image)
             <img src="{{ $image }}" alt="{{ $food_service->slug }}">
         @endforeach
     </div>

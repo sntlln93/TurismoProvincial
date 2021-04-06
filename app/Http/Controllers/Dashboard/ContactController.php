@@ -19,11 +19,11 @@ class ContactController extends Controller
     public function store(Request $request, $type, $id)
     {
         if ($type == "services") {
-            $contactable = "App\\Service";
+            $contactable = "App\\Models\\Service";
         } elseif ($type == "locations") {
-            $contactable = "App\\Location";
+            $contactable = "App\\Models\\Location";
         } elseif ($type == "districts") {
-            $contactable = "App\\District";
+            $contactable = "App\\Models\\District";
         }
 
         $contact_data = $this->validateContact($request);

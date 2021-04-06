@@ -49,7 +49,7 @@ class District extends Model
             ->join('cities', 'addresses.city_id', 'cities.id')
             ->join('districts', 'cities.district_id', 'districts.id')
             ->where('districts.id', $this->id)
-            ->where('addressable_type', 'App\\Location')
+            ->where('addressable_type', 'App\\Models\\Location')
             ->pluck('id');
 
         return Activity::find($activities);
@@ -82,7 +82,7 @@ class District extends Model
             ->join('districts', 'cities.district_id', 'districts.id')
             ->whereIn('services.type_id', $ids)
             ->where('districts.id', $this->id)
-            ->where('addressable_type', 'App\\Service')
+            ->where('addressable_type', 'App\\Models\\Service')
             ->pluck('id');
         
         return Service::find($services);

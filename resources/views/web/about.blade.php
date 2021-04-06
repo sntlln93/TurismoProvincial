@@ -23,7 +23,7 @@
 @section('scripts')
 <script src="{{ asset('js/carrusel.js') }}"></script>
     <script>
-        /*const images = {!! findAll($district->addresses->where('addressable_type', 'App\\Location')->pluck('addressable_id'), 'App\\Location') !!};*/
+        /*const images = {!! findAll($district->addresses->where('addressable_type', 'App\\Models\\Location')->pluck('addressable_id'), 'App\\Models\\Location') !!};*/
 
         const images = [];
         images.push("{!! $district->image->path !!}");

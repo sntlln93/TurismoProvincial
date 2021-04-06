@@ -13,7 +13,7 @@ class Location extends Model
     {
         return $query->select('locations.*')
             ->join('addresses', 'locations.id', 'addresses.addressable_id')
-            ->where('addressable_type', 'App\\Location')
+            ->where('addressable_type', 'App\\Models\\Location')
             ->whereIn('addresses.city_id', $cities_id);
     }
 

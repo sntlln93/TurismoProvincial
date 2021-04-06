@@ -37,7 +37,7 @@
             <div class="box">
                 @foreach($district->lodging as $lodge)
                     <a class="card-accommodations" href="{{ url($district->slug.'/alojamiento/'.$lodge->slug) }}">
-                        <img src="{{ findOne($lodge->id, 'App\\Service')->first() }}" alt="{{ $lodge->slug }}">
+                        <img src="{{ findOne($lodge->id, 'App\\Models\\Service')->first() }}" alt="{{ $lodge->slug }}">
                         <h5>{{ $lodge->name }} </h5>
                     </a>
                 @endforeach
@@ -50,7 +50,7 @@
             <div class="box">
                 @foreach ($district->food as $food_service)
                 <a class="card-gastronomy" href="{{ url($district->slug.'/gastronomia/'.$food_service->slug) }}">
-                    <img src="{{ findOne($food_service->id, 'App\\Service')->first() }}" alt="{{ $food_service->slug }}">
+                    <img src="{{ findOne($food_service->id, 'App\\Models\\Service')->first() }}" alt="{{ $food_service->slug }}">
                     <h5>{{ $food_service->name }}</h5>
                 </a>
                 @endforeach
@@ -78,7 +78,7 @@
 @section('scripts')
     <script src="{{ asset('js/carrusel.js') }}"></script>
     <script>
-        //const images = {!! findAll($district->addresses->where('addressable_type', 'App\\Location')->pluck('addressable_id')->toArray(), 'App\\Location') !!};
+        //const images = {!! findAll($district->addresses->where('addressable_type', 'App\\Models\\Location')->pluck('addressable_id')->toArray(), 'App\\Models\\Location') !!};
         const images = [];
         images.push("{!! $district->image->path !!}");
         

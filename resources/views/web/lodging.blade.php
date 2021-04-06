@@ -6,7 +6,7 @@
     <div class="box-flex">
         @foreach($lodging as $lodge)
             <a class="card-info" href="{{ url($district->slug.'/alojamiento/'.$lodge->slug) }}">
-                <img src="{{ findOne($lodge->id, 'App\\Service')->first() }}" alt="{{ $lodge->slug }}">
+                <img src="{{ findOne($lodge->id, 'App\\Models\\Service')->first() }}" alt="{{ $lodge->slug }}">
                 <div class="info-contact">
                     <h3>{{ $lodge->name }}</h3>
                     <ul>

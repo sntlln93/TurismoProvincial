@@ -15,7 +15,7 @@
     </div>
 
     <div class="info activity">
-        <img src="{{ findOne($activity->id, 'App\\Activity')->first() }}" alt="{{ $activity->slug }}">
+        <img src="{{ findOne($activity->id, 'App\\Models\\Activity')->first() }}" alt="{{ $activity->slug }}">
         <div class="info-icon">
             <div class="dato">
                 <i class="icon-clock"></i><h4><b>Horario:</b> {{ $activity->start->format('h:i') }} hs - {{ $activity->end->format('h:i') }} hs</h4>

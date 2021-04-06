@@ -13,7 +13,7 @@
         </div>
 
         <div class="info">
-            <img src="{{ findAll($city->locations->random()->id, 'App\\Location')->first() }}" alt="{{ $city->slug }}">
+            <img src="{{ findAll($city->locations->random()->id, 'App\\Models\\Location')->first() }}" alt="{{ $city->slug }}">
         </div>
         <div class="description">
             <h2>Descripción:</h2>

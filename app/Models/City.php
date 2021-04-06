@@ -20,7 +20,7 @@ class City extends Model
 
     public function getLocationsAttribute()
     {
-        $addresses = $this->addresses->where('addressable_type', 'App\\Location')->pluck('addressable_id');
+        $addresses = $this->addresses->where('addressable_type', 'App\\Models\\Location')->pluck('addressable_id');
 
         return Location::whereIn('id', $addresses)->get();
     }

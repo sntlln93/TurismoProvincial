@@ -22,13 +22,13 @@ class PhotoController extends Controller
         $photos = $this->validatePhotos($request)['photos'];
 
         if ($type == "services") {
-            $imageable = "App\\Service";
+            $imageable = "App\\Models\\Service";
         } elseif ($type == "locations") {
-            $imageable = "App\\Location";
+            $imageable = "App\\Models\\Location";
         } elseif ($type == "districts") {
-            $imageable = "App\\City";
+            $imageable = "App\\Models\\City";
         } elseif ($type == "activities") {
-            $imageable = "App\\Activity";
+            $imageable = "App\\Models\\Activity";
         }
 
         foreach ($photos as $photo) {
@@ -45,13 +45,13 @@ class PhotoController extends Controller
     public function show($type, $id)
     {
         if ($type == "services") {
-            $imageable_type = "App\\Service";
+            $imageable_type = "App\\Models\\Service";
         } elseif ($type == "locations") {
-            $imageable_type = "App\\Location";
+            $imageable_type = "App\\Models\\Location";
         } elseif ($type == "cities") {
-            $imageable_type = "App\\City";
+            $imageable_type = "App\\Models\\City";
         } elseif ($type == "activities") {
-            $imageable_type = "App\\Activity";
+            $imageable_type = "App\\Models\\Activity";
         }
 
         $photos = Image::where('imageable_id', $id)

@@ -6,7 +6,7 @@
     <div class="box-flex">
         @foreach($locations as $location)
             <div class="card-places">
-                <img src="{{ findOne($location->id, 'App\\Location')->first() }}" alt="{{ $location->slug }}">
+                <img src="{{ findOne($location->id, 'App\\Models\\Location')->first() }}" alt="{{ $location->slug }}">
                 <h3>{{ $location->name }}</h3>
                 <div class="info">
                     <p>{{ $location->description }}</p>

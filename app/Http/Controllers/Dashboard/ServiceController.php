@@ -66,7 +66,7 @@ class ServiceController extends Controller
             'number' => $address_data['number'],
             'city_id' => $address_data['city_id'],
             'addressable_id' => $service->id,
-            'addressable_type' => 'App\\Service'
+            'addressable_type' => 'App\\Models\\Service'
         ]);
 
 
@@ -74,7 +74,7 @@ class ServiceController extends Controller
             Image::create([
                 'path' => $photo->store('locations', 'public'),
                 'imageable_id' => $service->id,
-                'imageable_type' => 'App\\Service'
+                'imageable_type' => 'App\\Models\\Service'
             ]);
         }
 

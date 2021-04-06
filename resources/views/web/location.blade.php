@@ -12,7 +12,7 @@
     </div>
 
     <div class="info place">
-        <img src="{{ findOne($location->id, 'App\\Location')->first() }}" alt="{{ $location->slug }}">
+        <img src="{{ findOne($location->id, 'App\\Models\\Location')->first() }}" alt="{{ $location->slug }}">
         <div class="info-icon">
             <div class="dato">
                 <i class="icon-map-o"></i><h4><b>Localidad:</b> {{ $location->address->city->name }}</h4>

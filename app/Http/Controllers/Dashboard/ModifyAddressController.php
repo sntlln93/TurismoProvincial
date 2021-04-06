@@ -24,9 +24,9 @@ class ModifyAddressController extends Controller
         $address_data = $this->validateAddress($request);
         $address->update($address_data);
 
-        if ($address->addressable_type == "App\\Location") {
+        if ($address->addressable_type == "App\\Models\\Location") {
             $addressable = "locations";
-        } elseif ($address->addressable_type == "App\Service") {
+        } elseif ($address->addressable_type == "App\\Models\\Service") {
             $addressable = "services";
         }
 

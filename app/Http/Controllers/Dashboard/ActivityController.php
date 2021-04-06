@@ -15,7 +15,7 @@ class ActivityController extends Controller
     public function index()
     {
         $activities = Auth::user()->district->activities;
-        $locations = Auth::user()->district->addresses->where('addressable_type', 'App\\Location');
+        $locations = Auth::user()->district->addresses->where('addressable_type', 'App\\Models\\Location');
 
         return view('dashboard.activities.index')
             ->with('locations', $locations)
@@ -25,7 +25,7 @@ class ActivityController extends Controller
 
     public function edit(Activity $activity)
     {
-        $locations = Auth::user()->district->addresses->where('addressable_type', 'App\\Location');
+        $locations = Auth::user()->district->addresses->where('addressable_type', 'App\\Models\\Location');
 
         return view('dashboard.activities.edit')
             ->with('activity', $activity)
@@ -87,7 +87,7 @@ class ActivityController extends Controller
             Image::create([
                 'path' => $photo->store('activities', 'public'),
                 'imageable_id' => $activity->id,
-                'imageable_type' => 'App\\Activity'
+                'imageable_type' => 'App\\Models\\Activity'
             ]);
         }
 
