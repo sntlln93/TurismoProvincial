@@ -9,9 +9,9 @@ use Illuminate\Support\Str;
 
 //use App\Services\GetCoordsFromLinkService;
 
-use App\Address;
-use App\Image;
-use App\Location;
+use App\Models\Address;
+use App\Models\Image;
+use App\Models\Location;
 
 class LocationController extends Controller
 {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Contact;
+use App\Models\Contact;
 
 class ContactController extends Controller
 {

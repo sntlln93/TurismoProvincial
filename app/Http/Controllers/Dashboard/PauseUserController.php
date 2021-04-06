@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 
-use App\User;
+use App\Models\User;
 
 class PauseUserController extends Controller
 {

@@ -24,7 +24,7 @@ class ServiceController extends Controller
 
     public function show(Service $service)
     {
-        return view('dashboard.services.show')->with('service', $service);
+        return view('dashboard.services.show')->with('service', $service->load('address'));
     }
 
     public function create()

@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Routing\Redirector;
 
-use App\User;
-use App\Role;
-use App\District;
+use App\Models\User;
+use App\Models\Role;
+use App\Models\District;
 
 class UserController extends Controller
 {
