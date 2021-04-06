@@ -10,9 +10,8 @@
                 <a class="hover__link" href="{{ url('/'.$district->slug.'/'.$lodging->type->metaType->slug) }}">
                     {{ $lodging->type->metaType->name }}
                 </a> / 
-                <a class="hover__link" href="{{ url('/'.$district->slug.'/categorias/'.$lodging->type->slug) }}">
                     {{ $lodging->type->name }}    
-                </a> /
+                    /
                 {{ $lodging->name }}</h2>
         </div> 
     </div>

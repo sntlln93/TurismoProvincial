@@ -9,9 +9,8 @@
                 <a class="hover__link" href="{{ url('/'.$district->slug.'/'.$food_service->type->metaType->slug) }}">
                     {{ $food_service->type->metaType->name }}
                 </a> / 
-                <a class="hover__link" href="{{ url('/'.$district->slug.'/categorias/'.$food_service->type->slug) }}">
                     {{ $food_service->type->name }}    
-                </a> /
+                    /
                 {{ $food_service->name }}</h2>
         </div> 
     </div>
