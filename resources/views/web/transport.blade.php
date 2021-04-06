@@ -38,7 +38,7 @@
                                     <b>Localidad:</b> {{ $service->address->city->name }} </br>
                                     <b>Dirección:</b> {{ $service->address->full_address }} </br>
                                 @endif
-                                <b>Horario de atención:</b> {{ $service->start->format('h:i') }} hs a {{ $service->end->format('h:i') }} hs </br>
+                                <b>Horario de atención:</b> {{ $service->start }} hs a {{ $service->end }} hs </br>
                                 @if($service->contact)
                                     <b>Contacto:</b> </br>
                                     <b>Página web:</b>
