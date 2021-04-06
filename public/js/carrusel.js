@@ -34,14 +34,17 @@ const carrusel = (images_array) => {
     //Dibujar slide y navegación
     for (let img in images) {
         //Cargar imagenes
-        slider.innerHTML += `<img src="${
-            images[img]
-        }" class="slider-image" style="width: ${100 / images.length}%">`;
-
+        const imgElement = document.createElement("img");
+        imgElement.src = `http://127.0.0.1:8000/${images[img]}`;
+        imgElement.classList.add("slider-image");
+        slider.appendChild(imgElement);
+        
         //Cargar navegación
-        sliderNav.innerHTML += `<span class="${
-            img == 0 ? "slider-nav slider-nav--active" : "slider-nav"
-        }" id="slider-nav-${img}">`;
+        const spanElement = document.createElement("span");
+        spanElement.classList.add("slider-nav");
+        img == 0 && spanElement.classList.add("slider-nav--active" );
+        spanElement.id = `slider-nav-${img}`;
+        sliderNav.appendChild(spanElement);
     }
 
     //Variable contador de img

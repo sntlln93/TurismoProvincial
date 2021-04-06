@@ -235,7 +235,7 @@ nav ul li i {
 .slider {
     position: relative;
     width: 100%;
-    height: 50vh;
+    max-height: 40vh;
     margin: 0 0 5px 0;
     overflow: hidden;
 }
@@ -243,8 +243,8 @@ nav ul li i {
 .slider-images {
     position: relative;
     left: 0;
-    top: -20vh;
     transition: all 0.5s;
+    object-fit: contain;
 }
 
 .slider-images img {
