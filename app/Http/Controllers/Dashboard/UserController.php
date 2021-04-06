@@ -33,9 +33,9 @@ class UserController extends Controller
         if ($current_user->district_id) {
             $districts = null;
             $roles = Role::where('name', '!=', 'Admin Provincia')->get();
-            $users = User::where('id', '!=', $current_user->id)->get();
+            $users = User::where('role_id', '!=', 1)->get();
         } else {
-            $users = User::where('id', '!=', $current_user->id)->get();
+            $users = User::all();
             $districts = District::all();
             $roles = Role::all();
         }

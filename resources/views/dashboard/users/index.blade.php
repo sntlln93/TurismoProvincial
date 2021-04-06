@@ -33,9 +33,7 @@
                                 <select name="role_id" type="text" >
                                     <option>Elegí un rol</option>
                                     @foreach($roles as $role)
-                                        @if($role->name != "Gestor de Contenidos")
                                             <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                        @endif
                                     @endforeach
                                 </select>  
                             </div>
@@ -68,7 +66,6 @@
                         <b>Nombre:</b> {{ $user->full_name }}</br>
                         <b>DNI:</b>  {{ $user->dni }}</br>
                     </div>
-                    <!-- Esto (info-2) solo aparece para el rol "admin CyT" -->
                     <div class="info-2">
                         <b>Municipalidad:</b> {{ $user->district->name ?? "-"}}</br>
                         <b>Rol:</b> {{ $user->role->name }}
