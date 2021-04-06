@@ -28,10 +28,10 @@
             <div><h4>Responsable:</h4><input class="@error('responsable') error-input @enderror" type="text" name="responsable" value="{{ $service->responsable }}" placeholder=""></div>
             @error('responsable') <small class="error-message">{{ $message }}</small> @enderror
             
-            <div><h4>Inicio:</h4><input class="@error('start') error-input @enderror" type="time" id="start" name="start" value="{{ $service->start->format('h:i') }}" placeholder=""></div>
+            <div><h4>Inicio:</h4><input class="@error('start') error-input @enderror" type="time" id="start" name="start" value="{{ $service->start }}" placeholder=""></div>
             @error('start') <small class="error-message">{{ $message }}</small> @enderror
             
-            <div><h4>Fin:</h4><input class="@error('end') error-input @enderror" type="time" id="end" name="end" value="{{ $service->end->format('h:i') }}" placeholder=""></div>
+            <div><h4>Fin:</h4><input class="@error('end') error-input @enderror" type="time" id="end" name="end" value="{{ $service->end }}" placeholder=""></div>
             @error('end') <small class="error-message">{{ $message }}</small> @enderror
             
             <div>

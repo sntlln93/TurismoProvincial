@@ -28,7 +28,7 @@
                 <i class="icon-phone"></i><h4><b>Teléfono:</b> @foreach($food_service->phones as $phone) {{ $phone->contact }} @endforeach</h4>
             </div>
             <div class="dato">
-                <i class="icon-clock"></i><h4><b>Horario de atención:</b> {{ $food_service->start->format('h:i') }} - {{ $food_service->end->format('h:i') }} hs</h4>
+                <i class="icon-clock"></i><h4><b>Horario de atención:</b> {{ $food_service->start }} - {{ $food_service->end }} hs</h4>
             </div>
             <div class="dato">
                 <i class="icon-globe"></i><a href="https://www.facebook.com/pages/category/Argentinian-Restaurant/Origenes-Restaurante-y-Eventos-1604668823119933/" target="_blanck"><h4><b>Sitio web</b></h4></a>

@@ -29,10 +29,10 @@
                 <i class="icon-phone"></i><h4><b>Teléfono:</b> @foreach($lodging->phones as $phone) {{ $phone->contact }} @endforeach</h4>
             </div>
             <div class="dato">
-                <i class="icon-clock"></i><h4><b>Check in:</b> {{ $lodging->start->format('h:i') }} hs</h4>
+                <i class="icon-clock"></i><h4><b>Check in:</b> {{ $lodging->start }} hs</h4>
             </div>
             <div class="dato">
-                <i class="icon-clock"></i><h4><b>Check out:</b> {{ $lodging->end->format('h:i') }} hs</h4>
+                <i class="icon-clock"></i><h4><b>Check out:</b> {{ $lodging->end }} hs</h4>
             </div>
             <div class="dato">
                 <i class="icon-globe"></i><h4><b>Sitio web:</b><a href="http://www.naindoparkhotel.com/" target="_blank"> {{ $lodging->website }}</a></h4>

@@ -72,9 +72,9 @@
                                             </div>
                                             <div class="info-2">
                                                 <b>{{ $type->name == 'Alojamiento' ? 'Check in:' : 'Abre a las:' }}</b>
-                                                {{ $service->start->format('h:i') }} hs </br>
+                                                {{ $service->start }} hs </br>
                                                 <b>{{ $type->name == 'Alojamiento' ? 'Check out:' : 'Cierra a las:' }}</b>
-                                                {{ $service->end->format('h:i') }} hs </br>
+                                                {{ $service->end }} hs </br>
                                                 <b>Subtipo:</b> {{ $subtype->name }}
                                             </div>
                                         </div>

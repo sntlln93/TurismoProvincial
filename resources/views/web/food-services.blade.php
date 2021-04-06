@@ -14,7 +14,7 @@
                         @if($food->phones->count() > 0)
                             <li><i class="icon-phone"></i>{{ $food->phones->first()->contact }}</li>
                         @endif
-                        <li><i class="icon-clock"></i>{{ $food->start->format('h:i') }} - {{ $food->end->format('h:i') }}</li>
+                        <li><i class="icon-clock"></i>{{ $food->start }} - {{ $food->end }}</li>
                     </ul>
                 </div>
             </a>

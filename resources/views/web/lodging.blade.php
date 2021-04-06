@@ -14,7 +14,7 @@
                         @if($lodge->phones->count())
                             <li><i class="icon-phone"></i>{{ $lodge->phones->first()->contact }}</li>
                         @endif
-                        <li><i class="icon-clock"></i>{{ $lodge->start->format('h:i') }} - {{ $lodge->end->format('h:i') }}</li>
+                        <li><i class="icon-clock"></i>{{ $lodge->start }} - {{ $lodge->end }}</li>
                     </ul>
                 </div>
             </a>

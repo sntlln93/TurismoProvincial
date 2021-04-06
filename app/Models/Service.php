@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 use App\Models\Type;
 
@@ -19,8 +20,6 @@ class Service extends Model
     ];
 
     protected $appends = ['phones'];
-
-    protected $dates = ['start', 'end'];
 
     public function type()
     {
@@ -71,5 +70,13 @@ class Service extends Model
         }
 
         return $types;
+    }
+
+    public function getStartAttribute($value){
+        return Carbon::parse($value)->format("H:i");
+    }
+
+    public function getEndAttribute($value){
+        return Carbon::parse($value)->format("H:i");
     }
 }

@@ -19,8 +19,8 @@
                             <b>Subtipo:</b> {{ $service->type->name }}
                         </div>
                         <div class="info-2">
-                            <b>{{ $service->type->name == "Alojamiento" ? "Check in:" : "Abre a las:"}}</b> {{ $service->start->format('h:i') }} hs </br>
-                            <b>{{ $service->type->name == "Alojamiento" ? "Check out:" : "Cierra a las:"}}</b> {{ $service->end->format('h:i') }} hs </br>
+                            <b>{{ $service->type->name == "Alojamiento" ? "Check in:" : "Abre a las:"}}</b> {{ $service->start }} hs </br>
+                            <b>{{ $service->type->name == "Alojamiento" ? "Check out:" : "Cierra a las:"}}</b> {{ $service->end }} hs </br>
                         </div>
                     </div>
                     <div class="icon">
