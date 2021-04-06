@@ -6,11 +6,14 @@
     <div class="box-flex">
         @foreach($food_services as $food)
             <a class="card-info" href="{{ url($district->slug.'/gastronomia/'.$food->slug) }}">
-                <img src="{{ findOne($food->id, 'App\\Service')->first() }}" alt="">
+                <img src="{{ findOne($food->id, 'App\\Models\\Service')->first() }}" alt="">
                 <div class="info-contact">
-                    <h3>Orígenes</h3>
+                    <h3>{{ $food->name }}</h3>
+                    <small>{{ $food->type->name }}</small>
                     <ul>
-                        <li><i class="icon-location"></i>A 3 cuadras de vos</li>
+                        @if($food->address->lat)
+                            <li><i class="icon-location"></i>A 3 cuadras de vos</li>
+                        @endif
                         @if($food->phones->count() > 0)
                             <li><i class="icon-phone"></i>{{ $food->phones->first()->contact }}</li>
                         @endif
