@@ -13,7 +13,6 @@ class TypeController extends Controller
     public function index()
     {
         $types = Type::where('type_id', null)->get();
-        
         return view('dashboard.types.index')->with('types', $types);
     }
 

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\District;
-use App\Type;
+use App\Models\District;
+use App\Models\Type;
 
 class TransportServiceController extends Controller
 {

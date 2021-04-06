@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\District;
-use App\City;
+use App\Models\District;
+use App\Models\City;
 
 class CityController extends Controller
 {

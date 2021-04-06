@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\District;
-use App\Location;
+use App\Models\District;
+use App\Models\Location;
 
 class LocationController extends Controller
 {
