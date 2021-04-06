@@ -9,26 +9,26 @@
 
         <div class="row">
             <!-- <div class="search">
-                        <select name="services">
-                            <option>Seleccionar una opción</option>
-                            <optgroup label="Alojamiento">
-                                <option>Hotel</option>
-                                <option>Hostel</option>
-                                <option>Cabaña</option>
-                            </optgroup>
-                            <optgroup label="Gastronomía">
-                                <option>Restaurante</option>
-                                <option>Bar</option>
-                                <option>Cafetería</option>
-                            </optgroup>
-                            <optgroup label="Transporte">
-                                <option>Transporte Público</option>
-                                <option>Taxis y Remises</option>
-                                <option>Terminal de Omnibus</option>
-                                <option>Aeropuerto</option>
-                            </optgroup>
-                        </select>
-                    </div> -->
+                                <select name="services">
+                                    <option>Seleccionar una opción</option>
+                                    <optgroup label="Alojamiento">
+                                        <option>Hotel</option>
+                                        <option>Hostel</option>
+                                        <option>Cabaña</option>
+                                    </optgroup>
+                                    <optgroup label="Gastronomía">
+                                        <option>Restaurante</option>
+                                        <option>Bar</option>
+                                        <option>Cafetería</option>
+                                    </optgroup>
+                                    <optgroup label="Transporte">
+                                        <option>Transporte Público</option>
+                                        <option>Taxis y Remises</option>
+                                        <option>Terminal de Omnibus</option>
+                                        <option>Aeropuerto</option>
+                                    </optgroup>
+                                </select>
+                            </div> -->
             <div class="add-other only-button">
                 <a href="{{ url('panel-de-administracion/services/create') }}"><button id="open">
                         <i class="icon-plus"></i> Nuevo servicio
@@ -57,44 +57,47 @@
                         @endif
                         {{ $type->name }}
                     </div>
-                    @foreach ($type->subtypes as $subtype)
-                        @if ($subtype->services->count() > 0) {{-- this prevents render of empty accordion-bodies --}}
-                            <div class="accordion-body">
+                    <div class="accordion-body">
+                        @foreach ($type->subtypes as $subtype)
+                            @if ($subtype->services->count() > 0) {{-- this prevents render of empty accordion-bodies --}}
                                 @foreach ($subtype->services as $service)
-                                    <div class="article">
-                                        <div class="article-info">
-                                            <div class="info-1">
-                                                <b>Nombre:</b> {{ $service->name }}</br>
-                                                <b>Responsable:</b> {{ Str::title($service->responsable) }}</br>
-                                                @if ($service->address)
-                                                    <b>Localidad:</b> {{ $service->address->city->name }}
-                                                @endif
+                                    @if (in_array($service->id, $localAddresses))
+                                        <div class="article">
+                                            <div class="article-info">
+                                                <div class="info-1">
+                                                    <b>Nombre:</b> {{ $service->name }}</br>
+                                                    <b>Responsable:</b> {{ Str::title($service->responsable) }}</br>
+                                                    @if ($service->address)
+                                                        <b>Localidad:</b> {{ $service->address->city->name }}
+                                                    @endif
+                                                </div>
+                                                <div class="info-2">
+                                                    <b>{{ $type->name == 'Alojamiento' ? 'Check in:' : 'Abre a las:' }}</b>
+                                                    {{ $service->start }} hs </br>
+                                                    <b>{{ $type->name == 'Alojamiento' ? 'Check out:' : 'Cierra a las:' }}</b>
+                                                    {{ $service->end }} hs </br>
+                                                    <b>Subtipo:</b> {{ $subtype->name }}
+                                                </div>
                                             </div>
-                                            <div class="info-2">
-                                                <b>{{ $type->name == 'Alojamiento' ? 'Check in:' : 'Abre a las:' }}</b>
-                                                {{ $service->start }} hs </br>
-                                                <b>{{ $type->name == 'Alojamiento' ? 'Check out:' : 'Cierra a las:' }}</b>
-                                                {{ $service->end }} hs </br>
-                                                <b>Subtipo:</b> {{ $subtype->name }}
+                                            <div class="icon">
+                                                <a href="{{ url('panel-de-administracion/services/' . $service->id) }}"
+                                                    class="btn-show"><i class="icon-info-circled"></i></a>
+                                                <a href="{{ url('panel-de-administracion/services/' . $service->id . '/edit') }}"
+                                                    class="btn-edit"><i class="icon-edit"></i></a>
+                                                <form
+                                                    action="{{ url('panel-de-administracion/services/' . $service->id) }}"
+                                                    method="POST">
+                                                    @csrf @method('DELETE')
+                                                    <button class="btn-delete" type="submit"><i
+                                                            class="icon-trash-empty"></i></button>
+                                                </form>
                                             </div>
                                         </div>
-                                        <div class="icon">
-                                            <a href="{{ url('panel-de-administracion/services/' . $service->id) }}"
-                                                class="btn-show"><i class="icon-info-circled"></i></a>
-                                            <a href="{{ url('panel-de-administracion/services/' . $service->id . '/edit') }}"
-                                                class="btn-edit"><i class="icon-edit"></i></a>
-                                            <form action="{{ url('panel-de-administracion/services/' . $service->id) }}"
-                                                method="POST">
-                                                @csrf @method('DELETE')
-                                                <button class="btn-delete" type="submit"><i
-                                                        class="icon-trash-empty"></i></button>
-                                            </form>
-                                        </div>
-                                    </div>
+                                    @endif
                                 @endforeach
-                            </div>
-                        @endif
-                    @endforeach
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
             @endforeach
         </div>

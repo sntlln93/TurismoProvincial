@@ -20,7 +20,15 @@ class ServiceController extends Controller
     {
         $types = Type::where('type_id', null)->with('subtypes')->get();
 
-        return view('dashboard.services.index')->with('types', $types);
+        $localAddresses = Address::join('cities', 'addresses.city_id', 'cities.id')
+            ->join('districts', 'cities.district_id', 'districts.id')
+            ->where('addressable_type', 'App\\Models\\Service')
+            ->pluck('addresses.addressable_id')
+            ->toArray();
+
+        return view('dashboard.services.index')
+            ->with('localAddresses', $localAddresses)
+            ->with('types', $types);
     }
 
     public function show(Service $service)
