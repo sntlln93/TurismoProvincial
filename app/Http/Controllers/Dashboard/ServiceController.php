@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Type;
 use App\Models\Service;
@@ -101,6 +102,12 @@ class ServiceController extends Controller
 
     public function destroy(Service $service) {
         $service->contacts()->delete();
+
+        /* need to find out why this delete doesnt work */
+        foreach($service->images as $image){
+            Storage::delete('storage/'.$image->path);
+        }
+        
         $service->images()->delete();
         $service->address()->delete();
         $service->delete();
