@@ -56,7 +56,7 @@
                     {{ $type->name }}
                 </div>
                 <div class="accordion-body">
-                    @foreach($type->subType as $sub_type)
+                    @foreach($type->subTypes as $sub_type)
                     <div class="article">
                         <div class="article-info">
                             <div class="info-1 servicetype">
