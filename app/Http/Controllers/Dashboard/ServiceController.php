@@ -72,7 +72,7 @@ class ServiceController extends Controller
 
         foreach ($photos as $photo) {
             Image::create([
-                'path' => $photo->store('locations', 'public'),
+                'path' => $photo->store('services', 'public'),
                 'imageable_id' => $service->id,
                 'imageable_type' => 'App\\Models\\Service'
             ]);
@@ -97,6 +97,15 @@ class ServiceController extends Controller
         $service->update($service_data);
 
         return redirect('panel-de-administracion/services');
+    }
+
+    public function destroy(Service $service) {
+        $service->contacts()->delete();
+        $service->images()->delete();
+        $service->address()->delete();
+        $service->delete();
+        
+        return back();
     }
 
     private function validateService($request)
