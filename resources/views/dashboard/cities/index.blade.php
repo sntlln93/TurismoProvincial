@@ -54,7 +54,7 @@
                         </div>
                         @error('description') <small class="error-message">{{ $message }}</small> @enderror
                         
-                        <label class="cont">Cantidad de carácteres: </label>
+                        <label class="cont">Cantidad de carácteres: 0/1000</label>
                         <button type="submit" class="save">Guardar<i class="icon-floppy"></i>    
                     </form>
                 </div>
