@@ -32,7 +32,7 @@
                 @error('description') <small class="error-message">{{ $message }}</small> @enderror
 
                 <div>
-                    <small class="contEdit">Cantidad de carácteres: {{ Str::of($city->description)->length() }}/150</small>
+                    <small class="contEdit">Cantidad de carácteres: {{ Str::of($city->description)->length() }}/1000</small>
                 </div>
                 <button type="submit" class="save">Guardar<i class="icon-floppy"></i>    
             </form>
