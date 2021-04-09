@@ -20,7 +20,7 @@
             <div class="box-activities">
                 @foreach($district->activities as $activity)
                     <div class="card-activities">
-                        <img src="{{ findOne($activity->id, 'App\Activity')->first() }}" alt="{{ $activity->slug }}">
+                        <img src="{{ findOne($activity->id, 'App\Models\Activity')->first() }}" alt="{{ $activity->slug }}">
                         <div class="info">
                             <h3>{{ $activity->name }}</h3>
                             <p>{{ $activity->description }}</p>
