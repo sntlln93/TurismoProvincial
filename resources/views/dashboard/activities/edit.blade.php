@@ -32,7 +32,7 @@
                 @error('amount') <small class="error-message">{{ $message }}</small> @enderror
 
                 <div>
-                    <h4>Producto turístico:</h4>
+                    <h4>Atractivo turístico:</h4>
                     <select class="@error('location_id') error-input @enderror" name="location_id" id="">
                         @foreach($locations as $address)
                             @php($location = $address->addressable)

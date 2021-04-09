@@ -99,7 +99,7 @@
                     <b>Precio:</b> ${{ $activity->amount }}
                 </div>
                 <div class="info-2">
-                    <b>Producto turístico:</b> {{ $activity->location->name }}</br>
+                    <b>Atractivo turístico:</b> {{ $activity->location->name }}</br>
                     <b>Inicio:</b> {{ $activity->start->format('d/m/Y')}} a las {{ $activity->start->format('h:i') }} hs </br>
                     <b>Fin:</b> {{ $activity->end->format('d/m/Y') }} a las {{ $activity->end->format('h:i') }} hs
                 </div>

@@ -18,7 +18,7 @@
 @section('content')
 <main>
     <div class="title">
-        <h2>Productos turísticos</h2>
+        <h2>Atractivos turísticos</h2>
     </div>
     
     <div class="row">
@@ -28,7 +28,7 @@
         </div>
         <div class="add-other">
             <button id="open">
-                <i class="icon-plus"></i> Nuevo producto turístico
+                <i class="icon-plus"></i> Nuevo atractivo turístico
             </button>
         </div>
     </div>

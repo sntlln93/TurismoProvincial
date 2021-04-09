@@ -6,7 +6,7 @@
                     <a href="{{ url('panel-de-administracion/cities') }}"><i class="icon-location"></i>Localidades</a>
                 </li>
                 <li class="{{ Str::contains(Route::currentRouteName(), 'location') ? 'aside-link-active' : null}}">
-                    <a href="{{ url('panel-de-administracion/locations') }}"><i class="icon-picture"></i>Productos turísticos</a>
+                    <a href="{{ url('panel-de-administracion/locations') }}"><i class="icon-picture"></i>Atractivos turísticos</a>
                 </li>
                 <li class="{{ Str::contains(Route::currentRouteName(), 'activities') ? 'aside-link-active' : null}}">
                     <a href="{{ url('panel-de-administracion/activities') }}"><i class="icon-child"></i>Experiencias</a>

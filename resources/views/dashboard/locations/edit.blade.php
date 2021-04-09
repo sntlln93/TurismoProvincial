@@ -17,7 +17,7 @@
 
 @section('content')
     <main>
-        <h2>Modificar producto turistico</h2>
+        <h2>Modificar atractivo turistico</h2>
 
         <div class="modal-body view">
 
