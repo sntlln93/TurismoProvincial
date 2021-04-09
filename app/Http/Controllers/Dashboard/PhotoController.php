@@ -58,7 +58,11 @@ class PhotoController extends Controller
             ->where('imageable_type', $imageable_type)
             ->get();
 
-            return view('dashboard.photos.show')
+        if($photos->count() == 0){
+            return back();
+        }
+
+        return view('dashboard.photos.show')
             ->with('type', $type)
             ->with('id', $id)
             ->with('photos', $photos);
