@@ -2,7 +2,7 @@
         @if(Auth::user()->district_id)
             <div class="information">
                 <img src="{{ asset('img/Logo1-LR.png') }}" alt=""> </br>
-                {{ Auth::user()->district->name }}<br/>
+                Municipalidad de {{ Auth::user()->district->name }}<br/>
                 Intendente: {{ Auth::user()->district->mayor }}</br>
                 <!-- <div class="social-media">
                     <a href="http://municipiolarioja.gob.ar/" target="_blank"><i class="icon-globe"></i></a>

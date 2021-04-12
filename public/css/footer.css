@@ -3,13 +3,14 @@
 
 /* ----- FOOTER ----- */
 footer {
-    display: flex;
-    flex-flow: column wrap;
     height: auto;
     padding: 20px 0 0 0;
     background: var(--footer-color-web);
     color: var(--footer-color-lettering);
     font-size: 15px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
 }
 
 footer .gob,
@@ -82,65 +83,4 @@ i.icon-github-circled:hover {
     background-color: var(--second-color);
     border-radius: 50%;
     padding: 0.1em;
-}
-
-/* ----- MEDIAQUERY ----- */
-@media screen and (min-width: 768px) {
-    footer {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-areas: "cyt min" "gob info" "dev dev";
-        font-size: 16px;
-    }
-
-    footer .gob {
-        grid-area: gob;
-    }
-    
-    footer .min {
-        grid-area: min;
-    }
-
-    footer .cyt {
-        grid-area: cyt;
-    }
-
-    footer .information {
-        grid-area: info;
-    }
-
-    footer .developers {
-        grid-area: dev;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    footer {
-        grid-area: footer;
-    
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-areas: "cyt min gob info" "dev dev dev dev";
-        font-size: 15px;
-        height: auto;
-        padding: 20px 0 0 0;
-        background: var(--footer-color-web);
-        color: var(--footer-color-lettering);
-    }
-    
-    footer .gob {
-        grid-area: gob;
-    }
-    
-    footer .min {
-        grid-area: min;
-    }
-    
-    footer .cyt {
-        grid-area: cyt;
-    }
-    
-    footer .information{
-        grid-area: info;
-    }
 }

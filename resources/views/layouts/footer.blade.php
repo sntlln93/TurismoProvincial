@@ -35,13 +35,13 @@
     @endif
             Municipalidad de {{ $district->name }}<br/>
             Intendente: {{ $district->mayor }}</br>
-        <i class="icon-location"></i>Santa Fe N° 951
+        <!-- <i class="icon-location"></i>Santa Fe N° 951
         <div class="social-media">
             <a href="http://municipiolarioja.gob.ar/" target="_blank"><i class="icon-globe"></i></a>
             <a href="https://twitter.com/municipalidadlr" target="_blank"><i class="icon-twitter"></i></a>
             <a href="https://www.facebook.com/municipalidaddelarioja?_rdc=2&_rdr" target="_blank"><i class="icon-facebook"></i></a>
             <a href="https://www.instagram.com/municipalidadlarioja/?hl=es-la" target="_blank"><i class="icon-instagram"></i></a>
-        </div>
+        </div> -->
     </div>
 
     <div class="developers">
