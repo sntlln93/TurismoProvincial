@@ -1,5 +1,21 @@
 @extends('dashboard.layouts.app')
 
+@section('styles')
+    <style>
+        .error-message {
+            color: red;
+            margin: 0 1em 1em 0;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .error-input {
+            border-color: red !important;
+        }
+
+    </style>
+@endsection
+
 @section('content')
     <main>
         <h2>Modificar tipo</h2>
@@ -15,7 +31,8 @@
                         @endforeach
                     </select>  
                 </div>
-                <div><h4>Nombre:</h4><input type="text" name="name" value="{{ $type->name }}" placeholder=""></div>
+                <div><h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name" value="{{ $type->name }}" placeholder=""></div>
+                @error('name') <small class="error-message">{{ $message }}</small> @enderror
                 <button type="submit" class="save">Guardar<i class="icon-floppy"></i>    
             </form>
         </div>

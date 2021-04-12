@@ -1,5 +1,21 @@
 @extends('dashboard.layouts.app')
 
+@section('styles')
+    <style>
+        .error-message {
+            color: red;
+            margin: 0 1em 1em 0;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .error-input {
+            border-color: red !important;
+        }
+
+    </style>
+@endsection
+
 @section('content')
 <main>
     <div class="title">
@@ -24,29 +40,36 @@
                 <div class="modal-body">
                     <form action="{{ url('panel-de-administracion/users') }}" method="POST">
                         @csrf
-                        <div><h4>Nombre:</h4><input type="text" name="name" value="" placeholder=""></div>
-                        <div><h4>Apellido:</h4><input type="text" name="lastname" value="" placeholder=""></div>
-                        <div><h4>DNI:</h4><input type="number" name="dni" value="" placeholder=""></div>
-                        <div><h4>Contraseña:</h4><input type="password" name="password" value="" placeholder=""></div>
+                        <div><h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name" value="" placeholder=""></div>
+                        @error('name') <small class="error-message">{{ $message }}</small> @enderror
+                        <div><h4>Apellido:</h4><input class="@error('lastname') error-input @enderror" type="text" name="lastname" value="" placeholder=""></div>
+                        @error('lastname') <small class="error-message">{{ $message }}</small> @enderror
+                        <div><h4>DNI:</h4><input class="@error('dni') error-input @enderror" type="number" name="dni" value="" placeholder=""></div>
+                        @error('dni') <small class="error-message">{{ $message }}</small> @enderror
+                        <div><h4>Contraseña:</h4><input class="@error('password') error-input @enderror" type="password" name="password" value="" placeholder=""></div>
+                        @error('password') <small class="error-message">{{ $message }}</small> @enderror
                         <!-- LA ULTIMA OPCION APARECERÁ SOLO PARA EL ROL DE ADMIN CYT -->
                             <div><h4>Rol:</h4>
-                                <select name="role_id" type="text" >
+                                <select class="@error('role_id') error-input @enderror" name="role_id" type="text" >
                                     <option>Elegí un rol</option>
                                     @foreach($roles as $role)
                                             <option value="{{ $role->id }}">{{ $role->name }}</option>
                                     @endforeach
                                 </select>  
                             </div>
+                            @error('role_id') <small class="error-message">{{ $message }}</small> @enderror
                         
                         <!-- ESTO SOLO APARECERÁ PARA EL ROL DE ADMIN CYT -->
                         @if($districts)
                             <div><h4>Municipio:</h4>
-                                <select name="district_id" type="text">
+                                <select class="@error('district_id') error-input @enderror" name="district_id" type="text">
                                     @foreach($districts as $district)
                                         <option value="{{ $district->id }}">{{ $district->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
+                            @error('district_id') <small class="error-message">{{ $message }}</small> @enderror
+
                         @else
                             <input type="hidden" value="{{ Auth::user()->district_id }}" name="district_id">
                         @endif
@@ -87,4 +110,13 @@
 
 @section('scripts')
 <script src="{{ asset('js/modal.js') }}"></script>
+
+@if ($errors->any())
+        <script>
+            const createForm = document.getElementById("miModal");
+            createForm.style.display = "block";
+
+        </script>
+    @endif
+
 @endsection

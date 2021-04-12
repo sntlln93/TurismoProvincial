@@ -1,5 +1,21 @@
 @extends('dashboard.layouts.app')
 
+@section('styles')
+    <style>
+        .error-message {
+            color: red;
+            margin: 0 1em 1em 0;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .error-input {
+            border-color: red !important;
+        }
+
+    </style>
+@endsection
+
 @section('content')
 <main>
     <div class="title">
@@ -31,7 +47,8 @@
                                 @endforeach
                             </select>  
                         </div>
-                        <div><h4>Nombre:</h4><input type="text" name="name" value="" placeholder=""></div>
+                        <div><h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name" value="" placeholder=""></div>
+                        @error('name') <small class="error-message">{{ $message }}</small> @enderror
                         <button type="submit" class="save">Guardar<i class="icon-floppy"></i>    
                     </form>
                 </div>
@@ -110,4 +127,13 @@
 @section('scripts')
     <script src="{{ asset('js/accordion.js') }}"></script>
     <script src="{{ asset('js/modal.js') }}"></script>
+
+    @if ($errors->any())
+        <script>
+            const createForm = document.getElementById("miModal");
+            createForm.style.display = "block";
+
+        </script>
+    @endif
+
 @endsection
