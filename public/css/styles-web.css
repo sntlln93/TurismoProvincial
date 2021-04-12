@@ -168,7 +168,7 @@ nav {
 }
 
 .logo img {
-    width: 160px;
+    width: auto;
     height: 50px;
     margin-top: 5px;
 }
@@ -842,7 +842,7 @@ a {
 }
 
 .icon-reply-1 {
-    color: var(--first-color);
+    color: var(--nav-color-web);
     margin-right: 10px;
     font-size: 20px;
 }
@@ -1388,5 +1388,5 @@ a {
 }
 
 .hover__link {
-    color: var(--first-color) !important;
+    color: var(--nav-color-web) !important;
 }

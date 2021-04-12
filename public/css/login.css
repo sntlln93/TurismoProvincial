@@ -114,6 +114,7 @@
     border: 1px solid var(--first-color);
     cursor: pointer;
     font-size: 15px;
+    outline:none;
 }
 
 .login-user .btn-login:hover {

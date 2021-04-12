@@ -6,10 +6,36 @@ footer {
     display: flex;
     flex-flow: column wrap;
     height: auto;
-    padding: 20px;
+    padding: 20px 0 0 0;
     background: var(--footer-color-web);
     color: var(--footer-color-lettering);
     font-size: 15px;
+}
+
+footer .gob,
+footer .min,
+footer .cyt,
+footer .information,
+footer .developers {
+    text-align: center;
+    align-self: center;
+    padding: 10px 0;
+}
+
+footer .gob img,
+footer .min img,
+footer .cyt img,
+footer .information img {
+    width: auto;
+    height: 50px;
+}
+
+footer .developers {
+    background-color: #fafafa;
+    padding: 1em;
+    color: #363636;
+    font-size: 13px;
+    width: 100%!important;
 }
 
 footer .social-media {
@@ -21,25 +47,6 @@ footer .developers i {
     color: var(--footer-color-lettering);
     margin: 6px;
     font-size: 16px;
-}
-
-footer .gob,
-footer .cyt,
-footer .information,
-footer .developers {
-    text-align: center;
-    align-self: center;
-    padding: 10px 0;
-}
-
-footer .gob img {
-    width: 180px;
-    height: 50px;
-}
-
-footer .developers a {
-    color: var(--second-color);
-    text-decoration: none;
 }
 
 i.icon-facebook:hover {
@@ -82,24 +89,16 @@ i.icon-github-circled:hover {
     footer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-areas: "gob cyt" "info dev";
-        font-size: 16px;
-    }
-
-    .principal-footer {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-areas: "gob cyt" "dev dev";
+        grid-template-areas: "cyt min" "gob info" "dev dev";
         font-size: 16px;
     }
 
     footer .gob {
         grid-area: gob;
     }
-
-    footer .gob img {
-        width: 220px;
-        height: 60px;
+    
+    footer .min {
+        grid-area: min;
     }
 
     footer .cyt {
@@ -117,16 +116,31 @@ i.icon-github-circled:hover {
 
 @media screen and (min-width: 1200px) {
     footer {
+        grid-area: footer;
+    
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-areas: "gob cyt info" "dev dev dev";
-        font-size: 16px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas: "cyt min gob info" "dev dev dev dev";
+        font-size: 15px;
+        height: auto;
+        padding: 20px 0 0 0;
+        background: var(--footer-color-web);
+        color: var(--footer-color-lettering);
     }
-
-    .principal-footer {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-areas: "gob cyt dev";
-        font-size: 16px;
+    
+    footer .gob {
+        grid-area: gob;
+    }
+    
+    footer .min {
+        grid-area: min;
+    }
+    
+    footer .cyt {
+        grid-area: cyt;
+    }
+    
+    footer .information{
+        grid-area: info;
     }
 }
