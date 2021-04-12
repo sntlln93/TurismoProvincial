@@ -38,13 +38,13 @@ class ModifyAddressController extends Controller
         $validated = $request->validate([
             'street' => 'required',
             'number' => 'nullable',
-            'link' => 'required',
+            'map_link' => 'required|max:500',
             'indications' => 'nullable',
             'city_id' => 'nullable'
         ]);
 
-        $validated['lat'] = $validated['link'];
-        $validated['lon'] = $validated['link'];
+        $validated['lat'] = $validated['map_link'];
+        $validated['lon'] = $validated['map_link'];
 
         return $validated;
     }
