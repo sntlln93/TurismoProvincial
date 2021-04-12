@@ -2,7 +2,7 @@
 
 @section('content')
 <main class="main-web">
-    <h2>Localidades del Departamento</h2>
+    <h2>Localidades del Departamento {{ $district->name }}</h2>
     
     <div class="box-flex district">
         @foreach($cities as $city)
