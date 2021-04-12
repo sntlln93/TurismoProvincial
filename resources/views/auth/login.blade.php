@@ -27,9 +27,7 @@
         <h2>INICIAR SESIÓN</h2>
 
         @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                <small class="error-message">Nombre de usuario o contraseña incorrectos.</small>
-            @endforeach
+            <small class="error-message">Nombre de usuario o contraseña incorrectos.</small>
         @endif
 
         <form action="{{ url('login') }}" method="POST" autocomplete="off">
@@ -50,4 +48,10 @@
 
         </form>
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    
+</script>
 @endsection
