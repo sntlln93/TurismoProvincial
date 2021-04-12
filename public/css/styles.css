@@ -326,7 +326,7 @@ main h2 {
 .articles.district .article {
     background: var(--second-color);
     margin: 10px auto;
-    max-width: 320px;
+    width: 32%;
     height: auto;
     box-shadow: 0 5px 5px var(--border-color);
 }
@@ -849,6 +849,14 @@ footer i:hover {
     .row .add-other.only-button button {
         width: 100%;
     }
+    .articles.district {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .articles.district .article {
+        width: 100%!important;
+    }
 }
 
 @media (max-width: 768px) {
@@ -995,6 +1003,11 @@ footer i:hover {
     main .district article {
         background-color: var(--body-color);
         padding-bottom: 10px;
+    }
+
+    .articles.district .article {
+        width: 40%;
+        margin: 5px;
     }
 }
 
