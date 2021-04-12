@@ -20,6 +20,7 @@ class CreateAddressesTable extends Migration
             $table->string('number')->nullable();
             $table->string('lat')->nullable();
             $table->string('lon')->nullable();
+            $table->string('map_link', 500)->nullable();
             $table->integer('city_id');
             $table->string('addressable_type');
             $table->integer('addressable_id');
