@@ -14,3 +14,5 @@
 </div>
 @error('city_id') <small class="error-message">{{ $message }}</small> @enderror
 
+<div><h4>Enlace de google maps:</h4><input class="@error('map_link') error-input @enderror" type="text" name="map_link" value="" placeholder=""></div>
+@error('map_link') <small class="error-message">{{ $message }}</small> @enderror

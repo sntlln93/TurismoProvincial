@@ -37,6 +37,9 @@
                 <div><h4>Altura:</h4><input type="number" class="@error('number') error-input @enderror" name="number" value="{{ $location->address->number }}" placeholder=""></div>
                 @error('number') <small class="error-message">{{ $message }}</small> @enderror
 
+                <div><h4>Enlace de google maps:</h4><input type="text" class="@error('map_link') error-input @enderror" name="map_link" value="{{ $location->address->map_link }}" placeholder=""></div>
+                @error('map_link') <small class="error-message">{{ $message }}</small> @enderror
+
                 <!-- for con todas las localidades que estén cargadas -->
                 <div><h4>Localidad:</h4>
                     <select name="city_id" type="text" class="@error('city_id') error-input @enderror">

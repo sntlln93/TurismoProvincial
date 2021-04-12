@@ -12,6 +12,7 @@ class Address extends Model
         'indications',
         'lat',
         'lng',
+        'map_link',
         'addressable_id',
         'addressable_type',
         'city_id',

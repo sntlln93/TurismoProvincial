@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Type;
 use App\Models\Service;
@@ -59,33 +60,35 @@ class ServiceController extends Controller
             'photos' => 'fotos'
         ])['photos'];
 
-        $service = Service::create([
-            'name' => $service_data['name'],
-            'responsable' => $service_data['responsable'],
-            'start' => $service_data['start'],
-            'end' => $service_data['end'],
-            'type_id' => $service_data['type_id'],
-            'slug' => Str::slug($service_data['name']),
-        ]);
-
-
-        Address::create([
-            'street' => $address_data['street'],
-            'indications' => $address_data['indications'] ?? null,
-            'number' => $address_data['number'],
-            'city_id' => $address_data['city_id'],
-            'addressable_id' => $service->id,
-            'addressable_type' => 'App\\Models\\Service'
-        ]);
-
-
-        foreach ($photos as $photo) {
-            Image::create([
-                'path' => $photo->store('services', 'public'),
-                'imageable_id' => $service->id,
-                'imageable_type' => 'App\\Models\\Service'
+        DB::transaction(function () use ($service_data, $address_data, $photos){
+            $service = Service::create([
+                'name' => $service_data['name'],
+                'responsable' => $service_data['responsable'],
+                'start' => $service_data['start'],
+                'end' => $service_data['end'],
+                'type_id' => $service_data['type_id'],
+                'slug' => Str::slug($service_data['name']),
             ]);
-        }
+    
+            Address::create([
+                'street' => $address_data['street'],
+                'indications' => $address_data['indications'] ?? null,
+                'number' => $address_data['number'],
+                'city_id' => $address_data['city_id'],
+                'map_link' => $address_data['map_link'],
+                'addressable_id' => $service->id,
+                'addressable_type' => 'App\\Models\\Service'
+            ]);
+    
+    
+            foreach ($photos as $photo) {
+                Image::create([
+                    'path' => $photo->store('services', 'public'),
+                    'imageable_id' => $service->id,
+                    'imageable_type' => 'App\\Models\\Service'
+                ]);
+            }
+        });
 
         return redirect('panel-de-administracion/services');
     }
@@ -126,7 +129,7 @@ class ServiceController extends Controller
     private function validateService($request)
     {
         $validated = $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:services,name',
             'responsable' => 'required',
             'start' => 'required',
             'end' => 'required',
@@ -152,6 +155,7 @@ class ServiceController extends Controller
             'street' => 'required',
             'number' => 'nullable',
             'city_id' => 'required',
+            'map_link' => 'required|max:500',
             'indications' => 'nullable'
         ],[
 
@@ -159,6 +163,7 @@ class ServiceController extends Controller
             'street' => 'calle',
             'number' => 'número',
             'city_id' => 'localidad',
+            'map_link' => 'enlace de mapa',
             'indications' => 'indicaciones'
         ]);
     }
