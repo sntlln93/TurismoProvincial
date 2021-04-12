@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&display=swap");
 
-@import url("variables.css");
+@import url("footer.css");
 
 * {
     font-family: "Montserrat";
@@ -730,61 +730,6 @@ main .district img {
 
 footer {
     grid-area: footer;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: "info cyt min gob" "dev dev dev dev";
-    font-size: 15px;
-    height: auto;
-    width: 100%;
-    padding: 20px 0 0 0;
-    background: var(--footer-color);
-    color: var(--second-color);
-}
-
-footer .gob {
-    grid-area: gob;
-}
-
-footer .min {
-    grid-area: min;
-}
-
-footer .cyt {
-    grid-area: cyt;
-}
-
-footer .information {
-    grid-area: info;
-}
-
-footer .gob img,
-footer .min img,
-footer .cyt img,
-footer .information img {
-    width: auto;
-    height: 50px;
-}
-
-footer .developers {
-    grid-area: dev;
-}
-
-footer .gob,
-footer .min,
-footer .cyt,
-footer .information,
-footer .developers {
-    text-align: center;
-    align-self: center;
-    padding: 10px 0;
-}
-
-footer .developers {
-    background-color: #fafafa;
-    padding: 1em;
-    color: #363636;
-    font-size: 13px;
 }
 
 footer .social-media {
@@ -793,13 +738,13 @@ footer .social-media {
 
 footer .social-media i,
 footer .developers i {
-    color: var(--second-color);
+    color: var(--second-color)!important;
     margin: 6px;
     font-size: 16px;
 }
 
 footer i:hover {
-    color: var(--first-color);
+    color: var(--first-color)!important;
 }
 
 /* ---RESPONSIVE--- */
