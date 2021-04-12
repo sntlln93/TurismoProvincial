@@ -1,5 +1,20 @@
 @extends('dashboard.layouts.app')
 
+@section('styles')
+    <style>
+        .error-message {
+            color: red;
+            margin: 0 1em 1em 0;
+            font-weight: 500;
+        }
+
+        .error-input {
+            border-color: red !important;
+        }
+
+    </style>
+@endsection
+
 @section('content')
 <main>
     <div class="title">
@@ -16,6 +31,9 @@
                     @csrf @method('PUT')
                     <div><h4>Contraseña:</h4><input type="password" name="password" placeholder="Colocá una nueva contraseña para este usuario"></div>
                     <div><h4>Confirmación:</h4><input type="password" name="password_confirmation" placeholder="Repetí la contraseña, ambas deben coincidir"></div>
+                    @if($errors->any())
+                        <small class="error-message">Ambos campos son requeridos y deben coincidir</small>
+                    @endif
                     <button type="submit" class="save">Guardar<i class="icon-floppy"></i>    
                 </form>
             </div>
