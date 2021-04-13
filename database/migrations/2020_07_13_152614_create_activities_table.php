@@ -20,7 +20,7 @@ class CreateActivitiesTable extends Migration
             $table->datetime('end');
             $table->string('responsable');
             $table->float('amount')->nullable();
-            $table->string('description');
+            $table->string('description', 1000);
             $table->integer('location_id');
             
             $table->string('slug')->unique();
