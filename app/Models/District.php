@@ -13,7 +13,7 @@ use App\Models\Image;
 
 class District extends Model
 {
-    protected $fillable = ['name', 'mayor'];
+    protected $fillable = ['name', 'mayor', 'description'];
 
     public function users()
     {
