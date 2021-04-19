@@ -78,9 +78,8 @@
 @section('scripts')
     <script src="{{ asset('js/carrusel.js') }}"></script>
     <script>
-        //const images = {!! findAll($district->addresses->where('addressable_type', 'App\\Models\\Location')->pluck('addressable_id')->toArray(), 'App\\Models\\Location') !!};
         const images = [];
-        images.push("{!! $district->image->path !!}");
+        images.push("{!! $district->image ? 'storage/'.$district->image->path : 'img/no-image.png' !!}");
         
         carrusel(images);
     </script>
