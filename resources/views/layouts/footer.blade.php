@@ -45,7 +45,6 @@
     </div>
 
     <div class="developers">
-        Plataforma desarrollada por <a style="font-weight: 600; text-decoration:none; color: #363636;" href="https://github.com/aldanabaurer" target="_blank">@Baurer</a> y <a style="font-weight: 600; text-decoration:none; color: #363636;" href="https://github.com/sntlln93" target="_blank">@Santillán</a></br>       
         &copy; Las imágenes de este sitio pueden estar sujetas a derechos de autor.
     </div>
 
