@@ -37,7 +37,7 @@
                         </div>
                         @error('mayor') <small class="error-message"> {{ $message }} </small> @enderror
 
-                        @if (Auth::user()->role->name != 'Admin Provincia')
+                        @if (Auth::user()->district_id)
                             <div>
                                 <h4>Descripción:</h4>
                                 <textarea class="@error('description') error-input @enderror msjEdit" maxlength="1000"

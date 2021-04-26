@@ -12,10 +12,9 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-                {   
+    {
         $this->call([
             TypeTableSeeder::class,
-            RoleTableSeeder::class,
             DistrictTableSeeder::class,
             UserTableSeeder::class,
             PreferenceTableSeeder::class

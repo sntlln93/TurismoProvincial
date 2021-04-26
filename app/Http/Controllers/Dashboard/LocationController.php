@@ -18,10 +18,10 @@ class LocationController extends Controller
 {
     public function index()
     {
-        if(Auth::user()->role->name == "Admin Provincia"){
+        if (!Auth::user()->district_id) {
             return redirect("panel-de-administracion/users");
         }
-        
+
         $locations = Auth::user()->district->addresses->where('addressable_type', 'App\\Models\\Location');
         $cities = Auth::user()->district->cities;
 
@@ -29,7 +29,7 @@ class LocationController extends Controller
             ->with('locations', $locations)
             ->with('cities', $cities);
     }
-    
+
 
     public function edit(Location $location)
     {
@@ -50,9 +50,7 @@ class LocationController extends Controller
             'number' => 'nullable',
             'city_id' => 'nullable',
             'map_link' => 'required|max:500',
-        ],[
-
-        ],[
+        ], [], [
             'name' => 'nombre',
             'start' => 'hora de inicio',
             'end' => 'hora de fin',
@@ -73,7 +71,7 @@ class LocationController extends Controller
                 'lat' => null,
                 'lon' => null,
             ]);
-    
+
             $location->update([
                 'name' => $location_data['name'],
                 'start' => $location_data['start'],
@@ -86,11 +84,11 @@ class LocationController extends Controller
         return redirect('panel-de-administracion/locations');
     }
 
-    public function store(Request $request)//, GetCoordsFromLinkService $service)
+    public function store(Request $request) //, GetCoordsFromLinkService $service)
     {
         $location_data = $this->validateLocation($request);
 
-        DB::transaction(function () use ($location_data){
+        DB::transaction(function () use ($location_data) {
             $location = Location::create([
                 'name' => $location_data['name'],
                 'start' => $location_data['start'],
@@ -98,7 +96,7 @@ class LocationController extends Controller
                 'description' => $location_data['description'],
                 'slug' => Str::slug($location_data['name']),
             ]);
-    
+
             Address::create([
                 'street' => $location_data['street'],
                 'indications' => $location_data['indications'] ?? null,
@@ -108,7 +106,7 @@ class LocationController extends Controller
                 'addressable_id' => $location->id,
                 'addressable_type' => 'App\\Models\\Location'
             ]);
-    
+
             foreach ($location_data['photos'] as $photo) {
                 Image::create([
                     'path' => $photo->store('locations', 'public'),
@@ -135,9 +133,7 @@ class LocationController extends Controller
             'number' => 'nullable',
             'indications' => 'nullable',
             'city_id' => 'nullable',
-        ],[
-
-        ],[
+        ], [], [
             'name' => 'nombre',
             'start' => 'hora de inicio',
             'end' => 'hora de fin',
@@ -153,9 +149,11 @@ class LocationController extends Controller
 
     public function destroy(Location $location)
     {
-        $location->address()->delete();
-        $location->images()->delete();
-        $location->delete();
+        DB::transaction(function () use ($location) {
+            $location->address()->delete();
+            $location->images()->delete();
+            $location->delete();
+        });
 
         return redirect('panel-de-administracion/locations');
     }
