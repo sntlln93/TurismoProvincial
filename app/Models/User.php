@@ -21,11 +21,6 @@ class User extends Authenticatable
 
     protected $dates = ['paused_at'];
 
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
-
     public function district()
     {
         return $this->belongsTo(District::class);
