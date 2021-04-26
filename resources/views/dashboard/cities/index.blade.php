@@ -44,13 +44,20 @@
                             <span class="close" id="close">&times;</span>
                         </div>
                         <div>
-                            <form action="{{ url('panel-de-administracion/cities') }}" method="POST" class="modal-body">
+                            <form action="{{ url('panel-de-administracion/cities') }}" method="POST" class="modal-body"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div>
                                     <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text"
                                         name="name" value="" placeholder="Nombre de la localidad">
                                 </div>
                                 @error('name') <small class="error-message">{{ $message }}</small> @enderror
+
+                                <div>
+                                    <h4>Foto:</h4><input class="@error('photo') error-input @enderror" type="file"
+                                        name="photo" accept="image/png, .jpeg, .jpg" multiple>
+                                </div>
+                                @error('photo') <small class="error-message">{{ $message }}</small> @enderror
 
                                 <div>
                                     <h4>Descripción:</h4>
