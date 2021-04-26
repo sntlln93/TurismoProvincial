@@ -19,11 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('password');
-            $table->integer('role_id');
             $table->integer('district_id')->nullable();
-            $table->string('paused_by')->nullable();
-            $table->string('paused_for')->nullable();
-            $table->datetime('paused_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -21,7 +21,6 @@ class UserTableSeeder extends Seeder
             'name' => 'Luciana',
             'lastname' => 'Pereyra',
             'password' => Hash::make('contrasena'),
-            'role_id' => 3, //contenido
             'district_id' => 2, //san martin
         ]);
 
@@ -30,7 +29,6 @@ class UserTableSeeder extends Seeder
             'name' => 'Matías',
             'lastname' => 'Santillán',
             'password' => Hash::make('contrasena'),
-            'role_id' => 1, //super admin
             'district_id' => null, //provincia
         ]);
     }

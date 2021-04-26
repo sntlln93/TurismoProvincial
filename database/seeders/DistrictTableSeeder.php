@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 
 use App\Models\District;
-use App\Models\Image;
 
 class DistrictTableSeeder extends Seeder
 {
@@ -16,8 +15,7 @@ class DistrictTableSeeder extends Seeder
      */
     public function run()
     {
-
-        $district = District::create([
+        District::create([
             'id' => 1,
             'name' => 'Capital',
             'mayor' => 'Inés Brizuela Doria',
@@ -25,14 +23,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'capital',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-
-        $district = District::create([
+        District::create([
             'id' => 2,
             'name' => 'Gral. San Martín',
             'mayor' => 'Rodolfo Nicolás Flores',
@@ -40,13 +31,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'gral-san-martin',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 3,
             'name' => 'Arauco',
             'mayor' => 'María Florencia López',
@@ -54,13 +39,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'arauco',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 4,
             'name' => 'Castro Barros',
             'mayor' => 'Marcelo Del Moral',
@@ -68,13 +47,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'castro-barros',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 5,
             'name' => 'Chamical',
             'mayor' => 'Dora Rodríguez',
@@ -82,13 +55,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'chamical',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 6,
             'name' => 'Chilecito',
             'mayor' => 'Rodrigo Brizuela y Doria',
@@ -96,13 +63,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'chilecito',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 7,
             'name' => 'Gral. Felipe Varela',
             'mayor' => 'Yamil Sarruf',
@@ -110,13 +71,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'gral-felipe-varela',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 8,
             'name' => 'Famatina',
             'mayor' => 'Alberto Godoy',
@@ -124,13 +79,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'famatina',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 9,
             'name' => 'Gral. Ángel Vicente Peñaloza',
             'mayor' => 'Ricardo Romero',
@@ -138,13 +87,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'gral-angel-vicente-peñaloza',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 10,
             'name' => 'Gral. Belgrano',
             'mayor' => 'Carlos Alberto Romero',
@@ -152,13 +95,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'gral-belgrano',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 11,
             'name' => 'Gral. Juan Facundo Quiroga',
             'mayor' => 'Mario Claudio Luján',
@@ -167,13 +104,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'gral-juan-facundo-quiroga',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 12,
             'name' => 'Gral. Lamadrid',
             'mayor' => 'Daniela Mabel López Roudier',
@@ -181,13 +112,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'gral-lamadrid',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 13,
             'name' => 'Gral. Ortiz de Ocampo',
             'mayor' => 'Jorge Hernán Salomón',
@@ -195,13 +120,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'gral-ortiz-de-ocampo',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 14,
             'name' => 'Independencia',
             'mayor' => 'Juan Gonzalo Herrera',
@@ -209,13 +128,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'independencia',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 15,
             'name' => 'San Blas de los Sauces',
             'mayor' => 'Silvio Villagra',
@@ -223,13 +136,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'san-blas-de-los-sauces',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 16,
             'name' => 'Rosario Vera Peñaloza',
             'mayor' => 'Cristián Eduardo Perez',
@@ -237,13 +144,7 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'rosario-vera-peñaloza',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 17,
             'name' => 'Sanagasta',
             'mayor' => 'Federico Sbiroli',
@@ -251,24 +152,12 @@ class DistrictTableSeeder extends Seeder
             'slug' => 'sanagasta',
         ]);
 
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
-        ]);
-
-        $district = District::create([
+        District::create([
             'id' => 18,
             'name' => 'Vinchina',
             'mayor' => 'Gustavo Arias',
             'description' => 'Existen varias versiones, atribuyéndose a palabras quechuas, o de la lengua cacán. Según una versión, el nombre Vinchina derivaría de la combinación de las expresiones "yichi" (labrar la tierra, y el sustantivo derivado lugar labrado) y "anah" (alto, arriba, altura) lo que haría referencia a "lugar labrado en altura". Otra explicación hace referencia a la expresión cacán que significa "lugar con algarrobos". Finalmente, un autor nacido en el departamento indica que el nombre Vinchina surge de la unión de las palabras "vil" (lugar), "chiri" (frío) y "na" (verbo hacer), lo que equivaldría a "lugar donde hace frío".',
             'slug' => 'vinchina',
-        ]);
-        
-        Image::create([
-            'path' => 'img/districts/web/'.$district->slug.'.jpg',
-            'imageable_id' => $district->id,
-            'imageable_type' => 'App\\Models\\District',
         ]);
     }
 }

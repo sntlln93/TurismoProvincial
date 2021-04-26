@@ -41,7 +41,7 @@
         <div class="districts">
             @foreach($districts as $district)
             <a class="information" href="{{ url($district->slug) }}">
-                <img class="image" src="{{ $district->image ? $district->image->path : asset('img/no-image.png') }}" alt="{{ $district->slug }}">
+                <img class="image" src="{{ $district->image ? asset('storage/'.$district->image->path) : asset('img/no-image.png') }}" alt="{{ $district->slug }}">
                 <div class="name">
                     <h2>{{ $district->name }}</h2>
                 </div>

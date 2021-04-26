@@ -6,43 +6,26 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Routing\Redirector;
 
 use App\Models\User;
-use App\Models\Role;
 use App\Models\District;
 
 class UserController extends Controller
 {
-    public function __construct(Request $request, Redirector $redirect)
-    {
-        $this->middleware(function ($request, $next) {
-            $user = Auth::user();
-            if ($user->role->name == "Admin Municipalidad" || $user->role->name == "Admin Provincia") {
-                return $next($request);
-            }
-            
-            abort(401);
-        });
-    }
-
     public function index()
     {
         $current_user = Auth::user();
 
         if ($current_user->district_id) {
             $districts = null;
-            $roles = Role::where('name', '!=', 'Admin Provincia')->get();
-            $users = User::where('role_id', '!=', 1)->where('district_id', $current_user->district_id)->get();
+            $users = User::where('district_id', $current_user->district_id)->get();
         } else {
             $users = User::all();
             $districts = District::all();
-            $roles = Role::all();
         }
 
         return view('dashboard.users.index')
             ->with('districts', $districts)
-            ->with('roles', $roles)
             ->with('users', $users);
     }
 
@@ -62,7 +45,6 @@ class UserController extends Controller
             'name' => 'required',
             'lastname' => 'required',
             'dni' => 'required|unique:users',
-            'role_id' => 'required',
             'district_id' => 'nullable',
             'password' => 'required',
         ]);

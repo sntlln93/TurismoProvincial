@@ -54,13 +54,11 @@ class ServiceController extends Controller
         $photos = $request->validate([
             'photos' => 'required',
             'photos.*' => 'image'
-        ],[
-
-        ],[
+        ], [], [
             'photos' => 'fotos'
         ])['photos'];
 
-        DB::transaction(function () use ($service_data, $address_data, $photos){
+        DB::transaction(function () use ($service_data, $address_data, $photos) {
             $service = Service::create([
                 'name' => $service_data['name'],
                 'responsable' => $service_data['responsable'],
@@ -69,7 +67,7 @@ class ServiceController extends Controller
                 'type_id' => $service_data['type_id'],
                 'slug' => Str::slug($service_data['name']),
             ]);
-    
+
             Address::create([
                 'street' => $address_data['street'],
                 'indications' => $address_data['indications'] ?? null,
@@ -79,8 +77,8 @@ class ServiceController extends Controller
                 'addressable_id' => $service->id,
                 'addressable_type' => 'App\\Models\\Service'
             ]);
-    
-    
+
+
             foreach ($photos as $photo) {
                 Image::create([
                     'path' => $photo->store('services', 'public'),
@@ -111,18 +109,19 @@ class ServiceController extends Controller
         return redirect('panel-de-administracion/services');
     }
 
-    public function destroy(Service $service) {
+    public function destroy(Service $service)
+    {
         $service->contacts()->delete();
 
-        /* need to find out why this delete doesnt work */
-        foreach($service->images as $image){
-            Storage::delete('storage/'.$image->path);
+        /* need to find out why this delete doesnt work */ //<--- because its public not storage
+        foreach ($service->images as $image) {
+            Storage::delete('public/' . $image->path);
         }
-        
+
         $service->images()->delete();
         $service->address()->delete();
         $service->delete();
-        
+
         return back();
     }
 
@@ -134,9 +133,7 @@ class ServiceController extends Controller
             'start' => 'required',
             'end' => 'required',
             'type_id' => 'required',
-        ],[
-
-        ],[
+        ], [], [
             'name' => 'nombre',
             'responsable' => 'responsable',
             'start' => 'hora de apertura o checkin',
@@ -157,9 +154,7 @@ class ServiceController extends Controller
             'city_id' => 'required',
             'map_link' => 'required|max:500',
             'indications' => 'nullable'
-        ],[
-
-        ],[
+        ], [], [
             'street' => 'calle',
             'number' => 'número',
             'city_id' => 'localidad',
@@ -173,9 +168,7 @@ class ServiceController extends Controller
         return $request->validate([
             'type' => 'required',
             'contact' => 'required',
-        ], [
-
-        ],[
+        ], [], [
             'type' => 'tipo',
             'contact' => 'contacto'
         ]);

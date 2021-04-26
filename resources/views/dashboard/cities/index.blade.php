@@ -18,7 +18,7 @@
 
 @section('content')
     <main>
-        @if (Auth::user()->role->name == 'Gestor de Contenidos')
+        @if (Auth::user()->district_id)
             <div class="title">
                 <h2>Localidades</h2>
             </div>

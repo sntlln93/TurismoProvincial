@@ -35,7 +35,7 @@ class ContactController extends Controller
             'contactable_type' => $contactable
         ]);
 
-        return redirect('panel-de-administracion/'.$type.'/'.$id);
+        return redirect('panel-de-administracion/' . $type . '/' . $id);
     }
 
     public function edit(Contact $contact)
@@ -49,7 +49,7 @@ class ContactController extends Controller
 
         $contact->update($contact_data);
 
-        return redirect('panel-de-administracion/'.$type.'/');
+        return redirect()->back();
     }
 
     public function destroy(Contact $contact)

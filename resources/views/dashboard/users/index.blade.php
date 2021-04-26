@@ -48,16 +48,6 @@
                         @error('dni') <small class="error-message">{{ $message }}</small> @enderror
                         <div><h4>Contraseña:</h4><input class="@error('password') error-input @enderror" type="password" name="password" value="" placeholder=""></div>
                         @error('password') <small class="error-message">{{ $message }}</small> @enderror
-                        <!-- LA ULTIMA OPCION APARECERÁ SOLO PARA EL ROL DE ADMIN CYT -->
-                            <div><h4>Rol:</h4>
-                                <select class="@error('role_id') error-input @enderror" name="role_id" type="text" >
-                                    <option>Elegí un rol</option>
-                                    @foreach($roles as $role)
-                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                    @endforeach
-                                </select>  
-                            </div>
-                            @error('role_id') <small class="error-message">{{ $message }}</small> @enderror
                         
                         <!-- ESTO SOLO APARECERÁ PARA EL ROL DE ADMIN CYT -->
                         @if($districts)
@@ -91,7 +81,7 @@
                     </div>
                     <div class="info-2">
                         <b>Municipalidad:</b> {{ $user->district->name ?? "-"}}</br>
-                        <b>Rol:</b> {{ $user->role->name }}
+                        <b>Rol:</b> {{ $user->district_id ? "Municipal" : "Provincial" }}
                     </div>
                     <div class="info-3">
                         <b>Creado:</b> {{ $user->created_at->diffForHumans() }} </br>

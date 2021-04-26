@@ -28,7 +28,8 @@
                     <span class="close" id="close-edit">&times;</span>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('panel-de-administracion/districts/' . $district->id) }}" method="POST">
+                    <form action="{{ url('panel-de-administracion/districts/' . $district->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf @method('PUT')
                         <div>
                             <h4>Intendente:</h4><input class="@error('mayor') error-input @enderror" type="text"
@@ -36,7 +37,7 @@
                         </div>
                         @error('mayor') <small class="error-message"> {{ $message }} </small> @enderror
 
-                        @if (Auth::user()->role->name != 'Admin Provincia')
+                        @if (Auth::user()->district_id)
                             <div>
                                 <h4>Descripción:</h4>
                                 <textarea class="@error('description') error-input @enderror msjEdit" maxlength="1000"
@@ -49,6 +50,18 @@
                                 <small class="contEdit">Cantidad de carácteres:
                                     {{ Str::of($district->description)->length() }}/1000</small>
                             </div>
+
+                            <div>
+                                <h4>Foto:</h4><input class="@error('photo') error-input @enderror" type="file" name="photo"
+                                    accept="image/png, .jpeg, .jpg" multiple>
+                            </div>
+                            <div id="district-image-container">
+                                @if ($district->image)
+                                    <img id="district-image" src="{{ asset('storage/' . $district->image->path) }}"
+                                        alt="{{ $district->name }}">
+                                @endif
+                            </div>
+                            @error('photo') <small class="error-message">{{ $message }}</small> @enderror
                         @endif
 
                         <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
