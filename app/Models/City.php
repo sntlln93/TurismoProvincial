@@ -25,16 +25,8 @@ class City extends Model
         return Location::whereIn('id', $addresses)->get();
     }
 
-    public function getImagesAttribute()
+    public function image()
     {
-        $images = Image::select('images.*')
-            ->join('locations', 'images.imageable_id', 'locations.id')
-            ->join('addresses', 'locations.id', 'addresses.addressable_id')
-            ->join('cities', 'addresses.city_id', 'cities.id')
-            ->where('images.imageable_type', 'App\\Models\\Location')
-            ->where('addresses.addressable_type', 'App\\Models\\Location')
-            ->get();
-
-        return $images;
+        return $this->morphOne(Image::class, 'imageable');
     }
 }
