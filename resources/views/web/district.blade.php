@@ -79,6 +79,7 @@
     <script src="{{ asset('js/carrusel.js') }}"></script>
     <script>
         const images = [];
+        
         @forelse($district->images as $image)
             images.push("{!! $image !!}");
         @empty
