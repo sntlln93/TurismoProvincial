@@ -50,12 +50,16 @@ class Service extends Model
 
     public function getPhonesAttribute()
     {
+        if (! $this->contacts) {
+            return null;
+        }
+        
         return $this->contacts->where('type', 'Teléfono');
     }
 
     public function getWebsiteAttribute()
     {
-        if ($this->contacts->count() < 1) {
+        if (! $this->contacts) {
             return null;
         }
         
