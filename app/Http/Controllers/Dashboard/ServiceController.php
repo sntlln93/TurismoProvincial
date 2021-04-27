@@ -102,8 +102,7 @@ class ServiceController extends Controller
 
     public function update(Request $request, Service $service)
     {
-        $service_data = $this->validateService($request);
-
+        $service_data = $this->validateService($request, $service->id);
         $service->update($service_data);
 
         return redirect('panel-de-administracion/services');
@@ -125,10 +124,10 @@ class ServiceController extends Controller
         return back();
     }
 
-    private function validateService($request)
+    private function validateService($request, $id = null)
     {
         $validated = $request->validate([
-            'name' => 'required|unique:services,name',
+            'name' => 'required|unique:services,name,' . $id,
             'responsable' => 'required',
             'start' => 'required',
             'end' => 'required',
