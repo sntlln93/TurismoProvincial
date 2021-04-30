@@ -1,13 +1,13 @@
 :root {
 
     /* Dashboard */
-    --first-color           : #FC9536;
+    --first-color           : #e52f2f;
     --first-color-alt       : rgba(212, 113, 19, 0.3);
     --second-color          : white; /* También es un color de website pero fijo, no se cambia */
     --third-color           : black; /* También es un color de website pero fijo, no se cambia */
     --fourth-color          : gray; /* También es un color de website pero fijo, no se cambia */
     --body-color            : #F0F0F0;
-    --hover-color           : #ffa44f;
+    --hover-color           : #e05b5b;
     --login-color           : rgb(63, 63, 63);
     --border-color          : rgba(53, 53, 53, 0.2);
     --footer-color          : #565151;
