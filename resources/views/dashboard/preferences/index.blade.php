@@ -23,7 +23,7 @@
         <form action="{{ url('panel-de-administracion/preferences/'.$preferences->id) }}" method="POST" enctype="multipart/form-data">
             @csrf @method('PUT')
             <div class="rows">
-                <div><h4>Tipografía:</h4>
+                <div><h4>Fuente:</h4>
                     <select name="font_family" id="font_family" type="text">
                         <option 
                         value="Montserrat" 
