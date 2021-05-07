@@ -35,7 +35,7 @@ const carrusel = (images_array, url) => {
     for (let img in images) {
         //Cargar imagenes
         const imgElement = document.createElement("img");
-        imgElement.src = `//${url}/${images[img]}`;
+        imgElement.src = `${url}/${images[img]}`;
         imgElement.classList.add("slider-image");
         slider.appendChild(imgElement);
         
