@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             TypeTableSeeder::class,
             DistrictTableSeeder::class,
             UserTableSeeder::class,
-            PreferenceTableSeeder::class
+            PreferenceTableSeeder::class,
+            DistrictPhotoSeeder::class
         ]);
     }
 }
