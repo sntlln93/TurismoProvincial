@@ -13,7 +13,8 @@
                         <ul>
                             <li><i class="icon-location"></i>{{ $food->address->full_address }}</li>
                             @if (!is_null($food->phones))
-                                <li><i class="icon-phone"></i>{{ $food->phones->first()->contact }}</li>
+                                <li><i class="icon-phone"></i>                            380 154 457895
+                                </li>
                             @endif
                             <li><i class="icon-clock"></i>{{ $food->start }} - {{ $food->end }}</li>
                         </ul>

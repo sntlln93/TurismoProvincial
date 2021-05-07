@@ -33,9 +33,7 @@
                     <div class="dato">
                         <i class="icon-phone"></i>
                         <h4><b>Teléfono:</b>
-                            @foreach ($food_service->phones as $phone)
-                                {{ $phone->contact }}
-                            @endforeach
+                            380 154 457895
                         </h4>
                     </div>
                 @endif

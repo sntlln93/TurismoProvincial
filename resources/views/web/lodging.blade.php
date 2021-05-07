@@ -13,7 +13,8 @@
                     <ul>
                         <li><i class="icon-location"></i>{{ Str::title($lodge->address->full_address) }}</li>
                         @if(!is_null($lodge->phones))
-                            <li><i class="icon-phone"></i>{{ $lodge->phones->first()->contact }}</li>
+                            <li><i class="icon-phone"></i>                            380 154 457895
+                            </li>
                         @endif
                         <li><i class="icon-clock"></i>{{ $lodge->start }} - {{ $lodge->end }}</li>
                     </ul>
