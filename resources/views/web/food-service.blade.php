@@ -29,7 +29,7 @@
                     <i class="icon-location"></i>
                     <h4><b>Dirección:</b> {{ $food_service->address->full_address }}</h4>
                 </div>
-                @if ($food_service->phones->count() > 0)
+                @if ($food_service->phones)
                     <div class="dato">
                         <i class="icon-phone"></i>
                         <h4><b>Teléfono:</b>

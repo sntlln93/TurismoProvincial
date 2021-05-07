@@ -30,7 +30,7 @@ class Service extends Model
     {
         return $this->morphMany(Image::class, 'imageable');
     }
-    
+
     public function contacts()
     {
         return $this->morphMany(Contact::class, 'contactable');
@@ -53,7 +53,7 @@ class Service extends Model
         if ($this->contacts->count() == 0) {
             return null;
         }
-        
+
         return $this->contacts->where('type', 'Teléfono');
     }
 
@@ -62,7 +62,7 @@ class Service extends Model
         if ($this->contacts->count() == 0) {
             return null;
         }
-        
+
         return $this->contacts->where('type', 'Sitio web')->first()->contact;
     }
 
@@ -76,11 +76,13 @@ class Service extends Model
         return $types;
     }
 
-    public function getStartAttribute($value){
+    public function getStartAttribute($value)
+    {
         return Carbon::parse($value)->format("H:i");
     }
 
-    public function getEndAttribute($value){
+    public function getEndAttribute($value)
+    {
         return Carbon::parse($value)->format("H:i");
     }
 }

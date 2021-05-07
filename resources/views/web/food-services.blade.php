@@ -12,7 +12,7 @@
                         <small>{{ $food->type->name }}</small>
                         <ul>
                             <li><i class="icon-location"></i>{{ $food->address->full_address }}</li>
-                            @if ($food->phones->count() > 0)
+                            @if ($food->phones)
                                 <li><i class="icon-phone"></i>{{ $food->phones->first()->contact }}</li>
                             @endif
                             <li><i class="icon-clock"></i>{{ $food->start }} - {{ $food->end }}</li>

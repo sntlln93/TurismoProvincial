@@ -12,7 +12,7 @@
                     <small>{{ $lodge->type->name }}</small>
                     <ul>
                         <li><i class="icon-location"></i>{{ Str::title($lodge->address->full_address) }}</li>
-                        @if($lodge->phones->count() > 0)
+                        @if($lodge->phones)
                             <li><i class="icon-phone"></i>{{ $lodge->phones->first()->contact }}</li>
                         @endif
                         <li><i class="icon-clock"></i>{{ $lodge->start }} - {{ $lodge->end }}</li>
