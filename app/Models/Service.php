@@ -50,7 +50,7 @@ class Service extends Model
 
     public function getPhonesAttribute()
     {
-        if (! $this->contacts) {
+        if ($this->contacts->count() == 0) {
             return null;
         }
         
@@ -59,7 +59,7 @@ class Service extends Model
 
     public function getWebsiteAttribute()
     {
-        if (! $this->contacts) {
+        if ($this->contacts->count() == 0) {
             return null;
         }
         
