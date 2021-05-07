@@ -1,4 +1,4 @@
-const carrusel = (images_array) => {
+const carrusel = (images_array, url) => {
     //Images
     const images = images_array;
 
@@ -35,7 +35,7 @@ const carrusel = (images_array) => {
     for (let img in images) {
         //Cargar imagenes
         const imgElement = document.createElement("img");
-        imgElement.src = `http://127.0.0.1:8000/${images[img]}`;
+        imgElement.src = `//${url}/${images[img]}`;
         imgElement.classList.add("slider-image");
         slider.appendChild(imgElement);
         

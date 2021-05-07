@@ -81,7 +81,7 @@
         const images = [];
         images.push("{!! $district->image ? 'storage/'.$district->image->path : 'img/no-image.png' !!}");
         
-        carrusel(images);
+        carrusel(images, "{!! env('APP_URL') !!}");
     </script>
     <script src="{{ asset('js/buttonUp.js') }}"></script>
 

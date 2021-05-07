@@ -28,7 +28,7 @@
         const images = [];
         images.push("{!! $district->image->path !!}");
         
-        carrusel(images);
+        carrusel(images, "{!! env('APP_URL') !!}");
     </script>
     <script src="{{ asset('js/buttonUp.js') }}"></script>    
 @endsection
