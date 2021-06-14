@@ -1,6 +1,19 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Route;
+
+
+Route::view('crop', 'crop');
+Route::post('crop', function (Request $request) {
+    $incoming = $request->img;  // your base64 encoded
+    $mainImage = str_replace('data:image/jpeg;base64,', '', $incoming);
+    Storage::disk('local')->put('cropped.jpeg', base64_decode($mainImage));
+
+    dd($incoming, $mainImage);
+    return $request->img;
+});
 
 //dashboard routes
 Route::get('panel-de-administracion/', 'App\Http\Controllers\Dashboard\HomeController@index')->name('dashboard')->middleware('auth');
@@ -68,5 +81,3 @@ Route::get('{district:slug}/localidades/{city:slug}', 'App\Http\Controllers\Web\
 
 Route::get('{district:slug}/lugares', 'App\Http\Controllers\Web\LocationController@index')->name('locations-page');
 Route::get('{district:slug}/lugares/{location:slug}', 'App\Http\Controllers\Web\LocationController@show')->name('location-page');
-
-
