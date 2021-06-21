@@ -1,7 +1,7 @@
 <footer>
     <div class="cyt">
         <img src="{{ asset('img/Logo-Sec.png') }}" alt=""> </br>
-        <i class="icon-location"></i>El chacho N° 67- B° Matadero </br>
+        <i class="icon-location"></i>El chacho 65 - B° Matadero </br>
         <div class="social-media">
             <a href="https://www.facebook.com/LaRiojaCienciaYTecnologia/" target="_blank"><i class="icon-facebook"></i></a>
         </div>
