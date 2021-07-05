@@ -401,16 +401,6 @@ a {
     overflow: hidden;
 }
 
-/* .info.activity .info-icon {
-    display: flex;
-}
-
-.info.activity .info-icon .dato{
-    width: 300px;
-    height: 100px;
-    background: var(--third-color);
-} */
-
 .card-activities:hover .info {
     display: block;
     transform: translateY(0px);
@@ -692,7 +682,7 @@ a {
 /* ----- VISTA DISTRICTS ----- */
 .card-flex-district {
     width: 100%;
-    height: 180px;
+    height: 230px;
     margin-right: 10px;
     margin-bottom: 10px;
     position: relative;
@@ -864,10 +854,22 @@ a {
     object-fit: cover;
 }
 
-.info.activity img {
+.info.activity img,
+.info.place img,
+.info.gastronomy img,
+.info.accommodation img,
+.info.city img {
     width: 100%;
     height: 200px;
     border-radius: 5px;
+}
+
+.info.city .description {
+    margin: 0 20px;
+}
+
+.info.city .description h2{
+    margin: 0 0 10px 0;
 }
 
 .info .info-icon h4 {
@@ -1085,12 +1087,19 @@ a {
         height: 250px;
     }
 
-    .info.activity {
+    .info.activity,
+    .info.place,
+    .info.gastronomy,
+    .info.accommodation,
+    .info.city {
         flex-direction: row;
     }
 
-    .info.activity img {
-        width: 45%;
+    .info.activity img,
+    .info.place img,
+    .info.gastronomy img,
+    .info.accommodation img,
+    .info.city img {
         height: 300px;
         object-fit: fill;
     }
@@ -1104,6 +1113,10 @@ a {
     .principal .districts .information {
         height: 220px;
         width: 49%;
+    }
+
+    .card-flex-district {
+        width: 80%;
     }
 }
 
@@ -1152,6 +1165,10 @@ a {
         height: 4px;
     }
 
+    .info {
+        flex-flow: row wrap;
+    }
+
     .card-flex-district {
         width: 48%;
         height: 200px;
@@ -1198,6 +1215,18 @@ a {
 
     .card-places .info a {
         right: 8%;
+    }
+
+    .card-flex-district {
+        width: 70%;
+    }
+
+    .info.activity img,
+    .info.place img,
+    .info.gastronomy img,
+    .info.accommodation img,
+    .info.city img {
+        width: 55%;
     }
 }
 
@@ -1319,8 +1348,12 @@ a {
         height: 6rem;
     }
 
-    .info.activity img {
-        width: 35%;
+    .info.activity img,
+    .info.place img,
+    .info.gastronomy img,
+    .info.accommodation img,
+    .info.city img {
+        width: 45%;
     }
 }
 
@@ -1379,7 +1412,14 @@ a {
 
     .card-flex-district {
         width: 24%;
-        height: 220px;
+    }
+    
+    .info.activity img,
+    .info.place img,
+    .info.gastronomy img,
+    .info.accommodation img,
+    .info.city img {
+        width: 35%;
     }
 }
 

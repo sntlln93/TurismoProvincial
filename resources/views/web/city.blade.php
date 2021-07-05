@@ -12,12 +12,12 @@
             </div>
         </div>
 
-        <div class="info">
+        <div class="info city">
             <img src="{{ asset('storage/' . $city->image->path) }}" alt="{{ $city->slug }}">
-        </div>
-        <div class="description">
-            <h2>Descripción:</h2>
-            <p>{{ $city->description }}</p>
+            <div class="description">
+                <h2>Descripción:</h2>
+                <p>{{ $city->description }}</p>
+            </div>
         </div>
     </main>
 @endsection
