@@ -401,16 +401,6 @@ a {
     overflow: hidden;
 }
 
-/* .info.activity .info-icon {
-    display: flex;
-}
-
-.info.activity .info-icon .dato{
-    width: 300px;
-    height: 100px;
-    background: var(--third-color);
-} */
-
 .card-activities:hover .info {
     display: block;
     transform: translateY(0px);
@@ -515,6 +505,7 @@ a {
 .card-info {
     margin: 0 20px 20px 0;
     height: 150px;
+    width: 95%;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     display: flex;
@@ -539,7 +530,7 @@ a {
 .card-info .info-contact li {
     list-style: none;
     margin-top: 12px;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 /* ----- VISTA MEANSTRANSPORT ----- */
@@ -691,7 +682,7 @@ a {
 /* ----- VISTA DISTRICTS ----- */
 .card-flex-district {
     width: 100%;
-    height: 120px;
+    height: 230px;
     margin-right: 10px;
     margin-bottom: 10px;
     position: relative;
@@ -786,7 +777,7 @@ a {
 /* ----- VISTA ACTIVITIES ----- */
 .card-flex-activities {
     width: 100%;
-    height: 300px;
+    height: 275px;
     margin-right: 10px;
     margin-bottom: 25px;
     position: relative;
@@ -863,10 +854,22 @@ a {
     object-fit: cover;
 }
 
-.info.activity img {
+.info.activity img,
+.info.place img,
+.info.gastronomy img,
+.info.accommodation img,
+.info.city img {
     width: 100%;
     height: 200px;
     border-radius: 5px;
+}
+
+.info.city .description {
+    margin: 0 20px;
+}
+
+.info.city .description h2{
+    margin: 0 0 10px 0;
 }
 
 .info .info-icon h4 {
@@ -1048,7 +1051,7 @@ a {
     }
 
     .card-info .info-contact li {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .card-flex-activities {
@@ -1056,7 +1059,8 @@ a {
     }
 
     .card-info {
-        height: 180px;
+        height: 145px;
+        width: 65%;
     }
 
     .card-places {
@@ -1083,14 +1087,25 @@ a {
         height: 250px;
     }
 
-    .info.activity {
+    .info.activity,
+    .info.place,
+    .info.gastronomy,
+    .info.accommodation,
+    .info.city {
         flex-direction: row;
     }
 
-    .info.activity img {
-        width: 45%;
+    .info.activity img,
+    .info.place img,
+    .info.gastronomy img,
+    .info.accommodation img,
+    .info.city img {
         height: 300px;
         object-fit: fill;
+    }
+
+    .card-flex-district {
+        height: 200px;
     }
 }
 
@@ -1098,6 +1113,10 @@ a {
     .principal .districts .information {
         height: 220px;
         width: 49%;
+    }
+
+    .card-flex-district {
+        width: 80%;
     }
 }
 
@@ -1146,9 +1165,13 @@ a {
         height: 4px;
     }
 
+    .info {
+        flex-flow: row wrap;
+    }
+
     .card-flex-district {
         width: 48%;
-        height: 150px;
+        height: 200px;
     }
 
     .card-flex-activities {
@@ -1167,7 +1190,7 @@ a {
 
     .card-info {
         width: 45%;
-        height: 150px;
+        height: 155px;
         display: flex;
         flex-flow: column wrap;
     }
@@ -1192,6 +1215,18 @@ a {
 
     .card-places .info a {
         right: 8%;
+    }
+
+    .card-flex-district {
+        width: 70%;
+    }
+
+    .info.activity img,
+    .info.place img,
+    .info.gastronomy img,
+    .info.accommodation img,
+    .info.city img {
+        width: 55%;
     }
 }
 
@@ -1278,7 +1313,7 @@ a {
 
     .card-info .info-contact li {
         margin-top: 10px;
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .card-microservices a:hover {
@@ -1313,8 +1348,12 @@ a {
         height: 6rem;
     }
 
-    .info.activity img {
-        width: 35%;
+    .info.activity img,
+    .info.place img,
+    .info.gastronomy img,
+    .info.accommodation img,
+    .info.city img {
+        width: 45%;
     }
 }
 
@@ -1328,7 +1367,7 @@ a {
     }
 
     .card-flex-activities {
-        width: 19%;
+        width: 20%;
     }
 
     .logo a {
@@ -1346,6 +1385,7 @@ a {
 
     .card-info {
         width: 30%;
+        height: 170px;
     }
 
     .card-places {
@@ -1372,7 +1412,14 @@ a {
 
     .card-flex-district {
         width: 24%;
-        height: 200px;
+    }
+    
+    .info.activity img,
+    .info.place img,
+    .info.gastronomy img,
+    .info.accommodation img,
+    .info.city img {
+        width: 35%;
     }
 }
 
