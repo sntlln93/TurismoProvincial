@@ -79,7 +79,12 @@
     <script src="{{ asset('js/carrusel.js') }}"></script>
     <script>
         const images = [];
-        images.push("{!! $district->image ? 'storage/'.$district->image->path : 'img/no-image.png' !!}");
+        
+        @forelse($district->images as $image)
+            images.push("{!! $image !!}");
+        @empty
+            images.push("img/no-image.png");
+        @endforelse
         
         carrusel(images, "{!! env('APP_URL') !!}");
     </script>

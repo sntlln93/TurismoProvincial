@@ -74,7 +74,7 @@ class District extends Model
     {
         $type = Type::findByType($type)->pluck('id');
         $ids = Type::where('type_id', $type)->pluck('id');
-        
+
         $services = DB::table('services')
             ->selectRaw('services.*')
             ->join('addresses', 'services.id', 'addresses.addressable_id')
@@ -84,12 +84,26 @@ class District extends Model
             ->where('districts.id', $this->id)
             ->where('addressable_type', 'App\\Models\\Service')
             ->pluck('id');
-        
+
         return Service::find($services);
     }
 
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function getImagesAttribute()
+    {
+        $images_path = collect(
+            $this
+                ->hasManyThrough(Image::class, City::class, null, 'imageable_id')
+                ->where('imageable_type', 'App\\Models\\City')
+                ->get()
+        )->map(function ($image) {
+            return 'storage/' . $image->path;
+        });
+
+        return $images_path;
     }
 }
