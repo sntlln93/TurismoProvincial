@@ -2,9 +2,11 @@
 
 @section('content')
 <main>
-
-    <div class="title">
-        <h2><a href="{{ url('panel-de-administracion/services') }}">Servicios</a> / {{ $service->name }}</h2>
+    <div class="title-dashboard">
+        <a href="{{ URL::previous() }}"><i class="icon-reply-1"></i></a>
+        <div class="title">
+            <h2><a href="{{ url('panel-de-administracion/services') }}">Servicios</a> / {{ $service->name }}</h2>
+        </div>
     </div>
 
     <div class="accordion articles">
