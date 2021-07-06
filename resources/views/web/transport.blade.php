@@ -39,9 +39,12 @@
                                     <b>Dirección:</b> {{ $service->address->full_address }} </br>
                                 @endif
                                 <b>Horario de atención:</b> {{ $service->start }} hs a {{ $service->end }} hs </br>
-                                @if($service->contact)
-                                    <b>Contacto:</b> </br>
-                                    <b>Página web:</b>
+                                @if ($service->email)
+                                    <b>Correo electrónico:</b> {{ $service->email }} <br>
+                                @endif
+                                @if ($service->website)
+                                    <b>Sitio web:</b>
+                                    <a href="{{ $service->website }}" target="_blank">{{ $service->website }}</a>
                                 @endif
                             </div>
                         </div>
