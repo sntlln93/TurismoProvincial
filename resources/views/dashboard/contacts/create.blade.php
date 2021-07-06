@@ -20,6 +20,7 @@
                     <optgroup label="Otro">
                         <option value="Número de teléfono">Número de teléfono</option>
                         <option value="Sitio web">Sitio web</option>
+                        <option value="Correo electrónico">Correo electrónico</option>
                     </optgroup>
                 </select>
             </div>

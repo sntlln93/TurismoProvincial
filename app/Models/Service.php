@@ -67,6 +67,15 @@ class Service extends Model
         return $this->contacts->where('type', 'Sitio web')->first()->contact;
     }
 
+    public function getEmailAttribute()
+    {
+        if ($this->contacts->count() == 0) {
+            return null;
+        }
+
+        return $this->contacts->where('type', 'Correo electrónico')->first()->contact;
+    }
+
     public function getTypeChainAttribute()
     {
         $types[0] = $this->type;
