@@ -46,10 +46,16 @@
                     <h4><b>Check out:</b> {{ $lodging->end }} hs</h4>
                 </div>
                 <div class="dato">
-                    <i class="icon-globe"></i>
-                    <h4><b>Sitio web:</b><a href="{{ $lodging->website }}" target="_blank">
-                            {{ $lodging->website }}</a></h4>
+                    <i class="icon-globe"></i><a href="{{ $lodging->website }}" target="_blank">
+                        <h4><b>Sitio web</b></h4>
+                    </a>
                 </div>
+                @if ($lodging->email)
+                    <div class="dato">
+                        <i class="icon-mail-alt"></i>
+                        <h4><b>Correo electrónico:</b> {{ $lodging->email }}</h4>
+                    </div>
+                @endif
                 @if ($lodging->address->indications)
                     <div class="dato">
                         <i class="icon-clock"></i>
