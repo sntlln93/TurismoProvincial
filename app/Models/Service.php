@@ -59,7 +59,6 @@ class Service extends Model
 
     public function getWebsiteAttribute()
     {
-        return $this->name . '.com';
         if ($this->contacts->count() == 0) {
             return null;
         }
