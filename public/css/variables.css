@@ -13,10 +13,10 @@
     --footer-color          : #565151;
 
     /* Website */
-    --first-color-web       : #FF9800; 
+    --first-color-web       : rgb(255, 152, 0);
 
-    --nav-color-lettering   : white; 
-    --nav-color-hover       : rgb(253, 172, 49);
+    --nav-color-lettering   : white;
+    --nav-color-hover       : rgba(255, 255, 255, 0.2); 
 
     --title-color           : black;
     --border-gradient       : linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
