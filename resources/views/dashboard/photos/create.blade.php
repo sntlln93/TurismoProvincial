@@ -15,7 +15,10 @@
 
 @section('content')
 <main>
-    <h2>Agregar fotos</h2>
+    <div class="title-dashboard">
+        <a href="{{ URL::previous() }}"><i class="icon-reply-1"></i></a>
+        <h2>Agregar fotos</h2>
+    </div>
 
     <div class="modal-body view">
         <form action="{{ url('panel-de-administracion/photos/'.$type.'/'.$id) }}" method="POST" enctype="multipart/form-data">
