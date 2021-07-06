@@ -6,7 +6,7 @@ use App\Models\City;
 use App\Models\Image;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-
+use App\Services\StoreImageService;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -21,11 +21,16 @@ class CityController extends Controller
             ->with('district', $district);
     }
 
-    public function store(Request $request)
+    public function create()
+    {
+        return view('dashboard.cities.create');
+    }
+
+    public function store(Request $request, StoreImageService $service)
     {
         $city_data = $this->validatedCity($request);
 
-        DB::transaction(function () use ($city_data) {
+        DB::transaction(function () use ($city_data, $service) {
             $city = City::create([
                 'name' => $city_data['name'],
                 'description' => $city_data['description'],
@@ -34,13 +39,13 @@ class CityController extends Controller
             ]);
 
             Image::create([
-                'path' => $city_data['photo']->store('cities', 'public'),
+                'path' => $service->store($city_data['photo'], 'cities'),
                 'imageable_id' => $city->id,
                 'imageable_type' => 'App\\Models\\City'
             ]);
         });
 
-        return redirect()->back();
+        return redirect()->route('cities.index');
     }
 
     public function edit(City $city)
@@ -54,7 +59,7 @@ class CityController extends Controller
 
         $city->update($city_data);
 
-        return redirect('panel-de-administracion');
+        return redirect()->route('cities.index');
     }
 
     private function validatedCity($request)
@@ -62,7 +67,7 @@ class CityController extends Controller
         return $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'photo' => 'required|mimes:jpeg,jpg'
+            'photo' => 'sometimes'
         ], [], [
             'name' => 'nombre',
             'description' => 'descripción',

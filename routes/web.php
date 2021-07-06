@@ -2,10 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/testing', function (){
+    return view('testing');
+});
+
 //dashboard routes
 Route::get('panel-de-administracion/', 'App\Http\Controllers\Dashboard\HomeController@index')->name('dashboard')->middleware('auth');
 
-Route::resource('panel-de-administracion/cities', 'App\Http\Controllers\Dashboard\CityController')->except('show', 'delete', 'create')->middleware('auth');
+Route::resource('panel-de-administracion/cities', 'App\Http\Controllers\Dashboard\CityController')->except('show', 'delete')->middleware('auth');
 Route::resource('panel-de-administracion/locations', 'App\Http\Controllers\Dashboard\LocationController')->except('show', 'create')->middleware('auth');
 Route::resource('panel-de-administracion/activities', 'App\Http\Controllers\Dashboard\ActivityController')->except('show', 'create')->middleware('auth');
 Route::resource('panel-de-administracion/types', 'App\Http\Controllers\Dashboard\TypeController')->except('show', 'create')->middleware('auth');
