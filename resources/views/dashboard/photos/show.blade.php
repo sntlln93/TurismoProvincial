@@ -33,8 +33,11 @@
 
 @section('content')
 <main>
-    <div class="title">
-        <h2>Imágenes de {{ $photos->first()->imageable->name }}</h2>
+    <div class="title-dashboard">
+        <a href="{{ URL::previous() }}"><i class="icon-reply-1"></i></a>
+        <div class="title">
+            <h2>Imágenes de {{ $photos->first()->imageable->name }}</h2>
+        </div>
     </div>
 
     <div class="row">

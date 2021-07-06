@@ -436,6 +436,20 @@ main h2 {
     overflow: hidden;
 }
 
+.icon-reply-1 {
+    color: var(--first-color);
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.icon-reply-1:hover {
+    color: var(--hover-color);
+}
+
+.title-dashboard {
+    display: flex;
+}
+
 /* PAPELERA */
 .article.recicle {
     display: flex;

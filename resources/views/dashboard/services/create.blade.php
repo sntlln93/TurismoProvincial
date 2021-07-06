@@ -17,8 +17,11 @@
 
 @section('content')
     <main>
-        <h2>Agregar servicio</h2>
-
+        <div class="title-dashboard">
+            <a href="{{ URL::previous() }}"><i class="icon-reply-1"></i></a>
+            <h2>Agregar servicio</h2>
+        </div>
+        
         <div class="modal-body newservice">
             <form action="{{ url('panel-de-administracion/services') }}" method="POST" class="modal-body" enctype="multipart/form-data">
                 @csrf

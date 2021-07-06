@@ -18,7 +18,10 @@
 
 @section('content')
     <main>
-        <h2>Modificar localidad</h2>
+        <div class="title-dashboard">
+            <a href="{{ URL::previous() }}"><i class="icon-reply-1"></i></a>
+            <h2>Modificar localidad</h2>
+        </div>
 
         <div class="modal-body view">
             <form action="{{ url('panel-de-administracion/cities/' . $city->id) }}" method="POST">
