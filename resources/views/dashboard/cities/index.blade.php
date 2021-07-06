@@ -79,7 +79,13 @@
                 @foreach ($district->cities as $city)
                     <section class="article d-flex">
                         <div class="article-info">
-                            <div class="info-1">
+                            <div class="info-1 image">
+                                @if ($city->image)
+                                    <img id="city-image" src="{{ asset('storage/' . $city->image->path) }}"
+                                        alt="{{ $city->name }}">
+                                @endif
+                            </div>
+                            <div class="info-2">
                                 <b>Nombre:</b> {{ $city->name }}</br>
                                 <b>Descripción:</b> {{ $city->description }}
                             </div>
