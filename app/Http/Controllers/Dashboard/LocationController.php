@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
-
-//use App\Services\GetCoordsFromLinkService;
-
+use App\Services\StoreImageService;
 use App\Models\Address;
 use App\Models\Image;
 use App\Models\Location;
+//use App\Services\GetCoordsFromLinkService;
 
 class LocationController extends Controller
 {
@@ -23,13 +22,17 @@ class LocationController extends Controller
         }
 
         $locations = Auth::user()->district->addresses->where('addressable_type', 'App\\Models\\Location');
-        $cities = Auth::user()->district->cities;
 
         return view('dashboard.locations.index')
-            ->with('locations', $locations)
-            ->with('cities', $cities);
+            ->with('locations', $locations);
     }
 
+    public function create()
+    {
+        $cities = Auth::user()->district->cities;
+
+        return view('dashboard.locations.create')->with('cities', $cities);
+    }
 
     public function edit(Location $location)
     {
@@ -84,11 +87,11 @@ class LocationController extends Controller
         return redirect('panel-de-administracion/locations');
     }
 
-    public function store(Request $request) //, GetCoordsFromLinkService $service)
+    public function store(Request $request, StoreImageService $service) //, GetCoordsFromLinkService $service)
     {
         $location_data = $this->validateLocation($request);
 
-        DB::transaction(function () use ($location_data) {
+        DB::transaction(function () use ($location_data, $service) {
             $location = Location::create([
                 'name' => $location_data['name'],
                 'start' => $location_data['start'],
@@ -109,7 +112,7 @@ class LocationController extends Controller
 
             foreach ($location_data['photos'] as $photo) {
                 Image::create([
-                    'path' => $photo->store('locations', 'public'),
+                    'path' => $service->store($photo, 'locations'),
                     'imageable_id' => $location->id,
                     'imageable_type' => 'App\\Models\\Location'
                 ]);
@@ -127,7 +130,6 @@ class LocationController extends Controller
             'end' => 'required',
             'description' => 'required',
             'photos' => 'required',
-            'photos.*' => 'image',
             'street' => 'required',
             'map_link' => 'required|max:500',
             'number' => 'nullable',
