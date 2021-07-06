@@ -24,7 +24,8 @@
         </div>
 
         <div class="modal-body view">
-            <form action="{{ url('panel-de-administracion/cities/' . $city->id) }}" method="POST">
+            <form action="{{ url('panel-de-administracion/cities/' . $city->id) }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf @method('PUT')
                 <div>
                     <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name"
@@ -44,6 +45,19 @@
                     <small class="contEdit">Cantidad de carácteres:
                         {{ Str::of($city->description)->length() }}/1000</small>
                 </div>
+
+                <div>
+                    <h4>Foto:</h4><input class="@error('photo') error-input @enderror" type="file"
+                        name="photo" accept="image/png, .jpeg, .jpg" multiple>
+                </div>
+                <div id="city-image-container">
+                    @if ($city->image)
+                        <img id="city-image" src="{{ asset('storage/' . $city->image->path) }}"
+                            alt="{{ $city->name }}">
+                    @endif
+                </div>
+                @error('photo') <small class="error-message">{{ $message }}</small> @enderror
+
                 <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
             </form>
         </div>

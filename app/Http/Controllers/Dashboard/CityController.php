@@ -54,7 +54,7 @@ class CityController extends Controller
 
         $city->update($city_data);
 
-        return redirect('panel-de-administracion');
+        return redirect('panel-de-administracion/cities');
     }
 
     private function validatedCity($request)
