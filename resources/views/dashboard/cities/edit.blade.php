@@ -21,7 +21,8 @@
         <h2>Modificar localidad</h2>
 
         <div class="modal-body view">
-            <form action="{{ url('panel-de-administracion/cities/' . $city->id) }}" method="POST">
+            <form action="{{ url('panel-de-administracion/cities/' . $city->id) }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf @method('PUT')
                 <div>
                     <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name"

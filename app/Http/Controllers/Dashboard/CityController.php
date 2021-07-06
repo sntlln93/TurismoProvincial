@@ -54,7 +54,7 @@ class CityController extends Controller
 
         $city->update($city_data);
 
-        return redirect('panel-de-administracion');
+        return redirect('panel-de-administracion/cities');
     }
 
     private function validatedCity($request)
@@ -62,7 +62,7 @@ class CityController extends Controller
         return $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'photo' => 'required|mimes:jpeg,jpg'
+            'photo' => 'sometimes|mimes:jpeg,jpg'
         ], [], [
             'name' => 'nombre',
             'description' => 'descripción',
