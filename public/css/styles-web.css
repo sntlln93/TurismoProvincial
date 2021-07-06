@@ -588,15 +588,13 @@ a {
     align-items: center;
     position: relative;
     cursor: pointer;
-    border-bottom: 0.5px solid transparent;
-    border-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
-    border-image-slice: 1;
+    border-bottom: 0.5px solid var(--first-color-web);
 }
 
 .accordion-header:hover,
 .accordion-header:focus {
-    background: var(--first-color);
-    color: var(--second-color);
+    background: var(--first-color-web);
+    color: #fff;
     transition: all 300ms;
 }
 
