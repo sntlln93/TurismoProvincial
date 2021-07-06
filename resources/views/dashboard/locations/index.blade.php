@@ -75,16 +75,11 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/modal.js') }}"></script>
-
-
 <script>
     document.getElementById('newLocation').addEventListener('click', () => {
         window.location.href = "{{ route('locations.create') }}";
     })
 </script>
-
-<script src="{{ asset('js/contchar.js') }}"></script>
 
 <script>
     const input = document.getElementById("location-search");
