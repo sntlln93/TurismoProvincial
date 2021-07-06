@@ -43,9 +43,15 @@
                 </div>
                 @if ($food_service->website)
                     <div class="dato">
-                        <i class="icon-globe"></i><a href="{{ $food_service->website }}" target="_blanck">
+                        <i class="icon-globe"></i><a href="{{ $food_service->website }}" target="_blank">
                             <h4><b>Sitio web</b></h4>
                         </a>
+                    </div>
+                @endif
+                @if ($food_service->email)
+                    <div class="dato">
+                        <i class="icon-mail-alt"></i>
+                        <h4><b>Correo electrónico:</b> {{ $food_service->email }}</h4>
                     </div>
                 @endif
                 <div class="dato">

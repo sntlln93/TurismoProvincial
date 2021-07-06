@@ -43,7 +43,7 @@
                     @foreach($types as $type)
                         <optgroup label="{{ $type->name }}">
                             @foreach($type->subtypes as $subtype)
-                                <option value="{{ $subtype->id }}">{{ $subtype->name }}</option>
+                                <option value="{{ $subtype->id }}" @if ($subtype->id == $service->type_id) selected @endif>{{ $subtype->name }}</option>
                             @endforeach
                         </optgroup>
                     @endforeach
