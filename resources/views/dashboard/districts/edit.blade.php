@@ -18,56 +18,47 @@
 
 @section('content')
     <main>
-        <div class="title" style="margin-bottom: 2em">
-            <h2>Modificar Municipio</h2>
-        </div>
-        <div class="flex" id="flex">
-            <div class="container-modal">
-                <div class="modal-header flex">
-                    <h2>Modificar intendente</h2>
-                    <span class="close" id="close-edit">&times;</span>
+        <h2>Modificar Municipio</h2>
+
+        <div class="modal-body view">
+            <form action="{{ url('panel-de-administracion/districts/' . $district->id) }}" method="POST"
+                enctype="multipart/form-data">
+                @csrf @method('PUT')
+                <div>
+                    <h4>Intendente:</h4><input class="@error('mayor') error-input @enderror" type="text"
+                        name="mayor" value="{{ $district->mayor }}" placeholder="">
                 </div>
-                <div class="modal-body">
-                    <form action="{{ url('panel-de-administracion/districts/' . $district->id) }}" method="POST"
-                        enctype="multipart/form-data">
-                        @csrf @method('PUT')
-                        <div>
-                            <h4>Intendente:</h4><input class="@error('mayor') error-input @enderror" type="text"
-                                name="mayor" value="{{ $district->mayor }}" placeholder="">
-                        </div>
-                        @error('mayor') <small class="error-message"> {{ $message }} </small> @enderror
+                @error('mayor') <small class="error-message"> {{ $message }} </small> @enderror
 
-                        @if (Auth::user()->district_id)
-                            <div>
-                                <h4>Descripción:</h4>
-                                <textarea class="@error('description') error-input @enderror msjEdit" maxlength="1000"
-                                    name="description" rows="10"
-                                    placeholder="Escribe aquí la descripción">{{ $district->description }}</textarea>
-                            </div>
-                            @error('description') <small class="error-message">{{ $message }}</small> @enderror
+                @if (Auth::user()->district_id)
+                    <div>
+                        <h4>Descripción:</h4>
+                        <textarea class="@error('description') error-input @enderror msjEdit" maxlength="1000"
+                            name="description" rows="10"
+                            placeholder="Escribe aquí la descripción">{{ $district->description }}</textarea>
+                    </div>
+                    @error('description') <small class="error-message">{{ $message }}</small> @enderror
 
-                            <div>
-                                <small class="contEdit">Cantidad de carácteres:
-                                    {{ Str::of($district->description)->length() }}/1000</small>
-                            </div>
+                    <div>
+                        <small class="contEdit">Cantidad de carácteres:
+                            {{ Str::of($district->description)->length() }}/1000</small>
+                    </div>
 
-                            <div>
-                                <h4>Foto:</h4><input class="@error('photo') error-input @enderror" type="file" name="photo"
-                                    accept="image/png, .jpeg, .jpg" multiple>
-                            </div>
-                            <div id="district-image-container">
-                                @if ($district->image)
-                                    <img id="district-image" src="{{ asset('storage/' . $district->image->path) }}"
-                                        alt="{{ $district->name }}">
-                                @endif
-                            </div>
-                            @error('photo') <small class="error-message">{{ $message }}</small> @enderror
+                    <div>
+                        <h4>Foto:</h4><input class="@error('photo') error-input @enderror" type="file" name="photo"
+                            accept="image/png, .jpeg, .jpg" multiple>
+                    </div>
+                    <div id="district-image-container">
+                        @if ($district->image)
+                            <img id="district-image" src="{{ asset('storage/' . $district->image->path) }}"
+                                alt="{{ $district->name }}">
                         @endif
+                    </div>
+                    @error('photo') <small class="error-message">{{ $message }}</small> @enderror
+                @endif
 
-                        <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
-                    </form>
-                </div>
-            </div>
+                <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
+            </form>
         </div>
     </main>
 @endsection
