@@ -2,17 +2,17 @@
 
 
 @section('styles')
-    <style>
-        .error-message {
-            color: red;
-            margin: 0 1em 1em 0;
-            font-weight: 500;
-        }
+<style>
+    .error-message {
+        color: red;
+        margin: 0 1em 1em 0;
+        font-weight: 500;
+    }
 
-        .error-input {
-            border-color: red !important;
-        }
-    </style>
+    .error-input {
+        border-color: red !important;
+    }
+</style>
 @endsection
 
 
@@ -21,14 +21,14 @@
     <div class="title">
         <h2>Experiencias</h2>
     </div>
-    
+
     <div class="row">
         <div class="search">
             <input id="activity-search" type="text" class="form-control" placeholder="Buscar" aria-label="Buscar">
-            <button><i class="icon-search"></i></button> 
+            <button><i class="icon-search"></i></button>
         </div>
         <div class="add-other">
-            <button id="open"> 
+            <button id="open">
                 <i class="icon-plus"></i> Nueva experiencia
             </button>
         </div>
@@ -41,18 +41,28 @@
                 <div class="modal-header flex">
                     <h2>Nueva actividad</h2>
                     <span class="close" id="close">&times;</span>
-                    
+
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('panel-de-administracion/activities') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('panel-de-administracion/activities') }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
-                        <div><h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name" value="" placeholder=""></div>
+                        <div>
+                            <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name"
+                                value="" placeholder="">
+                        </div>
                         @error('name') <small class="error-message">{{ $message }}</small> @enderror
 
-                        <div><h4>Responsable:</h4><input class="@error('responsable') error-input @enderror" type="text" name="responsable" value="" placeholder=""></div>
+                        <div>
+                            <h4>Responsable:</h4><input class="@error('responsable') error-input @enderror" type="text"
+                                name="responsable" value="" placeholder="">
+                        </div>
                         @error('responsable') <small class="error-message">{{ $message }}</small> @enderror
 
-                        <div><h4>Precio:</h4><input class="@error('amount') error-input @enderror" type="number" name="amount" value="" placeholder=""></div>
+                        <div>
+                            <h4>Precio:</h4><input class="@error('amount') error-input @enderror" type="number"
+                                name="amount" value="" placeholder="">
+                        </div>
                         @error('amount') <small class="error-message">{{ $message }}</small> @enderror
 
                         <div>
@@ -60,29 +70,39 @@
                             <select name="location_id" id="" class="@error('location_id') error-input @enderror">
                                 <option></option>
                                 @foreach($locations as $address)
-                                    @php($location = $address->addressable)
-                                        <option value="{{ $location->id }}">{{ $location->name }}</option>
+                                @php($location = $address->addressable)
+                                <option value="{{ $location->id }}">{{ $location->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         @error('location_id') <small class="error-message">{{ $message }}</small> @enderror
 
-                        <div><h4>Inicio:</h4><input class="@error('start') error-input @enderror" type="datetime-local" name="start" value="" placeholder=""></div>
+                        <div>
+                            <h4>Inicio:</h4><input class="@error('start') error-input @enderror" type="datetime-local"
+                                name="start" value="" placeholder="">
+                        </div>
                         @error('start') <small class="error-message">{{ $message }}</small> @enderror
 
-                        <div><h4>Fin:</h4><input class="@error('end') error-input @enderror" type="datetime-local" name="end" value="" placeholder=""></div>
+                        <div>
+                            <h4>Fin:</h4><input class="@error('end') error-input @enderror" type="datetime-local"
+                                name="end" value="" placeholder="">
+                        </div>
                         @error('end') <small class="error-message">{{ $message }}</small> @enderror
 
-                        <div
-                            ><h4>Descripción:</h4>
-                            <textarea class="@error('description') error-input @enderror" name="description" rows="6" placeholder="Escribe aquí la descripción"></textarea>
+                        <div>
+                            <h4>Descripción:</h4>
+                            <textarea class="@error('description') error-input @enderror" name="description" rows="6"
+                                placeholder="Escribe aquí la descripción"></textarea>
                         </div>
                         @error('description') <small class="error-message">{{ $message }}</small> @enderror
 
-                        <div><h4>Foto:</h4><input class="@error('photos') error-input @enderror" type="file" name="photos[]" accept="image/png, .jpeg, .jpg" multiple></div>
+                        <div>
+                            <h4>Foto:</h4><input class="@error('photos') error-input @enderror" type="file"
+                                name="photos[]" accept="image/jpeg" multiple>
+                        </div>
                         @error('photos') <small class="error-message">{{ $message }}</small> @enderror
 
-                        <button type="submit" class="save">Guardar<i class="icon-floppy"></i>    
+                        <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
                     </form>
                 </div>
             </div>
@@ -100,7 +120,8 @@
                 </div>
                 <div class="info-2">
                     <b>Atractivo turístico:</b> {{ $activity->location->name }}</br>
-                    <b>Inicio:</b> {{ $activity->start->format('d/m/Y')}} a las {{ $activity->start->format('h:i') }} hs </br>
+                    <b>Inicio:</b> {{ $activity->start->format('d/m/Y')}} a las {{ $activity->start->format('h:i') }} hs
+                    </br>
                     <b>Fin:</b> {{ $activity->end->format('d/m/Y') }} a las {{ $activity->end->format('h:i') }} hs
                 </div>
                 <div class="info-3">
@@ -108,16 +129,18 @@
                 </div>
             </div>
             <div class="icon">
-                <a href="{{ url('panel-de-administracion/photos/activities/'.$activity->id) }}" class="btn-show"><i class="icon-picture"></i></a>
-                <a href="{{ url('panel-de-administracion/activities/'.$activity->id.'/edit') }}" class="btn-edit"><i class="icon-edit"></i></a>
+                <a href="{{ url('panel-de-administracion/photos/activities/'.$activity->id) }}" class="btn-show"><i
+                        class="icon-picture"></i></a>
+                <a href="{{ url('panel-de-administracion/activities/'.$activity->id.'/edit') }}" class="btn-edit"><i
+                        class="icon-edit"></i></a>
                 <form action="{{ url('panel-de-administracion/activities/'.$activity->id) }}" method="POST">
                     @csrf @method('DELETE')
-                    <button class="btn-delete" type="submit"><i class="icon-trash-empty"></i></button>                  
+                    <button class="btn-delete" type="submit"><i class="icon-trash-empty"></i></button>
                 </form>
             </div>
         </section>
         @endforeach
-    </div> 
+    </div>
 </main>
 @endsection
 
@@ -127,10 +150,10 @@
 
 
 @if($errors->any())
-    <script>
-        const createForm = document.getElementById("miModal");
+<script>
+    const createForm = document.getElementById("miModal");
         createForm.style.display = "block";
-    </script>
+</script>
 @endif
 
 <script>
@@ -153,5 +176,5 @@
     }
 
     input.addEventListener("keyup", filter);
-  </script>
+</script>
 @endsection
