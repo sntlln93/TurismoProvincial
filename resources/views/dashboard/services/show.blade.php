@@ -87,11 +87,16 @@
                         </div>
                         <div class="icon">
                             @if(! $image->is_primary)
-                                <a href="{{ url('panel-de-administracion/photos/mark-as-primary/'.$image->id) }}" class="btn-icon_text"><i class="icon-check"></i> Marcar como principal</a>
+                                <a href="{{ url('panel-de-administracion/photos/mark-as-primary/'.$image->id) }}" class="btn-icon_text image">
+                                    <div>
+                                        <h4>Marcar como principal</h4>
+                                        <i class="icon-check"></i>
+                                    </div>
+                                </a>
                             @endif
                             <form action="{{ url('panel-de-administracion/photos/'.$image->id) }}" method="POST">
                                 @csrf @method('DELETE')
-                                <button class="btn-delete" type="submit"><i class="icon-trash-empty"></i></button>                  
+                                <button class="btn-delete image" type="submit"><i class="icon-trash-empty"></i></button>                  
                             </form>
                         </div>
                     </div>

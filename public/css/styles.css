@@ -380,6 +380,13 @@ main h2 {
     background: tomato;
 }
 
+.articles .btn-delete.image {
+    background: tomato;
+    height: 40px;
+    width: 40px;
+}
+
+
 .articles .btn-edit {
     background: rgb(255, 177, 88);
 }
@@ -391,6 +398,28 @@ main h2 {
 .articles .btn-icon_text {
     background: #24a0ed;
     font-size: 14px;
+}
+
+.articles .btn-icon_text.image {
+    background: #24a0ed;
+    font-size: 14px;
+    width: 140px;
+    height: 40px;
+}
+
+.articles .btn-icon_text.image h4 {
+    text-align: center; 
+    font-size: 12px!important; 
+    font-weight: 500;
+}
+
+.articles .btn-icon_text.image div {
+    display: flex;
+    align-items: center;
+}
+
+.articles .btn-icon_text:hover {
+    color: #ffffff;
 }
 
 .articles .btn-key {
