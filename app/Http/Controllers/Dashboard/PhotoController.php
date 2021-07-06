@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\StoreImageService;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Image;
@@ -17,7 +18,7 @@ class PhotoController extends Controller
             ->with('id', $id);
     }
 
-    public function store(Request $request, $type, $id)
+    public function store(Request $request, $type, $id, StoreImageService $service)
     {
         $photos = $this->validatePhotos($request)['photos'];
 
@@ -33,7 +34,7 @@ class PhotoController extends Controller
 
         foreach ($photos as $photo) {
             Image::create([
-                'path' => $photo->store($type, 'public'),
+                'path' => $service->store($photo, $type),
                 'imageable_id' => $id,
                 'imageable_type' => $imageable
             ]);
@@ -91,7 +92,6 @@ class PhotoController extends Controller
     {
         return $request->validate([
             'photos' => 'required',
-            'photos.*' => 'image'
         ],[
             'photos.required' => 'Debes incluir por lo menos una foto. En el caso de que no quieras añadir fotos vuelve a la página anterior.'
         ],[
