@@ -76,12 +76,17 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/carrusel.js') }}"></script>
+    <script src="{{ asset('js/slider.js') }}"></script>
     <script>
         const images = [];
-        images.push("{!! $district->image ? 'storage/'.$district->image->path : 'img/no-image.png' !!}");
         
-        carrusel(images, "{!! env('APP_URL') !!}");
+        @forelse($district->images as $image)
+            images.push("{!! $image !!}");
+        @empty
+            images.push("img/no-image.png");
+        @endforelse
+        
+        slider(images, "{!! env('APP_URL') !!}");
     </script>
     <script src="{{ asset('js/buttonUp.js') }}"></script>
 

@@ -161,6 +161,9 @@ nav {
     height: 60px;
     background-color: var(--nav-color-web);
     color: var(--second-color);
+    box-shadow: 0px 3px 5px rgb(0, 0, 0, .5);
+    position: sticky;
+    z-index: 100;
 }
 
 .logo {
@@ -232,53 +235,6 @@ nav ul li i {
 }
 
 /* ----- MAIN ----- */
-.slider {
-    position: relative;
-    width: 100%;
-    max-height: 40vh;
-    margin: 0 0 5px 0;
-    overflow: hidden;
-}
-
-.slider-images {
-    position: relative;
-    left: 0;
-    transition: all 0.5s;
-    object-fit: contain;
-}
-
-.slider-images img {
-    width: 100%;
-    height: auto; /*height: 280px;*/
-}
-
-.slider-navigation {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 10px auto;
-    display: flex;
-    justify-content: center;
-}
-
-.slider-nav {
-    margin: 0 5px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 1px solid var(--second-color);
-}
-
-.slider-nav:hover {
-    background: var(--second-color);
-}
-
-.slider-nav--active {
-    box-shadow: 2px 2px 3px var(--fourth-color);
-    background: var(--second-color);
-}
-
 /* BOX - CARDS */
 .main-web {
     margin: 30px 20px;
@@ -1032,10 +988,6 @@ a {
         transform: rotate(45deg) translate(-5px, -6px);
     }
 
-    .slider-images img {
-        height: auto; /*height: 300px;*/
-    }
-
     .box-scroll h2::after {
         width: 92%;
     }
@@ -1153,10 +1105,6 @@ a {
 
     .nav-links li:hover {
         font-size: 19px;
-    }
-
-    .slider-images img {
-        height: auto; /*height: 350px;*/
     }
 
     .box::-webkit-scrollbar {
@@ -1292,10 +1240,6 @@ a {
         font-size: 17px;
     }
 
-    .slider-images img {
-        height: auto; /*height: 370px;*/
-    }
-
     .card-activities .info .btn:hover {
         box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
     }
@@ -1372,10 +1316,6 @@ a {
         font-size: 18px;
     }
 
-    .slider-images img {
-        height: auto; /*height: 420px;*/
-    }
-
     .box-flex .transport {
         width: 20%;
         height: 270px;
@@ -1402,10 +1342,6 @@ a {
 
     .box-scroll h4 {
         margin-left: 95%;
-    }
-
-    .slider-images img {
-        height: auto; /*height: 450px;*/
     }
 
     .card-flex-district {

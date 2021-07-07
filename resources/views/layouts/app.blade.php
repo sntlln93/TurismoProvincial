@@ -9,8 +9,8 @@
     <!-- Custom CSS -->
     <link href="{{ asset('css/styles-web.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/fontello.css') }}" rel="stylesheet">
-    
+    <link href="{{ asset('css/fontello.css') }}" rel="stylesheet">    
+    <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
     @include('layouts.preference-variables')
 
     <title>Turismo @yield('title')</title>

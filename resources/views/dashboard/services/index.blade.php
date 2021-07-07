@@ -52,8 +52,6 @@
                             <i class="icon-food"></i>
                         @elseif($type->name == "Transporte")
                             <i class="icon-bus"></i>
-                        @else
-                            <i class="icon-cog"></i>
                         @endif
                         {{ $type->name }}
                     </div>
