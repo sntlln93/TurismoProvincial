@@ -21,7 +21,7 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/carrusel.js') }}"></script>
+<script src="{{ asset('js/slider.js') }}"></script>
     <script>
         const images = [];
         
@@ -31,8 +31,7 @@
             images.push("img/no-image.png");
         @endforelse
         
-        
-        carrusel(images, "{!! env('APP_URL') !!}");
+        slider(images, "{!! env('APP_URL') !!}");
     </script>
     <script src="{{ asset('js/buttonUp.js') }}"></script>    
 @endsection

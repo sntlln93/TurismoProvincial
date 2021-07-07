@@ -1,4 +1,7 @@
-const carrusel = (images_array, url) => {
+const slider = (images_array, url) => {
+
+    console.log(images_array);
+
     //Images
     const images = images_array;
 
@@ -19,11 +22,7 @@ const carrusel = (images_array, url) => {
 
     //Evento para saber cuando el usuario coloca o no el pointer sobre el slider
     sliderContainer.addEventListener("mouseover", () => {
-        if (active) active = false;
-    });
-
-    sliderContainer.addEventListener("mouseover", () => {
-        if (!active) active = true;
+        active = !active;
     });
 
     //Evento al hacer click en la navegación
@@ -36,7 +35,7 @@ const carrusel = (images_array, url) => {
         //Cargar imagenes
         const imgElement = document.createElement("img");
         imgElement.src = `${url}/${images[img]}`;
-        imgElement.classList.add("slider-image");
+        imgElement.style.width = (100/images.length) + '%';
         slider.appendChild(imgElement);
         
         //Cargar navegación
@@ -93,5 +92,3 @@ const carrusel = (images_array, url) => {
         }
     }
 };
-
-carrusel();
