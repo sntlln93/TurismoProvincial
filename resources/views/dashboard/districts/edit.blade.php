@@ -52,7 +52,7 @@
 
                     <div>
                         <h4>Foto:</h4><input class="@error('photo') error-input @enderror" type="file" name="photo"
-                            accept="image/jpeg" multiple>
+                            accept="image/png, .jpeg, .jpg" multiple>
                     </div>
                     <div id="district-image-container">
                         @if ($district->image)
@@ -67,7 +67,6 @@
                 </form>
             </div>
         </div>
-    </div>
 </main>
 @endsection
 

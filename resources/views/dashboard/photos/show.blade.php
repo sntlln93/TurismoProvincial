@@ -58,18 +58,23 @@
     @endif
 
     <div class="articles district">
-        @foreach($photos as $photo)
-        <div class="article image__container">
+        @foreach($photos as $photo)<div class="article image__container">
             <img class="image__img" src="{{ asset('storage/'.$photo->path) }}" alt="{{ $photo->imageable->slug }}">
             <div class="icon">
                 @if(! $photo->is_primary)
-                <a href="{{ url('panel-de-administracion/photos/mark-as-primary/'.$photo->id) }}" class="btn-show"><i
-                        class="icon-check"></i></a>
+                <a href="{{ url('panel-de-administracion/photos/mark-as-primary/'.$photo->id) }}"
+                    class="btn-icon_text image">
+                    <div>
+                        <h4>Marcar como principal</h4>
+                        <i class="icon-check"></i>
+                    </div>
+                </a>
                 @endif
                 <form action="{{ url('panel-de-administracion/photos/'.$photo->id) }}" method="POST">
                     @csrf @method('DELETE')
-                    <button class="btn-delete" type="submit"><i class="icon-trash-empty"></i></button>
+                    <button class="btn-delete image" type="submit"><i class="icon-trash-empty"></i></button>
                 </form>
+
             </div>
         </div>
         @endforeach
