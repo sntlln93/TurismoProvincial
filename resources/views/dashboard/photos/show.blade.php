@@ -1,36 +1,5 @@
 @extends('dashboard.layouts.app')
 
-@section('styles')
-    <style>
-        .article.image__container {
-            display: flex;
-            background: red;
-            flex-direction: column !important;
-        }
-
-        .image__img {
-            width: 100%;
-            margin-bottom: 1em;
-        }
-
-        .article.primary__image {
-            width: 100%;
-            display: flex;
-            flex-direction: column !important;
-        }
-
-        .article.primary__image img{
-            margin-top: 1em;
-            width: 100%;
-        }
-
-        .article.primary_image .primary_header {
-            font-weight: normal;
-        }
-
-    </style>
-@endsection
-
 @section('content')
 <main>
     <div class="title-dashboard">

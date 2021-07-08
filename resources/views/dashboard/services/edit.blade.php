@@ -1,20 +1,5 @@
 @extends('dashboard.layouts.app')
 
-@section('styles')
-    <style>
-        .error-message {
-            color: red;
-            margin: 0 1em 1em 0;
-            font-weight: 500;
-            text-align: right;
-        }
-
-        .error-input {
-            border-color: red !important;
-        }
-    </style>
-@endsection
-
 @section('content')
 <main>
     <div class="title-dashboard">
@@ -23,7 +8,7 @@
     </div>
 
     <div class="modal-body view">
-        <form action="{{ url('panel-de-administracion/services/'.$service->id) }}" method="POST">
+        <form action="{{ url('panel-de-administracion/services/'.$service->id) }}" method="POST" class="modal-body">
             @csrf @method('PUT')
             <div><h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name" value="{{ $service->name }}" placeholder=""></div>
             @error('name') <small class="error-message">{{ $message }}</small> @enderror

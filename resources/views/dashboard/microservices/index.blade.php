@@ -1,21 +1,5 @@
 @extends('dashboard.layouts.app')
 
-@section('styles')
-    <style>
-        .error-message {
-            color: red;
-            margin: 0 1em 1em 0;
-            font-weight: 500;
-            text-align: right;
-        }
-
-        .error-input {
-            border-color: red !important;
-        }
-
-    </style>
-@endsection
-
 @section('content')
     <main>
             <div class="title">

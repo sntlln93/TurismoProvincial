@@ -1,27 +1,11 @@
 @extends('dashboard.layouts.app')
 
-@section('styles')
-    <style>
-        .error-message {
-            color: red;
-            margin: 0 1em 1em 0;
-            font-weight: 500;
-            text-align: right;
-        }
-
-        .error-input {
-            border-color: red !important;
-        }
-
-    </style>
-@endsection
-
 @section('content')
     <main>
         <h2>Modificar tipo</h2>
 
         <div class="modal-body view">
-            <form action="{{ url('panel-de-administracion/types/'.$type->id) }}" method="POST">
+            <form action="{{ url('panel-de-administracion/types/'.$type->id) }}" method="POST" class="modal-body">
                 @csrf
                 @method('PUT')
                 <div><h4>Tipo:</h4>
