@@ -1,35 +1,5 @@
 @extends('dashboard.layouts.app')
 
-@section('styles')
-<style>
-    .article.image__container {
-        display: flex;
-        background: red;
-        flex-direction: column !important;
-    }
-
-    .image__img {
-        width: 100%;
-        margin-bottom: 1em;
-    }
-
-    .article.primary__image {
-        width: 100%;
-        display: flex;
-        flex-direction: column !important;
-    }
-
-    .article.primary__image img {
-        margin-top: 1em;
-        width: 100%;
-    }
-
-    .article.primary_image .primary_header {
-        font-weight: normal;
-    }
-</style>
-@endsection
-
 @section('content')
 <main>
     <div class="title-dashboard">
@@ -58,8 +28,9 @@
     @endif
 
     <div class="articles district">
-        @foreach($photos as $photo)<div class="article image__container">
-            <img class="image__img" src="{{ asset('storage/'.$photo->path) }}" alt="{{ $photo->imageable->slug }}">
+        @foreach($photos as $photo)
+        <div class="article primary__image">
+            <img src="{{ asset('storage/'.$photo->path) }}" alt="{{ $photo->imageable->slug }}">
             <div class="icon">
                 @if(! $photo->is_primary)
                 <a href="{{ url('dashboard/photos/mark-as-primary/'.$photo->id) }}" class="btn-icon_text image">
@@ -73,31 +44,9 @@
                     @csrf @method('DELETE')
                     <button class="btn-delete image" type="submit"><i class="icon-trash-empty"></i></button>
                 </form>
-
             </div>
         </div>
         @endforeach
     </div>
 </main>
-@endsection
-
-@section('scripts')
-
-<script>
-    const filter = () => {
-      const params = input.value.toLowerCase();
-      const locations = document.getElementsByClassName("article");
-   
-      Array.from(locations).forEach((location) => {
-        const text = location.getElementsByClassName("article-info")[0];
-        const name = text.children[0].innerHTML.toLowerCase();
-
-        if(name.includes(params)) {
-            location.style.display = "flex"
-        } else {
-            location.style.display = "none"
-        }
-      });
-    }
-</script>
 @endsection

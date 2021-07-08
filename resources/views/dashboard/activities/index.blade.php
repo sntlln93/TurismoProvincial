@@ -1,21 +1,5 @@
 @extends('dashboard.layouts.app')
 
-
-@section('styles')
-<style>
-    .error-message {
-        color: red;
-        margin: 0 1em 1em 0;
-        font-weight: 500;
-    }
-
-    .error-input {
-        border-color: red !important;
-    }
-</style>
-@endsection
-
-
 @section('content')
 <main>
     <div class="title">
@@ -45,7 +29,8 @@
                 </div>
                 <div class="info-2">
                     <b>Atractivo turístico:</b> {{ $activity->location->name }}</br>
-                    <b>Inicio:</b> {{ $activity->start->format('d/m/Y')}} a las {{ $activity->start->format('h:i') }} hs
+                    <b>Inicio:</b> {{ $activity->start->format('d/m/Y')}} a las
+                    {{ $activity->start->format('h:i') }} hs
                     </br>
                     <b>Fin:</b> {{ $activity->end->format('d/m/Y') }} a las {{ $activity->end->format('h:i') }} hs
                 </div>

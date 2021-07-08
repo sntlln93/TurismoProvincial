@@ -1,20 +1,5 @@
 @extends('dashboard.layouts.app')
 
-@section('styles')
-<style>
-    .error-message {
-        color: red;
-        margin: 0 1em 1em 0;
-        font-weight: 500;
-        text-align: right;
-    }
-
-    .error-input {
-        border-color: red !important;
-    }
-</style>
-@endsection
-
 @section('content')
 <main>
     <div class="title">
@@ -37,7 +22,7 @@
                     <span class="close" id="close">&times;</span>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('dashboard/users') }}" method="POST">
+                    <form action="{{ url('panel-de-administracion/users') }}" method="POST">
                         @csrf
                         <div>
                             <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name"

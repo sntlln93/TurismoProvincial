@@ -1,20 +1,5 @@
 @extends('dashboard.layouts.app')
 
-@section('styles')
-<style>
-    .error-message {
-        color: red;
-        margin: 0 0 1em 0;
-        font-weight: 500;
-        text-align: right;
-    }
-
-    .error-input {
-        border-color: red !important;
-    }
-</style>
-@endsection
-
 @section('content')
 <main>
     <div class="title-dashboard">
@@ -81,10 +66,15 @@
 
             <div>
                 <h4>Descripción:</h4>
-                <textarea name="description" class="@error('description') error-input @enderror" rows="6"
-                    placeholder="Escribe aquí la descripción">{{ $location->description }}</textarea>
+                <textarea name="description" class="@error('description') error-input @enderror msjEdit" rows="6"
+                    maxlength="1000" placeholder="Escribe aquí la descripción">{{ $location->description }}</textarea>
             </div>
             @error('description') <small class="error-message">{{ $message }}</small> @enderror
+
+            <div>
+                <small class="contEdit">Cantidad de carácteres:
+                    {{ Str::of($location->description)->length() }}/1000</small>
+            </div>
 
             <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
         </form>
