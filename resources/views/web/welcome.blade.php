@@ -29,9 +29,9 @@
         <div class="logo">
             <a><h3>Turismo Municipal</h3></a>
         </div>
-        <div class="btn-down">
+        <!-- <div class="btn-down">
             <a href="#principal"> <i class="icon-angle-down"></i></a>           
-        </div>
+        </div> -->
     </header>
     
     <main class="principal" >
