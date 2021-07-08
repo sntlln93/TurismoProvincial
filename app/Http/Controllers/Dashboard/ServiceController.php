@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
-
+use App\Services\StoreImageService;
 use App\Models\Type;
 use App\Models\Service;
 use App\Models\City;
@@ -47,18 +47,17 @@ class ServiceController extends Controller
             ->with('cities', $cities);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, StoreImageService $storeImageService)
     {
         $service_data = $this->validateService($request);
         $address_data = $this->validateAddress($request);
         $photos = $request->validate([
             'photos' => 'required',
-            'photos.*' => 'image'
         ], [], [
             'photos' => 'fotos'
         ])['photos'];
 
-        DB::transaction(function () use ($service_data, $address_data, $photos) {
+        DB::transaction(function () use ($service_data, $address_data, $photos, $storeImageService) {
             $service = Service::create([
                 'name' => $service_data['name'],
                 'responsable' => $service_data['responsable'],
@@ -81,7 +80,7 @@ class ServiceController extends Controller
 
             foreach ($photos as $photo) {
                 Image::create([
-                    'path' => $photo->store('services', 'public'),
+                    'path' => $storeImageService->store($photo, 'services'),
                     'imageable_id' => $service->id,
                     'imageable_type' => 'App\\Models\\Service'
                 ]);

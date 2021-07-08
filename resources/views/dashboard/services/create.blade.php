@@ -1,16 +1,82 @@
 @extends('dashboard.layouts.app')
 
 @section('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css">
+
 <style>
     .error-message {
         color: red;
-        margin: 0 1em 1em 0;
+        margin: 0 0 1em 0;
         font-weight: 500;
         text-align: right;
     }
 
     .error-input {
         border-color: red !important;
+    }
+
+    .cropper--container {
+        width: 75% !important;
+        margin-right: 10px;
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #galleryImages,
+    #cropper {
+        width: 100%;
+        float: left;
+    }
+
+    canvas {
+        max-width: 100%;
+        display: inline-block;
+    }
+
+    #cropperImg {
+        /*max-width: 0;
+    max-height: 0;*/
+    }
+
+    #cropImageBtn {
+        display: none;
+        margin: .6em;
+        padding: .6em;
+        border-radius: 5px;
+        box-shadow: 10px;
+        background: #4032ac;
+        border: 0;
+        color: var(--second-color);
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .img-preview {
+        float: left;
+    }
+
+    .singleImageCanvasContainer {
+        max-width: 300px;
+        display: inline-block;
+        position: relative;
+        margin: 2px;
+    }
+
+    .singleImageCanvasCloseBtn {
+        position: absolute !important;
+        top: 5px;
+        right: 5px;
+        display: none;
+        margin: .6em;
+        padding: .6em;
+        border-radius: 5px;
+        box-shadow: 10px;
+        background: var(--first-color);
+        color: var(--second-color);
+        border: 0;
     }
 </style>
 @endsection
@@ -22,61 +88,69 @@
         <h2>Agregar servicio</h2>
     </div>
 
-    <div class="modal-body newservice">
-        <form action="{{ url('dashboard/services') }}" method="POST" class="modal-body" enctype="multipart/form-data">
-            @csrf
-            <div>
-                <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name" value=""
-                    placeholder="">
-            </div>
-            @error('name') <small class="error-message">{{ $message }}</small> @enderror
+    <form action="{{ url('dashboard/services') }}" method="POST" class="modal-body" enctype="multipart/form-data">
+        @csrf
+        <div>
+            <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name" value=""
+                placeholder="">
+        </div>
+        @error('name') <small class="error-message">{{ $message }}</small> @enderror
 
-            <div>
-                <h4>Responsable:</h4><input class="@error('responsable') error-input @enderror" type="text"
-                    name="responsable" value="" placeholder="">
-            </div>
-            @error('responsable') <small class="error-message">{{ $message }}</small> @enderror
+        <div>
+            <h4>Responsable:</h4><input class="@error('responsable') error-input @enderror" type="text"
+                name="responsable" value="" placeholder="">
+        </div>
+        @error('responsable') <small class="error-message">{{ $message }}</small> @enderror
 
-            @include('dashboard._partials.create-address')
-            <div>
-                <h4>Inicio:</h4><input class="@error('start') error-input @enderror" type="time" id="start" name="start"
-                    value="" placeholder="">
-            </div>
-            @error('start') <small class="error-message">{{ $message }}</small> @enderror
+        @include('dashboard._partials.create-address')
+        <div>
+            <h4>Inicio:</h4><input class="@error('start') error-input @enderror" type="time" id="start" name="start"
+                value="" placeholder="">
+        </div>
+        @error('start') <small class="error-message">{{ $message }}</small> @enderror
 
-            <div>
-                <h4>Fin:</h4><input class="@error('end') error-input @enderror" type="time" id="end" name="end" value=""
-                    placeholder="">
-            </div>
-            @error('end') <small class="error-message">{{ $message }}</small> @enderror
+        <div>
+            <h4>Fin:</h4><input class="@error('end') error-input @enderror" type="time" id="end" name="end" value=""
+                placeholder="">
+        </div>
+        @error('end') <small class="error-message">{{ $message }}</small> @enderror
 
-            <div>
-                <h4>Tipo:</h4>
-                <select class="@error('type_id') error-input @enderror" name="type_id">
-                    @foreach($types as $type)
-                    <optgroup label="{{ $type->name }}">
-                        @foreach($type->subtypes as $subtype)
-                        <option value="{{ $subtype->id }}">{{ $subtype->name }}</option>
-                        @endforeach
-                    </optgroup>
+        <div>
+            <h4>Tipo:</h4>
+            <select class="@error('type_id') error-input @enderror" name="type_id">
+                @foreach($types as $type)
+                <optgroup label="{{ $type->name }}">
+                    @foreach($type->subtypes as $subtype)
+                    <option value="{{ $subtype->id }}">{{ $subtype->name }}</option>
                     @endforeach
-                </select>
-            </div>
-            @error('type_id') <small class="error-message">{{ $message }}</small> @enderror
+                </optgroup>
+                @endforeach
+            </select>
+        </div>
+        @error('type_id') <small class="error-message">{{ $message }}</small> @enderror
 
-            <div>
-                <h4>Fotos:</h4><input class="@error('photos') error-input @enderror" type="file" name="photos[]"
-                    accept="image/jpeg" multiple>
-            </div>
-            @error('photos') <small class="error-message">{{ $message }}</small> @enderror
+        <div id="croppedContainer">
+            <h4>Fotos:</h4><input class="@error('photos') error-input @enderror" type="file" id="imageCropFileInput"
+                accept="image/jpeg" multiple>
+        </div>
+        @error('photos') <small class="error-message">{{ $message }}</small> @enderror
 
-            <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
-        </form>
-    </div>
+
+        <div class="cropper--container">
+            <input type="hidden" id="croppedImgs">
+            <div id="galleryImages"></div>
+            <div id="cropper">
+                <canvas id="cropperImg" width="0" height="0"></canvas>
+            </div>
+            <button class="cropImageBtn cropBtn" id="cropImageBtn">Recortar</button>
+        </div>
+
+        <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
+    </form>
 </main>
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/contcharsedit.js') }}"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+<script src="{{ asset('js/cropper.js') }}"></script>
 @endsection
