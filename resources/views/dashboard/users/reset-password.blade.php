@@ -1,20 +1,5 @@
 @extends('dashboard.layouts.app')
 
-@section('styles')
-    <style>
-        .error-message {
-            color: red;
-            margin: 0 1em 1em 0;
-            font-weight: 500;
-        }
-
-        .error-input {
-            border-color: red !important;
-        }
-
-    </style>
-@endsection
-
 @section('content')
 <main>
     <div class="title">
@@ -27,7 +12,7 @@
                 <span class="close" id="close-edit">&times;</span>
             </div>
             <div class="modal-body">
-                <form action="{{ url('reset-password/'.$user->id) }}" method="POST">
+                <form action="{{ url('reset-password/'.$user->id) }}" method="POST" class="modal-body">
                     @csrf @method('PUT')
                     <div><h4>Contraseña:</h4><input type="password" name="password" placeholder="Colocá una nueva contraseña para este usuario"></div>
                     <div><h4>Confirmación:</h4><input type="password" name="password_confirmation" placeholder="Repetí la contraseña, ambas deben coincidir"></div>
