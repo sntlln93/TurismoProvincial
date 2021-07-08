@@ -4,14 +4,18 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css">
 
 <style>
-    button#cropBtn {
-        margin: 1em;
-        padding: 1em;
-        background: var(--second-color);
-        display: none;
+    .error-message {
+        color: red;
+        margin: 0 0 1em 0;
+        font-weight: 500;
+        text-align: right;
     }
 
-    .img--container {
+    .error-input {
+        border-color: red !important;
+    }
+
+    .cropper--container {
         width: 75% !important;
         margin-right: 10px;
         margin-left: auto;
@@ -19,32 +23,60 @@
         flex-direction: column;
     }
 
-    /* Ensure the size of the image fit the container perfectly */
-    img#inputImage {
-        /* This rule is very important, please don't ignore this */
-        max-width: 100% !important;
-        width: 100% !important;
+    #galleryImages,
+    #cropper {
+        width: 100%;
+        float: left;
     }
 
-    img#croppedImage {
-        max-width: 100% !important;
-        width: 100% !important;
-        height: auto;
+    canvas {
+        max-width: 100%;
+        display: inline-block;
     }
 
-    .hide {
-        display: none !important;
+    #cropperImg {
+        /*max-width: 0;
+    max-height: 0;*/
     }
 
-    .error-message {
-        color: red;
-        margin: 0 1em 1em 0;
-        font-weight: 500;
-        text-align: right;
+    #cropImageBtn {
+        display: none;
+        margin: .6em;
+        padding: .6em;
+        border-radius: 5px;
+        box-shadow: 10px;
+        background: #4032ac;
+        border: 0;
+        color: var(--second-color);
     }
 
-    .error-input {
-        border-color: red !important;
+    img {
+        width: 100%;
+    }
+
+    .img-preview {
+        float: left;
+    }
+
+    .singleImageCanvasContainer {
+        max-width: 300px;
+        display: inline-block;
+        position: relative;
+        margin: 2px;
+    }
+
+    .singleImageCanvasCloseBtn {
+        position: absolute !important;
+        top: 5px;
+        right: 5px;
+        display: none;
+        margin: .6em;
+        padding: .6em;
+        border-radius: 5px;
+        box-shadow: 10px;
+        background: var(--first-color);
+        color: var(--second-color);
+        border: 0;
     }
 </style>
 @endsection
@@ -73,17 +105,19 @@
         <label class="cont">Cantidad de carácteres: 0/1000</label>
 
 
-        <div>
+        <div id="croppedContainer">
             <h4>Foto:</h4><input class="@error('photo') error-input @enderror" type="file" accept="image/jpeg"
-                id="photo">
-            <input id="croppedImageInput" type="hidden" name="photo">
+                id="imageCropFileInput">
         </div>
         @error('photo') <small class="error-message">{{ $message }}</small> @enderror
 
-        <div class="img--container">
-            <img id="inputImage">
-            <button id="cropBtn">Recortar</button>
-            <img id="croppedImage">
+        <div class="cropper--container">
+            <input type="hidden" id="croppedImgs">
+            <div id="galleryImages"></div>
+            <div id="cropper">
+                <canvas id="cropperImg" width="0" height="0"></canvas>
+            </div>
+            <button class="cropImageBtn cropBtn" id="cropImageBtn">Recortar</button>
         </div>
 
         <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
@@ -94,45 +128,5 @@
 @section('scripts')
 <script src="{{ asset('js/contchar.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
-
-<script>
-    const photoInput = document.getElementById('photo');
-    const inputImage = document.getElementById('inputImage');
-    const cropBtn = document.getElementById('cropBtn');
-    const croppedImage = document.getElementById('croppedImage');
-    const croppedImageInput = document.getElementById('croppedImageInput');
-
-    const showCropper = () => {
-        cropBtn.style.display = "block";
-        
-        const aspectRatio = 16 / 9;
-        const options = {
-            viewMode: 1,
-            restore: true,
-            aspectRatio: aspectRatio,
-            movable: false,
-            dragMode: 'move',
-            cropBoxMovable: true,
-            cropBoxResizable: false,
-            zoomOnWheel: false
-        };
-        
-        inputImage.src = URL.createObjectURL(photoInput.files[0]);
-        const cropper = new Cropper(inputImage, options);
-
-        const crop = (e) => {
-            e.preventDefault();
-
-            const blob = cropper.getCroppedCanvas().toDataURL('image/jpeg');
-            
-            croppedImage.src = blob;
-            croppedImageInput.value = blob;
-        }
-
-        cropBtn.addEventListener('click', (e) => crop(e));
-    }
-
-    photoInput.addEventListener('change', showCropper);
-</script>
-
+<script src="{{ asset('js/cropper.js') }}"></script>
 @endsection

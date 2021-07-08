@@ -38,11 +38,13 @@ class CityController extends Controller
                 'slug' => Str::slug($city_data['name']),
             ]);
 
-            Image::create([
-                'path' => $service->store($city_data['photo'], 'cities'),
-                'imageable_id' => $city->id,
-                'imageable_type' => 'App\\Models\\City'
-            ]);
+            foreach($city_data['photos'] as $photo){
+                Image::create([
+                    'path' => $service->store($photo, 'cities'),
+                    'imageable_id' => $city->id,
+                    'imageable_type' => 'App\\Models\\City'
+                ]);
+            }
         });
 
         return redirect()->route('cities.index');
@@ -67,11 +69,11 @@ class CityController extends Controller
         return $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'photo' => 'sometimes'
+            'photos' => 'sometimes'
         ], [], [
             'name' => 'nombre',
             'description' => 'descripción',
-            'photo' => 'foto'
+            'photos' => 'foto'
         ]);
     }
 }
