@@ -111,7 +111,8 @@ function cropInit(selector) {
     image.height = c.height;
     var ctx = image.getContext("2d");
     ctx.putImageData(imgData, 0, 0);
-    const aspectRatio = 16 / 9;
+
+    const aspectRatio = 1789 / 660;
 
     const options = {
         viewMode: 1,
@@ -121,29 +122,11 @@ function cropInit(selector) {
         dragMode: "move",
         cropBoxMovable: true,
         cropBoxResizable: false,
-        zoomOnWheel: false,
+        zoomOnWheel: true,
+        crop: () => (cropImageButton.style.display = "block"),
     };
 
-    cropper = new Cropper(image, {
-        viewMode: 1,
-        restore: true,
-        aspectRatio: aspectRatio,
-        movable: false,
-        dragMode: "move",
-        cropBoxMovable: true,
-        cropBoxResizable: false,
-        zoomOnWheel: false,
-        crop: function (event) {
-            // console.log(event.detail.x);
-            // console.log(event.detail.y);
-            // console.log(event.detail.width);
-            // console.log(event.detail.height);
-            // console.log(event.detail.rotate);
-            // console.log(event.detail.scaleX);
-            // console.log(event.detail.scaleY);
-            cropImageButton.style.display = "block";
-        },
-    });
+    cropper = new Cropper(image, options);
 }
 // Initialize Cropper on CLick On Image
 // function cropInitOnClick(selector) {
