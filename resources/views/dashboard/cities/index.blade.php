@@ -36,27 +36,22 @@
 
     <div class="articles">
         @foreach ($district->cities as $city)
-        <div class="articles">
-            @foreach ($district->cities as $city)
-            <section class="article d-flex">
-                <div class="article-info">
-                    <div class="info-1 image">
-                        @if ($city->image)
-                        <img id="city-image" src="{{ asset('storage/' . $city->image->path) }}" alt="{{ $city->name }}">
-                        @endif
-                    </div>
-                    <div class="info-2">
-                        <b>Nombre:</b> {{ $city->name }}</br>
-                        <b>Descripción:</b> {{ $city->description }}
-                    </div>
+        <section class="article d-flex">
+            <div class="article-info">
+                <div class="info-1 image">
+                    @if ($city->image)
+                    <img id="city-image" src="{{ asset('storage/' . $city->image->path) }}" alt="{{ $city->name }}">
+                    @endif
                 </div>
-                <div class="icon">
-                    <a href="{{ url('dashboard/cities/' . $city->id . '/edit') }}" class="btn-edit"><i
-                            class="icon-edit"></i></a>
+                <div class="info-2">
+                    <b>Nombre:</b> {{ $city->name }}</br>
+                    <b>Descripción:</b> {{ $city->description }}
                 </div>
-            </section>
-            @endforeach
-        </div>
+            </div>
+            <div class="icon">
+                <a href="{{ url('dashboard/cities/' . $city->id . '/edit') }}" class="btn-edit"><i
+                        class="icon-edit"></i></a>
+            </div>
         </section>
         @endforeach
     </div>
