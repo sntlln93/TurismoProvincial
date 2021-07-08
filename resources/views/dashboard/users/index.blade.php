@@ -1,19 +1,18 @@
 @extends('dashboard.layouts.app')
 
 @section('styles')
-    <style>
-        .error-message {
-            color: red;
-            margin: 0 1em 1em 0;
-            font-weight: 500;
-            text-align: right;
-        }
+<style>
+    .error-message {
+        color: red;
+        margin: 0 1em 1em 0;
+        font-weight: 500;
+        text-align: right;
+    }
 
-        .error-input {
-            border-color: red !important;
-        }
-
-    </style>
+    .error-input {
+        border-color: red !important;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -21,10 +20,10 @@
     <div class="title">
         <h2>Usuarios del sistema</h2>
     </div>
-    
+
     <div class="row">
         <div class="add-other only-button">
-            <button id="open"> 
+            <button id="open">
                 <i class="icon-plus"></i> Nuevo usuario
             </button>
         </div>
@@ -38,30 +37,43 @@
                     <span class="close" id="close">&times;</span>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('panel-de-administracion/users') }}" method="POST">
+                    <form action="{{ url('dashboard/users') }}" method="POST">
                         @csrf
-                        <div><h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name" value="" placeholder=""></div>
+                        <div>
+                            <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name"
+                                value="" placeholder="">
+                        </div>
                         @error('name') <small class="error-message">{{ $message }}</small> @enderror
-                        <div><h4>Apellido:</h4><input class="@error('lastname') error-input @enderror" type="text" name="lastname" value="" placeholder=""></div>
+                        <div>
+                            <h4>Apellido:</h4><input class="@error('lastname') error-input @enderror" type="text"
+                                name="lastname" value="" placeholder="">
+                        </div>
                         @error('lastname') <small class="error-message">{{ $message }}</small> @enderror
-                        <div><h4>DNI:</h4><input class="@error('dni') error-input @enderror" type="number" name="dni" value="" placeholder=""></div>
+                        <div>
+                            <h4>DNI:</h4><input class="@error('dni') error-input @enderror" type="number" name="dni"
+                                value="" placeholder="">
+                        </div>
                         @error('dni') <small class="error-message">{{ $message }}</small> @enderror
-                        <div><h4>Contraseña:</h4><input class="@error('password') error-input @enderror" type="password" name="password" value="" placeholder=""></div>
+                        <div>
+                            <h4>Contraseña:</h4><input class="@error('password') error-input @enderror" type="password"
+                                name="password" value="" placeholder="">
+                        </div>
                         @error('password') <small class="error-message">{{ $message }}</small> @enderror
-                        
+
                         <!-- ESTO SOLO APARECERÁ PARA EL ROL DE ADMIN CYT -->
                         @if($districts)
-                            <div><h4>Municipio:</h4>
-                                <select class="@error('district_id') error-input @enderror" name="district_id" type="text">
-                                    @foreach($districts as $district)
-                                        <option value="{{ $district->id }}">{{ $district->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            @error('district_id') <small class="error-message">{{ $message }}</small> @enderror
+                        <div>
+                            <h4>Municipio:</h4>
+                            <select class="@error('district_id') error-input @enderror" name="district_id" type="text">
+                                @foreach($districts as $district)
+                                <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('district_id') <small class="error-message">{{ $message }}</small> @enderror
 
                         @else
-                            <input type="hidden" value="{{ Auth::user()->district_id }}" name="district_id">
+                        <input type="hidden" value="{{ Auth::user()->district_id }}" name="district_id">
                         @endif
                         <button class="save">Guardar<i class="icon-floppy"></i>
                     </form>
@@ -72,29 +84,30 @@
 
     <div class="articles user">
         @foreach($users as $user)
-            <section class="article">
-                <img src="{{ asset('/img/users/user.jpg') }}" style="width: 60px; height: 60px; margin-right: 1em">
-                <div class="article-info">
-                    <div class="info-1">
-                        <b>Nombre:</b> {{ $user->full_name }}</br>
-                        <b>DNI:</b>  {{ $user->dni }}</br>
-                    </div>
-                    <div class="info-2">
-                        <b>Municipalidad:</b> {{ $user->district->name ?? "-"}}</br>
-                        <b>Rol:</b> {{ $user->district_id ? "Municipal" : "Provincial" }}
-                    </div>
-                    <div class="info-3">
-                        <b>Creado:</b> {{ $user->created_at->diffForHumans() }} </br>
-                        <b>Modificado:</b> {{ $user->updated_at->diffForHumans() }}
-                    </div>
+        <section class="article">
+            <img src="{{ asset('/img/users/user.jpg') }}" style="width: 60px; height: 60px; margin-right: 1em">
+            <div class="article-info">
+                <div class="info-1">
+                    <b>Nombre:</b> {{ $user->full_name }}</br>
+                    <b>DNI:</b> {{ $user->dni }}</br>
                 </div>
-                <div class="icon">
-                    <a href="{{ url('reset-password/'.$user->id) }}" id="open-key" class="btn-key"><i class="icon-key-1"></i></a>  
+                <div class="info-2">
+                    <b>Municipalidad:</b> {{ $user->district->name ?? "-"}}</br>
+                    <b>Rol:</b> {{ $user->district_id ? "Municipal" : "Provincial" }}
                 </div>
-            </section>
+                <div class="info-3">
+                    <b>Creado:</b> {{ $user->created_at->diffForHumans() }} </br>
+                    <b>Modificado:</b> {{ $user->updated_at->diffForHumans() }}
+                </div>
+            </div>
+            <div class="icon">
+                <a href="{{ url('reset-password/'.$user->id) }}" id="open-key" class="btn-key"><i
+                        class="icon-key-1"></i></a>
+            </div>
+        </section>
         @endforeach
     </div>
-  
+
 </main>
 @endsection
 
@@ -102,11 +115,11 @@
 <script src="{{ asset('js/modal.js') }}"></script>
 
 @if ($errors->any())
-        <script>
-            const createForm = document.getElementById("miModal");
+<script>
+    const createForm = document.getElementById("miModal");
             createForm.style.display = "block";
 
-        </script>
-    @endif
+</script>
+@endif
 
 @endsection

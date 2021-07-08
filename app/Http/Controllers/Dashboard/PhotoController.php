@@ -40,7 +40,7 @@ class PhotoController extends Controller
             ]);
         }
 
-        return redirect('panel-de-administracion/'.$type.'/');
+        return redirect('dashboard/'.$type.'/');
     }
 
     public function show($type, $id)

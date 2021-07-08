@@ -65,7 +65,7 @@ class ActivityController extends Controller
             'slug' => Str::slug($activity_data['name']),
         ]);
 
-        return redirect('panel-de-administracion/activities');
+        return redirect('dashboard/activities');
     }
 
     public function store(Request $request)
@@ -91,7 +91,7 @@ class ActivityController extends Controller
             ]);
         }
 
-        return redirect('panel-de-administracion/activities');
+        return redirect('dashboard/activities');
     }
 
     public function validateActivity($request)
@@ -125,6 +125,6 @@ class ActivityController extends Controller
         $activity->images()->delete();
         $activity->delete();
 
-        return redirect('panel-de-administracion/activities');
+        return redirect('dashboard/activities');
     }
 }

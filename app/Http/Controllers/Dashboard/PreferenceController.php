@@ -26,7 +26,7 @@ class PreferenceController extends Controller
         
         $preference->update($preferences_data);
         
-        return redirect('panel-de-administracion/preferences');
+        return redirect('dashboard/preferences');
     }
 
     private function validatePreferences($request)

@@ -56,7 +56,7 @@
         <h2>Agregar localidad</h2>
     </div>
 
-    <form action="{{ url('panel-de-administracion/cities') }}" method="POST" class="modal-body">
+    <form action="{{ url('dashboard/cities') }}" method="POST" class="modal-body">
         @csrf
         <div>
             <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name" value=""

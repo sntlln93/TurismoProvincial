@@ -16,7 +16,7 @@ class DistrictController extends Controller
     public function index()
     {
         if (Auth::user()->district_id) {
-            return redirect('panel-de-administracion');
+            return redirect('dashboard');
         }
 
         $districts = District::all();
@@ -71,6 +71,6 @@ class DistrictController extends Controller
             }
         });
 
-        return redirect('panel-de-administracion/districts/');
+        return redirect('dashboard/districts/');
     }
 }

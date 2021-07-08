@@ -24,7 +24,7 @@ class ResetPasswordController extends Controller
             'password' => Hash::make($password)
         ]);
 
-        return redirect('panel-de-administracion/users');
+        return redirect('dashboard/users');
     }
 
     private function validatePassword($request)

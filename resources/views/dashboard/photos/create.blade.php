@@ -88,8 +88,8 @@
         <h2>Agregar fotos</h2>
     </div>
 
-    <form action="{{ url('panel-de-administracion/photos/'.$type.'/'.$id) }}" method="POST"
-        enctype="multipart/form-data" class="modal-body">
+    <form action="{{ url('dashboard/photos/'.$type.'/'.$id) }}" method="POST" enctype="multipart/form-data"
+        class="modal-body">
         @csrf
         <div id="croppedContainer">
             <h4>Fotos:</h4><input id="imageCropFileInput" class="@error('photos') error-input @enderror" type="file"

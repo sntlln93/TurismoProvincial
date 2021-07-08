@@ -54,15 +54,15 @@
             </div>
             <div class="icon">
                 @if ($location->images->count() > 0)
-                <a href="{{ url('panel-de-administracion/photos/locations/' . $location->id) }}" class="btn-show"><i
+                <a href="{{ url('dashboard/photos/locations/' . $location->id) }}" class="btn-show"><i
                         class="icon-picture"></i></a>
                 @else
                 <a href="{{ route('photo.create', ['type' => 'locations', 'id' => $location->id]) }}"
                     class="btn-show"><i class="icon-picture"></i></a>
                 @endif
-                <a href="{{ url('panel-de-administracion/locations/' . $location->id . '/edit') }}" class="btn-edit"><i
+                <a href="{{ url('dashboard/locations/' . $location->id . '/edit') }}" class="btn-edit"><i
                         class="icon-edit"></i></a>
-                <form action="{{ url('panel-de-administracion/locations/' . $location->id) }}" method="POST">
+                <form action="{{ url('dashboard/locations/' . $location->id) }}" method="POST">
                     @csrf @method('DELETE')
                     <button class="btn-delete" type="submit"><i class="icon-trash-empty"></i></button>
                 </form>

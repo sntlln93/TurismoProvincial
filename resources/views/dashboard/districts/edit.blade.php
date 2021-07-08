@@ -27,7 +27,7 @@
                 <span class="close" id="close-edit">&times;</span>
             </div>
             <div class="modal-body">
-                <form action="{{ url('panel-de-administracion/districts/' . $district->id) }}" method="POST"
+                <form action="{{ url('dashboard/districts/' . $district->id) }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf @method('PUT')
                     <div>

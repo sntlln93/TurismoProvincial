@@ -41,7 +41,7 @@
 
     <div class="row">
         <div class="add-other only-button">
-            <a href="{{ url('panel-de-administracion/photos/'.$type.'/'.$id.'/create') }}"><button id="open">
+            <a href="{{ url('dashboard/photos/'.$type.'/'.$id.'/create') }}"><button id="open">
                     <i class="icon-plus"></i> Añadir imágenes
                 </button></a>
 
@@ -62,15 +62,14 @@
             <img class="image__img" src="{{ asset('storage/'.$photo->path) }}" alt="{{ $photo->imageable->slug }}">
             <div class="icon">
                 @if(! $photo->is_primary)
-                <a href="{{ url('panel-de-administracion/photos/mark-as-primary/'.$photo->id) }}"
-                    class="btn-icon_text image">
+                <a href="{{ url('dashboard/photos/mark-as-primary/'.$photo->id) }}" class="btn-icon_text image">
                     <div>
                         <h4>Marcar como principal</h4>
                         <i class="icon-check"></i>
                     </div>
                 </a>
                 @endif
-                <form action="{{ url('panel-de-administracion/photos/'.$photo->id) }}" method="POST">
+                <form action="{{ url('dashboard/photos/'.$photo->id) }}" method="POST">
                     @csrf @method('DELETE')
                     <button class="btn-delete image" type="submit"><i class="icon-trash-empty"></i></button>
                 </form>

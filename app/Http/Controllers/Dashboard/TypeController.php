@@ -22,7 +22,7 @@ class TypeController extends Controller
 
         Type::create($type_data);
 
-        return redirect('/panel-de-administracion/types');
+        return redirect('/dashboard/types');
     }
 
     public function edit(Type $type)
@@ -40,7 +40,7 @@ class TypeController extends Controller
 
         $type->update($type_data);
 
-        return redirect('/panel-de-administracion/types');
+        return redirect('/dashboard/types');
     }
 
     public function destroy(Type $type)
@@ -48,7 +48,7 @@ class TypeController extends Controller
         $type->services()->delete();
         $type->delete();
 
-        return redirect('/panel-de-administracion/types');
+        return redirect('/dashboard/types');
     }
 
     private function validateType($request)

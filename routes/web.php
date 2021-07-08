@@ -3,39 +3,39 @@
 use Illuminate\Support\Facades\Route;
 
 //dashboard routes
-Route::get('panel-de-administracion/', 'App\Http\Controllers\Dashboard\HomeController@index')->name('dashboard')->middleware('auth');
+Route::get('dashboard/', 'App\Http\Controllers\Dashboard\HomeController@index')->name('dashboard')->middleware('auth');
 
-Route::resource('panel-de-administracion/cities', 'App\Http\Controllers\Dashboard\CityController')->except('show', 'delete')->middleware('auth');
-Route::resource('panel-de-administracion/locations', 'App\Http\Controllers\Dashboard\LocationController')->except('show')->middleware('auth');
-Route::resource('panel-de-administracion/activities', 'App\Http\Controllers\Dashboard\ActivityController')->except('show', 'create')->middleware('auth');
-Route::resource('panel-de-administracion/types', 'App\Http\Controllers\Dashboard\TypeController')->except('show', 'create')->middleware('auth');
-Route::resource('panel-de-administracion/services', 'App\Http\Controllers\Dashboard\ServiceController')->middleware('auth');
+Route::resource('dashboard/cities', 'App\Http\Controllers\Dashboard\CityController')->except('show', 'delete')->middleware('auth');
+Route::resource('dashboard/locations', 'App\Http\Controllers\Dashboard\LocationController')->except('show')->middleware('auth');
+Route::resource('dashboard/activities', 'App\Http\Controllers\Dashboard\ActivityController')->except('show', 'create')->middleware('auth');
+Route::resource('dashboard/types', 'App\Http\Controllers\Dashboard\TypeController')->except('show', 'create')->middleware('auth');
+Route::resource('dashboard/services', 'App\Http\Controllers\Dashboard\ServiceController')->middleware('auth');
 
-Route::get('panel-de-administracion/users', 'App\Http\Controllers\Dashboard\UserController@index')->name('user.index')->middleware('auth');
-Route::post('panel-de-administracion/users', 'App\Http\Controllers\Dashboard\UserController@store')->name('user.store')->middleware('auth');
+Route::get('dashboard/users', 'App\Http\Controllers\Dashboard\UserController@index')->name('user.index')->middleware('auth');
+Route::post('dashboard/users', 'App\Http\Controllers\Dashboard\UserController@store')->name('user.store')->middleware('auth');
 
-Route::get('panel-de-administracion/preferences', 'App\Http\Controllers\Dashboard\PreferenceController@index')->name('preference.index')->middleware('auth');
-Route::put('panel-de-administracion/preferences/{preference}', 'App\Http\Controllers\Dashboard\PreferenceController@update')->name('preference.update')->middleware('auth');
+Route::get('dashboard/preferences', 'App\Http\Controllers\Dashboard\PreferenceController@index')->name('preference.index')->middleware('auth');
+Route::put('dashboard/preferences/{preference}', 'App\Http\Controllers\Dashboard\PreferenceController@update')->name('preference.update')->middleware('auth');
 
-Route::get('panel-de-administracion/districts', 'App\Http\Controllers\Dashboard\DistrictController@index')->name('district.index')->middleware('auth');
-Route::get('panel-de-administracion/districts/{district}/edit', 'App\Http\Controllers\Dashboard\DistrictController@edit')->name('district.edit')->middleware('auth');
-Route::put('panel-de-administracion/districts/{district}', 'App\Http\Controllers\Dashboard\DistrictController@update')->name('district.update')->middleware('auth');
+Route::get('dashboard/districts', 'App\Http\Controllers\Dashboard\DistrictController@index')->name('district.index')->middleware('auth');
+Route::get('dashboard/districts/{district}/edit', 'App\Http\Controllers\Dashboard\DistrictController@edit')->name('district.edit')->middleware('auth');
+Route::put('dashboard/districts/{district}', 'App\Http\Controllers\Dashboard\DistrictController@update')->name('district.update')->middleware('auth');
 
 //polymorphic routes
-Route::get('panel-de-administracion/addresses/{address}/edit', 'App\Http\Controllers\Dashboard\ModifyAddressController@edit')->name('address.edit')->middleware('auth');
-Route::put('panel-de-administracion/addresses/{address}/', 'App\Http\Controllers\Dashboard\ModifyAddressController@update')->name('address.edit')->middleware('auth');
+Route::get('dashboard/addresses/{address}/edit', 'App\Http\Controllers\Dashboard\ModifyAddressController@edit')->name('address.edit')->middleware('auth');
+Route::put('dashboard/addresses/{address}/', 'App\Http\Controllers\Dashboard\ModifyAddressController@update')->name('address.edit')->middleware('auth');
 
-Route::get('panel-de-administracion/contacts/{type}/{id}/create', 'App\Http\Controllers\Dashboard\ContactController@create')->name('contact.create')->middleware('auth');
-Route::post('panel-de-administracion/contacts/{type}/{id}', 'App\Http\Controllers\Dashboard\ContactController@store')->name('contact.store')->middleware('auth');
-Route::delete('panel-de-administracion/contacts/{contact}', 'App\Http\Controllers\Dashboard\ContactController@destroy')->name('contact.destroy')->middleware('auth');
-Route::get('panel-de-administracion/contacts/{contact}/edit', 'App\Http\Controllers\Dashboard\ContactController@edit')->name('contact.edit')->middleware('auth');
-Route::put('panel-de-administracion/contacts/{contact}/', 'App\Http\Controllers\Dashboard\ContactController@update')->name('contact.edit')->middleware('auth');
+Route::get('dashboard/contacts/{type}/{id}/create', 'App\Http\Controllers\Dashboard\ContactController@create')->name('contact.create')->middleware('auth');
+Route::post('dashboard/contacts/{type}/{id}', 'App\Http\Controllers\Dashboard\ContactController@store')->name('contact.store')->middleware('auth');
+Route::delete('dashboard/contacts/{contact}', 'App\Http\Controllers\Dashboard\ContactController@destroy')->name('contact.destroy')->middleware('auth');
+Route::get('dashboard/contacts/{contact}/edit', 'App\Http\Controllers\Dashboard\ContactController@edit')->name('contact.edit')->middleware('auth');
+Route::put('dashboard/contacts/{contact}/', 'App\Http\Controllers\Dashboard\ContactController@update')->name('contact.edit')->middleware('auth');
 
-Route::get('panel-de-administracion/photos/{type}/{id}/create', 'App\Http\Controllers\Dashboard\PhotoController@create')->name('photo.create')->middleware('auth');
-Route::post('panel-de-administracion/photos/{type}/{id}', 'App\Http\Controllers\Dashboard\PhotoController@store')->name('photo.store')->middleware('auth');
-Route::delete('panel-de-administracion/photos/{image}', 'App\Http\Controllers\Dashboard\PhotoController@destroy')->name('photo.destroy')->middleware('auth');
-Route::get('panel-de-administracion/photos/mark-as-primary/{image}', 'App\Http\Controllers\Dashboard\PhotoController@mark')->name('photo.mark')->middleware('auth');
-Route::get('panel-de-administracion/photos/{type}/{id}', 'App\Http\Controllers\Dashboard\PhotoController@show')->name('photo.index')->middleware('auth');
+Route::get('dashboard/photos/{type}/{id}/create', 'App\Http\Controllers\Dashboard\PhotoController@create')->name('photo.create')->middleware('auth');
+Route::post('dashboard/photos/{type}/{id}', 'App\Http\Controllers\Dashboard\PhotoController@store')->name('photo.store')->middleware('auth');
+Route::delete('dashboard/photos/{image}', 'App\Http\Controllers\Dashboard\PhotoController@destroy')->name('photo.destroy')->middleware('auth');
+Route::get('dashboard/photos/mark-as-primary/{image}', 'App\Http\Controllers\Dashboard\PhotoController@mark')->name('photo.mark')->middleware('auth');
+Route::get('dashboard/photos/{type}/{id}', 'App\Http\Controllers\Dashboard\PhotoController@show')->name('photo.index')->middleware('auth');
 
 //auth routes
 Route::get('login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login.form');

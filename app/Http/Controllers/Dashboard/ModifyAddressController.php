@@ -30,7 +30,7 @@ class ModifyAddressController extends Controller
             $addressable = "services";
         }
 
-        return redirect('panel-de-administracion/'.$addressable.'/'.$address->addressable->id);
+        return redirect('dashboard/'.$addressable.'/'.$address->addressable->id);
     }
 
     private function validateAddress($request)

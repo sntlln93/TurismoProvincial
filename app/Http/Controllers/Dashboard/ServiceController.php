@@ -88,7 +88,7 @@ class ServiceController extends Controller
             }
         });
 
-        return redirect('panel-de-administracion/services');
+        return redirect('dashboard/services');
     }
 
     public function edit(Service $service)
@@ -105,7 +105,7 @@ class ServiceController extends Controller
         $service_data = $this->validateService($request, $service->id);
         $service->update($service_data);
 
-        return redirect('panel-de-administracion/services');
+        return redirect('dashboard/services');
     }
 
     public function destroy(Service $service)

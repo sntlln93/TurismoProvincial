@@ -23,8 +23,7 @@
     </div>
 
     <div class="modal-body newservice">
-        <form action="{{ url('panel-de-administracion/services') }}" method="POST" class="modal-body"
-            enctype="multipart/form-data">
+        <form action="{{ url('dashboard/services') }}" method="POST" class="modal-body" enctype="multipart/form-data">
             @csrf
             <div>
                 <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name" value=""

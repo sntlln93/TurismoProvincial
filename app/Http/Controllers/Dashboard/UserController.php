@@ -36,7 +36,7 @@ class UserController extends Controller
 
         User::create($user_data);
 
-        return redirect('panel-de-administracion/users');
+        return redirect('dashboard/users');
     }
 
     private function validateUser($request)

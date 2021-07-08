@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="icon">
-                    <a href="{{ url('panel-de-administracion/cities/' . $city->id . '/edit') }}" class="btn-edit"><i
+                    <a href="{{ url('dashboard/cities/' . $city->id . '/edit') }}" class="btn-edit"><i
                             class="icon-edit"></i></a>
                 </div>
             </section>

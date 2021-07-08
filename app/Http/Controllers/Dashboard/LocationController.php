@@ -18,7 +18,7 @@ class LocationController extends Controller
     public function index()
     {
         if (!Auth::user()->district_id) {
-            return redirect("panel-de-administracion/users");
+            return redirect("dashboard/users");
         }
 
         $locations = Auth::user()->district->addresses->where('addressable_type', 'App\\Models\\Location');
@@ -84,7 +84,7 @@ class LocationController extends Controller
             ]);
         });
 
-        return redirect('panel-de-administracion/locations');
+        return redirect('dashboard/locations');
     }
 
     public function store(Request $request, StoreImageService $service) //, GetCoordsFromLinkService $service)
@@ -119,7 +119,7 @@ class LocationController extends Controller
             }
         });
 
-        return redirect('panel-de-administracion/locations');
+        return redirect('dashboard/locations');
     }
 
     public function validateLocation($request)
@@ -157,6 +157,6 @@ class LocationController extends Controller
             $location->delete();
         });
 
-        return redirect('panel-de-administracion/locations');
+        return redirect('dashboard/locations');
     }
 }

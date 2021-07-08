@@ -35,7 +35,7 @@ class ContactController extends Controller
             'contactable_type' => $contactable
         ]);
 
-        return redirect('panel-de-administracion/' . $type . '/' . $id);
+        return redirect('dashboard/' . $type . '/' . $id);
     }
 
     public function edit(Contact $contact)

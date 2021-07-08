@@ -1,19 +1,18 @@
 @extends('dashboard.layouts.app')
 
 @section('styles')
-    <style>
-        .error-message {
-            color: red;
-            margin: 0 1em 1em 0;
-            font-weight: 500;
-            text-align: right;
-        }
+<style>
+    .error-message {
+        color: red;
+        margin: 0 1em 1em 0;
+        font-weight: 500;
+        text-align: right;
+    }
 
-        .error-input {
-            border-color: red !important;
-        }
-
-    </style>
+    .error-input {
+        border-color: red !important;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -21,15 +20,15 @@
     <div class="title">
         <h2>Subtipo de servicio</h2>
     </div>
-    
+
     <div class="row">
         <div class="add-other only-button">
-            <button id="open"> 
+            <button id="open">
                 <i class="icon-plus"></i> Nuevo subtipo
             </button>
         </div>
     </div>
-    
+
     <div id="miModal" class="modal add">
         <div class="flex" id="flex">
             <div class="container-modal">
@@ -38,18 +37,22 @@
                     <span class="close" id="close">&times;</span>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('panel-de-administracion/types') }}" method="POST">
+                    <form action="{{ url('dashboard/types') }}" method="POST">
                         @csrf
-                        <div><h4>Tipo:</h4>
+                        <div>
+                            <h4>Tipo:</h4>
                             <select name="type_id">
                                 @foreach($types as $type)
-                                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                <option value="{{ $type->id }}">{{ $type->name }}</option>
                                 @endforeach
-                            </select>  
+                            </select>
                         </div>
-                        <div><h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name" value="" placeholder=""></div>
+                        <div>
+                            <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name"
+                                value="" placeholder="">
+                        </div>
                         @error('name') <small class="error-message">{{ $message }}</small> @enderror
-                        <button type="submit" class="save">Guardar<i class="icon-floppy"></i>    
+                        <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
                     </form>
                 </div>
             </div>
@@ -58,43 +61,44 @@
 
     <div class="accordion articles">
         @foreach($types as $type)
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    @if($type->name == "Alojamiento")
-                        <i class="icon-bed"></i>
-                    @elseif($type->name == "Gastronomía")
-                        <i class="icon-food"></i>
-                    @elseif($type->name == "Transporte")
-                        <i class="icon-bus"></i>
-                    @else
-                        <i class="icon-cog"></i>
-                    @endif
+        <div class="accordion-item">
+            <div class="accordion-header">
+                @if($type->name == "Alojamiento")
+                <i class="icon-bed"></i>
+                @elseif($type->name == "Gastronomía")
+                <i class="icon-food"></i>
+                @elseif($type->name == "Transporte")
+                <i class="icon-bus"></i>
+                @else
+                <i class="icon-cog"></i>
+                @endif
 
-                    {{ $type->name }}
-                </div>
-                <div class="accordion-body">
-                    @foreach($type->subTypes as $sub_type)
-                    <div class="article">
-                        <div class="article-info">
-                            <div class="info-1 servicetype">
-                                <b>{{ $sub_type->name }}</b> 
-                            </div>
-                            <div class="info-2 servicetype">
-                                <b>Creado:</b> {{ $sub_type->created_at->diffForHumans() }} </br>
-                                <b>Modificado:</b> {{ $sub_type->updated_at->diffForHumans() }}
-                            </div>
+                {{ $type->name }}
+            </div>
+            <div class="accordion-body">
+                @foreach($type->subTypes as $sub_type)
+                <div class="article">
+                    <div class="article-info">
+                        <div class="info-1 servicetype">
+                            <b>{{ $sub_type->name }}</b>
                         </div>
-                        <div class="icon">
-                            <a href="{{ url('panel-de-administracion/types/'.$sub_type->id.'/edit') }}" class="btn-edit" id="open-edit"><i class="icon-edit"></i></a>
-                            <form action="{{ url('panel-de-administracion/types/'.$sub_type->id) }}" method="POST">
-                                @csrf @method('DELETE')
-                                <button class="btn-delete" type="submit"><i class="icon-trash-empty"></i></button>                  
-                            </form>
+                        <div class="info-2 servicetype">
+                            <b>Creado:</b> {{ $sub_type->created_at->diffForHumans() }} </br>
+                            <b>Modificado:</b> {{ $sub_type->updated_at->diffForHumans() }}
                         </div>
                     </div>
-                    @endforeach
+                    <div class="icon">
+                        <a href="{{ url('dashboard/types/'.$sub_type->id.'/edit') }}" class="btn-edit" id="open-edit"><i
+                                class="icon-edit"></i></a>
+                        <form action="{{ url('dashboard/types/'.$sub_type->id) }}" method="POST">
+                            @csrf @method('DELETE')
+                            <button class="btn-delete" type="submit"><i class="icon-trash-empty"></i></button>
+                        </form>
+                    </div>
                 </div>
+                @endforeach
             </div>
+        </div>
         @endforeach
     </div>
 
@@ -107,15 +111,18 @@
                 </div>
                 <div class="modal-body">
                     <form action="">
-                        <div><h4>Tipo:</h4>
+                        <div>
+                            <h4>Tipo:</h4>
                             <select name="type" type="text">
                                 <option>Alojamiento</option>
                                 <option>Gastronomía</option>
                                 <option>Transporte</option>
-                            </select>  
+                            </select>
                         </div>
-                        <div><h4>Nombre:</h4><input type="text" name="name" value="" placeholder=""></div>
-                        <button type="submit" class="save">Guardar<i class="icon-floppy"></i>    
+                        <div>
+                            <h4>Nombre:</h4><input type="text" name="name" value="" placeholder="">
+                        </div>
+                        <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
                     </form>
                 </div>
             </div>
@@ -125,15 +132,15 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/accordion.js') }}"></script>
-    <script src="{{ asset('js/modal.js') }}"></script>
+<script src="{{ asset('js/accordion.js') }}"></script>
+<script src="{{ asset('js/modal.js') }}"></script>
 
-    @if ($errors->any())
-        <script>
-            const createForm = document.getElementById("miModal");
+@if ($errors->any())
+<script>
+    const createForm = document.getElementById("miModal");
             createForm.style.display = "block";
 
-        </script>
-    @endif
+</script>
+@endif
 
 @endsection

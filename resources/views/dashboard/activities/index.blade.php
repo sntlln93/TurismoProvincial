@@ -44,8 +44,7 @@
 
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('panel-de-administracion/activities') }}" method="POST"
-                        enctype="multipart/form-data">
+                    <form action="{{ url('dashboard/activities') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div>
                             <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name"
@@ -129,11 +128,11 @@
                 </div>
             </div>
             <div class="icon">
-                <a href="{{ url('panel-de-administracion/photos/activities/'.$activity->id) }}" class="btn-show"><i
+                <a href="{{ url('dashboard/photos/activities/'.$activity->id) }}" class="btn-show"><i
                         class="icon-picture"></i></a>
-                <a href="{{ url('panel-de-administracion/activities/'.$activity->id.'/edit') }}" class="btn-edit"><i
+                <a href="{{ url('dashboard/activities/'.$activity->id.'/edit') }}" class="btn-edit"><i
                         class="icon-edit"></i></a>
-                <form action="{{ url('panel-de-administracion/activities/'.$activity->id) }}" method="POST">
+                <form action="{{ url('dashboard/activities/'.$activity->id) }}" method="POST">
                     @csrf @method('DELETE')
                     <button class="btn-delete" type="submit"><i class="icon-trash-empty"></i></button>
                 </form>
