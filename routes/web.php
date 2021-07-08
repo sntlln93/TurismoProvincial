@@ -7,7 +7,7 @@ Route::get('dashboard/', 'App\Http\Controllers\Dashboard\HomeController@index')-
 
 Route::resource('dashboard/cities', 'App\Http\Controllers\Dashboard\CityController')->except('show', 'delete')->middleware('auth');
 Route::resource('dashboard/locations', 'App\Http\Controllers\Dashboard\LocationController')->except('show')->middleware('auth');
-Route::resource('dashboard/activities', 'App\Http\Controllers\Dashboard\ActivityController')->except('show', 'create')->middleware('auth');
+Route::resource('dashboard/activities', 'App\Http\Controllers\Dashboard\ActivityController')->except('show')->middleware('auth');
 Route::resource('dashboard/types', 'App\Http\Controllers\Dashboard\TypeController')->except('show', 'create')->middleware('auth');
 Route::resource('dashboard/services', 'App\Http\Controllers\Dashboard\ServiceController')->middleware('auth');
 

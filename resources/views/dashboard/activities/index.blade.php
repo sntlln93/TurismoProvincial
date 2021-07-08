@@ -28,83 +28,9 @@
             <button><i class="icon-search"></i></button>
         </div>
         <div class="add-other">
-            <button id="open">
+            <button id="newActivity">
                 <i class="icon-plus"></i> Nueva experiencia
             </button>
-        </div>
-    </div>
-
-
-    <div id="miModal" class="modal add">
-        <div class="flex" id="flex">
-            <div class="container-modal">
-                <div class="modal-header flex">
-                    <h2>Nueva actividad</h2>
-                    <span class="close" id="close">&times;</span>
-
-                </div>
-                <div class="modal-body">
-                    <form action="{{ url('dashboard/activities') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div>
-                            <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name"
-                                value="" placeholder="">
-                        </div>
-                        @error('name') <small class="error-message">{{ $message }}</small> @enderror
-
-                        <div>
-                            <h4>Responsable:</h4><input class="@error('responsable') error-input @enderror" type="text"
-                                name="responsable" value="" placeholder="">
-                        </div>
-                        @error('responsable') <small class="error-message">{{ $message }}</small> @enderror
-
-                        <div>
-                            <h4>Precio:</h4><input class="@error('amount') error-input @enderror" type="number"
-                                name="amount" value="" placeholder="">
-                        </div>
-                        @error('amount') <small class="error-message">{{ $message }}</small> @enderror
-
-                        <div>
-                            <h4>Atractivo turístico:</h4>
-                            <select name="location_id" id="" class="@error('location_id') error-input @enderror">
-                                <option></option>
-                                @foreach($locations as $address)
-                                @php($location = $address->addressable)
-                                <option value="{{ $location->id }}">{{ $location->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        @error('location_id') <small class="error-message">{{ $message }}</small> @enderror
-
-                        <div>
-                            <h4>Inicio:</h4><input class="@error('start') error-input @enderror" type="datetime-local"
-                                name="start" value="" placeholder="">
-                        </div>
-                        @error('start') <small class="error-message">{{ $message }}</small> @enderror
-
-                        <div>
-                            <h4>Fin:</h4><input class="@error('end') error-input @enderror" type="datetime-local"
-                                name="end" value="" placeholder="">
-                        </div>
-                        @error('end') <small class="error-message">{{ $message }}</small> @enderror
-
-                        <div>
-                            <h4>Descripción:</h4>
-                            <textarea class="@error('description') error-input @enderror" name="description" rows="6"
-                                placeholder="Escribe aquí la descripción"></textarea>
-                        </div>
-                        @error('description') <small class="error-message">{{ $message }}</small> @enderror
-
-                        <div>
-                            <h4>Foto:</h4><input class="@error('photos') error-input @enderror" type="file"
-                                name="photos[]" accept="image/jpeg" multiple>
-                        </div>
-                        @error('photos') <small class="error-message">{{ $message }}</small> @enderror
-
-                        <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -145,15 +71,11 @@
 
 
 @section('scripts')
-<script src="{{ asset('js/modal.js') }}"></script>
-
-
-@if($errors->any())
 <script>
-    const createForm = document.getElementById("miModal");
-        createForm.style.display = "block";
+    document.getElementById('newActivity').addEventListener('click', () => {
+        window.location.href = "{{ route('activities.create') }}";
+    })
 </script>
-@endif
 
 <script>
     const input = document.getElementById("activity-search");
