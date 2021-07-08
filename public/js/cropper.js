@@ -3,6 +3,14 @@ var galleryImagesContainer = document.getElementById("galleryImages");
 var imageCropFileInput = document.getElementById("imageCropFileInput");
 var cropperImageInitCanvas = document.getElementById("cropperImg");
 var cropImageButton = document.getElementById("cropImageBtn");
+
+let aspectRatio = 1789 / 660;
+
+const setAspectRatio = (newAspectRatio) => {
+    console.log("hoias");
+    aspectRatio = newAspectRatio;
+};
+
 // Crop Function On change
 function imagesPreview(input) {
     var cropper;
@@ -87,6 +95,8 @@ function imagesPreview(input) {
     }
 }
 imageCropFileInput.addEventListener("change", function (event) {
+    const currentImage = document.querySelector(".current--container");
+    if (currentImage) currentImage.style.display = "none";
     imagesPreview(event.target);
 });
 // Initialize Cropper
@@ -112,8 +122,6 @@ function cropInit(selector) {
     var ctx = image.getContext("2d");
     ctx.putImageData(imgData, 0, 0);
 
-    const aspectRatio = 1789 / 660;
-
     const options = {
         viewMode: 1,
         restore: true,
@@ -128,20 +136,7 @@ function cropInit(selector) {
 
     cropper = new Cropper(image, options);
 }
-// Initialize Cropper on CLick On Image
-// function cropInitOnClick(selector) {
-//   if(cropperImageInitCanvas.cropper){
-//       cropperImageInitCanvas.cropper.destroy();
-//       // cropImageButton.style.display = 'none';
-//       cropInit(selector);
-//       // addCropButton();
-//       // cropImageButton.style.display = 'block';
-//   } else {
-//       cropInit(selector);
-//       // addCropButton();
-//       // cropImageButton.style.display = 'block';
-//   }
-// }
+
 // Crop Image
 function image_crop() {
     if (cropperImageInitCanvas.cropper) {
@@ -149,7 +144,7 @@ function image_crop() {
             width: 250,
             height: 250,
         });
-        // document.getElementById('cropImages').appendChild(cropcanvas);
+
         var ctx = cropcanvas.getContext("2d");
         var imgData = ctx.getImageData(
             0,
@@ -157,7 +152,7 @@ function image_crop() {
             cropcanvas.width,
             cropcanvas.height
         );
-        // var image = document.getElementById(c);
+
         c.width = cropcanvas.width;
         c.height = cropcanvas.height;
         var ctx = c.getContext("2d");
@@ -173,7 +168,6 @@ function image_crop() {
             element.style.display = "block";
         }
         urlConversion();
-        // cropperImageInitCanvas.style.display = 'none';
     } else {
         alert("Please select any Image you want to crop");
     }
@@ -187,18 +181,7 @@ function removeSingleCanvas(selector) {
     selector.parentNode.remove();
     urlConversion();
 }
-// Dynamically Add Crop Btn
-// function addCropButton() {
-//   // add crop button
-//     var cropBtn = document.createElement('button');
-//     cropBtn.setAttribute('type', 'button');
-//     cropBtn.id = 'cropImageBtn';
-//     cropBtn.className = 'btn btn-block crop-button';
-//     var cropBtntext = document.createTextNode('crop');
-//     cropBtn.appendChild(cropBtntext);
-//     document.getElementById('cropper').appendChild(cropBtn);
-//     cropBtn.onclick = function() { image_crop(cropBtn.id); };
-// }
+
 // Get Converted Url
 function urlConversion() {
     const croppedContainer = document.getElementById("croppedContainer");

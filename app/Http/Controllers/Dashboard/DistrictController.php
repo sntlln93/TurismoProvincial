@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-
+use App\Services\StoreImageService;
 use App\Models\District;
 use App\Models\Image;
 
@@ -35,7 +35,7 @@ class DistrictController extends Controller
         return view('dashboard.districts.edit')->with('district', $district);
     }
 
-    public function update(Request $request, District $district)
+    public function update(Request $request, District $district, StoreImageService $service)
     {
         $can_edit = Auth::user()->district_id == null || Auth::user()->district_id == $district->id;
 
@@ -46,27 +46,27 @@ class DistrictController extends Controller
         $validated_data = $request->validate([
             'mayor' => 'required',
             'description' => 'sometimes',
-            'photo' => 'sometimes|image|mimes:jpg,jpeg',
+            'photos' => 'sometimes',
         ]);
 
-        DB::transaction(function () use ($district, $validated_data) {
+        DB::transaction(function () use ($district, $validated_data, $service) {
 
             $district->update([
                 'mayor' => $validated_data['mayor'],
                 'description' => $validated_data['description'],
             ]);
 
-            if (array_key_exists('photo', $validated_data)) {
+            if (array_key_exists('photos', $validated_data)) {
                 if (!$district->image) {
                     Image::create([
-                        'path' => $validated_data['photo']->store('districts', 'public'),
+                        'path' => $service->store($validated_data['photos'][0], 'districts'),
                         'imageable_id' => $district->id,
                         'imageable_type' => 'App\\Models\\District'
                     ]);
                 } else {
                     $image = $district->image;
                     Storage::delete('public/' . $image->path);
-                    $image->update(['path' => $validated_data['photo']->store('districts', 'public')]);
+                    $image->update(['path' => $service->store($validated_data['photos'][0], 'districts')]);
                 }
             }
         });

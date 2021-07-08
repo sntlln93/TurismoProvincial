@@ -1,16 +1,98 @@
 @extends('dashboard.layouts.app')
 
 @section('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css">
 <style>
     .error-message {
         color: red;
-        margin: 0 1em 1em 0;
+        margin: 0 0 1em 0;
         font-weight: 500;
         text-align: right;
     }
 
     .error-input {
         border-color: red !important;
+    }
+
+    .current--container {
+        width: 75% !important;
+        margin: 0 10px 0 auto;
+    }
+
+    .current--images {
+        max-width: 300px;
+        display: inline-block;
+        position: relative;
+        margin: 2px;
+    }
+
+    .current--images>img {
+        width: 100%;
+        height: auto;
+    }
+
+    .cropper--container {
+        width: 75% !important;
+        margin-right: 10px;
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #galleryImages,
+    #cropper {
+        width: 100%;
+        float: left;
+    }
+
+    canvas {
+        max-width: 100%;
+        display: inline-block;
+    }
+
+    #cropperImg {
+        /*max-width: 0;
+    max-height: 0;*/
+    }
+
+    #cropImageBtn {
+        display: none;
+        margin: .6em;
+        padding: .6em;
+        border-radius: 5px;
+        box-shadow: 10px;
+        background: #4032ac;
+        border: 0;
+        color: var(--second-color);
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .img-preview {
+        float: left;
+    }
+
+    .singleImageCanvasContainer {
+        max-width: 300px;
+        display: inline-block;
+        position: relative;
+        margin: 2px;
+    }
+
+    .singleImageCanvasCloseBtn {
+        position: absolute !important;
+        top: 5px;
+        right: 5px;
+        display: none;
+        margin: .6em;
+        padding: .6em;
+        border-radius: 5px;
+        box-shadow: 10px;
+        background: var(--first-color);
+        color: var(--second-color);
+        border: 0;
     }
 </style>
 @endsection
@@ -43,17 +125,31 @@
                 {{ Str::of($district->description)->length() }}/1000</small>
         </div>
 
-        <div>
-            <h4>Foto:</h4><input class="@error('photo') error-input @enderror" type="file" name="photo"
-                accept="image/png, .jpeg, .jpg" multiple>
+        <div id="croppedContainer">
+            <h4>Foto:</h4><input class="@error('photo') error-input @enderror" type="file" id="imageCropFileInput"
+                accept="image/jpeg">
         </div>
-        <div id="district-image-container">
-            @if ($district->image)
-            <img id="district-image" src="{{ asset('storage/' . $district->image->path) }}" alt="{{ $district->name }}">
-            @endif
+        @if ($district->image)
+        <div class="current--container">
+            <div class="current--images">
+                <img id="district-image" src="{{ asset('storage/' . $district->image->path) }}"
+                    alt="{{ $district->name }}">
+            </div>
         </div>
-        @error('photo') <small class="error-message">{{ $message }}</small> @enderror
         @endif
+        @error('photo') <small class="error-message">{{ $message }}</small> @enderror
+
+        @endif
+
+        <div class="cropper--container">
+            <input type="hidden" id="croppedImgs">
+            <div id="galleryImages"></div>
+            <div id="cropper">
+                <canvas id="cropperImg" width="0" height="0"></canvas>
+            </div>
+            <button class="cropImageBtn cropBtn" id="cropImageBtn">Recortar</button>
+        </div>
+
 
         <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
     </form>
@@ -62,4 +158,9 @@
 
 @section('scripts')
 <script src="{{ asset('js/contcharsedit.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+<script src="{{ asset('js/cropper.js') }}"></script>
+<script>
+    window.addEventListener('load', () => setAspectRatio(44/25));
+</script>
 @endsection
