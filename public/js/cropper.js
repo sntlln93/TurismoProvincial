@@ -4,6 +4,8 @@ var imageCropFileInput = document.getElementById("imageCropFileInput");
 var cropperImageInitCanvas = document.getElementById("cropperImg");
 var cropImageButton = document.getElementById("cropImageBtn");
 
+let croppedImages = [];
+
 let aspectRatio = 1789 / 660;
 
 const setAspectRatio = (newAspectRatio) => {
@@ -157,6 +159,10 @@ function image_crop() {
         c.height = cropcanvas.height;
         var ctx = c.getContext("2d");
         ctx.putImageData(imgData, 0, 0);
+
+        console.log(cropperImageInitCanvas.cropper.getData());
+        croppedImages.push(cropperImageInitCanvas.cropper.getData());
+
         cropperImageInitCanvas.cropper.destroy();
         cropperImageInitCanvas.width = 0;
         cropperImageInitCanvas.height = 0;
@@ -202,3 +208,5 @@ function urlConversion() {
         croppedContainer.appendChild(croppedImgInput);
     }
 }
+
+const saveData = () => {};

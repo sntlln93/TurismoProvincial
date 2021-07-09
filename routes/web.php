@@ -1,6 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+
+Route::get('testing', function(){
+    return view('testing');
+});
+
+Route::post('testing', function(Request $request){
+    $path = $request->imagen->store('test', 'public');
+    $img = Image::make(public_path('storage/'.$path))->crop(
+            intval(ceil(1280)),
+            intval(ceil(472.219116825042)),
+            intval(ceil(0)),
+            intval(ceil(230.92220500478456)))
+        ->save(public_path('storage/cities/asd.webp'));
+});
 
 //dashboard routes
 Route::get('dashboard/', 'App\Http\Controllers\Dashboard\HomeController@index')->name('dashboard')->middleware('auth');
