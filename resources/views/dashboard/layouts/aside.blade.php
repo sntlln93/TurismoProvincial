@@ -14,9 +14,6 @@
         <li class="{{ Str::contains(Route::currentRouteName(), 'services') ? 'aside-link-active' : null }}">
             <a href="{{ url('dashboard/services') }}"><i class="icon-th-large"></i>Servicios</a>
         </li>
-        <li class="{{ Str::contains(Route::currentRouteName(), 'microservices') ? 'aside-link-active' : null }}">
-            <a href="{{ url('dashboard/microservices') }}"><i class="icon-info"></i>Microservicios</a>
-        </li>
         <li class="{{ Str::contains(Route::currentRouteName(), 'districts') ? 'aside-link-active' : null }}">
             <a href="{{ url('dashboard/districts/' . Auth::user()->district_id . '/edit') }}"><i
                     class="icon-map-o"></i>Modificar Municipio</a>
