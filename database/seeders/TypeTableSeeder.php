@@ -58,24 +58,6 @@ class TypeTableSeeder extends Seeder
             'slug' => 'hostels'
         ]);
 
-        $micro = Type::create([
-            'name' => 'Microservicios',
-            'type_id' => null,
-            'slug' => 'microservicios'
-        ]);
-
-        Type::create([
-            'name' => 'Kioscos',
-            'type_id' => $micro->id,
-            'slug' => 'kiosco'
-        ]);
-
-        Type::create([
-            'name' => 'Farmacias',
-            'type_id' => $micro->id,
-            'slug' => 'farmacias'
-        ]);
-        
         Type::create([
             'name' => 'Transporte Público',
             'type_id' => $transport->id,

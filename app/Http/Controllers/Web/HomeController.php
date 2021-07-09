@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('web.about')->with('district', $district->load('preferences'));
     }
+
+    public function microservices(District $district)
+    {
+        return view('web.microservices')->with('district', $district->load('preferences'));
+    }
 }

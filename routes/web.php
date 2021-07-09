@@ -77,7 +77,6 @@ Route::get('{district:slug}/gastronomia/{service:slug}', 'App\Http\Controllers\W
 Route::get('{district:slug}/alojamiento', 'App\Http\Controllers\Web\LodgingServiceController@index')->name('lodging-page');
 Route::get('{district:slug}/alojamiento/{service:slug}', 'App\Http\Controllers\Web\LodgingServiceController@show')->name('lodging-single-page');
 
-Route::get('{district:slug}/transporte', 'App\Http\Controllers\Web\TransportServiceController@index')->name('transport-page');
 
 Route::get('{district:slug}/localidades', 'App\Http\Controllers\Web\CityController@index')->name('cities-page');
 Route::get('{district:slug}/localidades/{city:slug}', 'App\Http\Controllers\Web\CityController@show')->name('city-page');
@@ -85,4 +84,5 @@ Route::get('{district:slug}/localidades/{city:slug}', 'App\Http\Controllers\Web\
 Route::get('{district:slug}/lugares', 'App\Http\Controllers\Web\LocationController@index')->name('locations-page');
 Route::get('{district:slug}/lugares/{location:slug}', 'App\Http\Controllers\Web\LocationController@show')->name('location-page');
 
-
+Route::get('{district:slug}/transporte', 'App\Http\Controllers\Web\TransportServiceController@index')->name('transport-page');
+Route::get('{district:slug}/cerca-tuyo', 'App\Http\Controllers\Web\HomeController@microservices')->name('microservices');
