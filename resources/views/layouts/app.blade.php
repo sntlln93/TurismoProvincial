@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <!-- Tell the browser to be responsive to screen width -->
@@ -9,16 +10,18 @@
     <!-- Custom CSS -->
     <link href="{{ asset('css/styles-web.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/fontello.css') }}" rel="stylesheet">    
+    <link href="{{ asset('css/fontello.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
+    @yield('styles')
     @include('layouts.preference-variables')
 
     <title>Turismo @yield('title')</title>
 </head>
+
 <body>
 
     @include('layouts.header')
-        
+
     @yield('content')
 
     @include('layouts.footer')
@@ -28,4 +31,5 @@
     @yield('scripts')
 
 </body>
+
 </html>
