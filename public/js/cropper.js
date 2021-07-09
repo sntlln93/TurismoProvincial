@@ -6,7 +6,7 @@ var cropImageButton = document.getElementById("cropImageBtn");
 
 let croppedImages = [];
 
-let aspectRatio = 1789 / 660;
+let aspectRatio = 5 / 3;
 
 const setAspectRatio = (newAspectRatio) => {
     console.log("hoias");
