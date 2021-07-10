@@ -6,6 +6,11 @@
     <div class="title">
         <h2>Servicios</h2>
     </div>
+    <p class="subtitle">Verás estos cambios en 
+    <a href="#" target="_blank">Gastronomía</a> - 
+    <a href="#" target="_blank">Alojamiento</a> - 
+    <a href="#" target="_blank">Transporte</a>
+    </p>
 
     <div class="row">
         <!-- <div class="search">
@@ -53,7 +58,7 @@
                 @elseif($type->name == "Transporte")
                 <i class="icon-bus"></i>
                 @endif
-                {{ $type->name }}
+                {{ $type->name }} 
             </div>
             <div class="accordion-body">
                 @foreach ($type->subtypes as $subtype)
