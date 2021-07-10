@@ -1,26 +1,14 @@
 @extends('dashboard.layouts.app')
 
-@section('styles')
-<style>
-    .error-message {
-        color: red;
-        margin: 0 1em 1em 0;
-        font-weight: 500;
-        text-align: right;
-    }
-
-    .error-input {
-        border-color: red !important;
-    }
-</style>
-@endsection
-
 @section('content')
 <main>
     @if (Auth::user()->district_id)
     <div class="title">
         <h2>Localidades</h2>
     </div>
+    <p class="subtitle">Verás estos cambios en 
+        <a href="#" target="_blank">Localidades</a>
+    </p>
 
     <div class="row">
         <div class="search">

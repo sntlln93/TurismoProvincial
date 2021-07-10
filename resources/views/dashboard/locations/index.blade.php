@@ -5,6 +5,9 @@
     <div class="title">
         <h2>Atractivos turísticos</h2>
     </div>
+    <p class="subtitle">Verás estos cambios en 
+        <a href="#" target="_blank">Atractivos turísticos</a>
+    </p>
 
     <div class="row">
         <div class="search">
