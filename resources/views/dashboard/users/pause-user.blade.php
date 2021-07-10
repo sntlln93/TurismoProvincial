@@ -13,7 +13,7 @@
                 <span class="close" id="close-edit">&times;</span>
             </div>
             <div class="modal-body">
-                <form action="{{ url('dashboard/pause-user/'.$user->id) }}" method="POST">
+                <form action="{{ url('dashboard/pause-user/'.$user->id) }}" method="POST" class="modal-body">
                     @csrf @method('PUT')
                     <div>
                         <h4>Motivo:</h4><input type="text" name="paused_for" placeholder="Indicá el motivo">

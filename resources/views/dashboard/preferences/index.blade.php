@@ -8,7 +8,7 @@
 <main>
     <div class="title">
         <h2>Preferencias de página web</h2>
-        <p class="subtitle">Verás estos cambios en <a href="{{ url($preferences->district->slug) }}">el sitio web de
+        <p class="subtitle">Verás estos cambios en <a href="{{ url($preferences->district->slug) }}" target="_blank">el sitio web de
                 {{ $preferences->district->name }}</a></p>
     </div>
 

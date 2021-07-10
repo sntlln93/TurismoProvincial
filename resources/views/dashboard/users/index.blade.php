@@ -22,7 +22,7 @@
                     <span class="close" id="close">&times;</span>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('panel-de-administracion/users') }}" method="POST">
+                    <form action="{{ url('panel-de-administracion/users') }}" method="POST" class="modal-body">
                         @csrf
                         <div>
                             <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name"

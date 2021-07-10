@@ -22,7 +22,7 @@
                     <span class="close" id="close">&times;</span>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('dashboard/types') }}" method="POST">
+                    <form action="{{ url('dashboard/types') }}" method="POST" class="modal-body">
                         @csrf
                         <div>
                             <h4>Tipo:</h4>

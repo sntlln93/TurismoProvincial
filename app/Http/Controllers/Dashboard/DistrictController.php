@@ -45,7 +45,7 @@ class DistrictController extends Controller
 
         $validated_data = $request->validate([
             'mayor' => 'required',
-            'description' => 'sometimes',
+            'description' => 'required',
             'photos' => 'sometimes',
         ]);
 
