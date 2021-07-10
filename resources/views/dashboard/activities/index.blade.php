@@ -5,8 +5,9 @@
     <div class="title">
         <h2>Experiencias</h2>
     </div>
-    <p class="subtitle">Verás estos cambios en 
-        <a href="#" target="_blank">Experiencias</a>
+    <p class="subtitle">Verás estos cambios en
+        <a href="{{ route('activities-page', ['district' => auth()->user()->district->slug]) }}"
+            target="_blank">Experiencias</a>
     </p>
 
     <div class="row">

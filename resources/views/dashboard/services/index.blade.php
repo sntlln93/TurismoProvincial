@@ -6,10 +6,13 @@
     <div class="title">
         <h2>Servicios</h2>
     </div>
-    <p class="subtitle">Verás estos cambios en 
-    <a href="#" target="_blank">Gastronomía</a> - 
-    <a href="#" target="_blank">Alojamiento</a> - 
-    <a href="#" target="_blank">Transporte</a>
+    <p class="subtitle">Verás estos cambios en
+        <a href="{{ route('foodservices-page', ['district' => auth()->user()->district->slug]) }}"
+            target="_blank">Gastronomía</a> -
+        <a href="{{ route('lodging-page', ['district' => auth()->user()->district->slug]) }}"
+            target="_blank">Alojamiento</a> -
+        <a href="{{ route('transport-page', ['district' => auth()->user()->district->slug]) }}"
+            target="_blank">Transporte</a>
     </p>
 
     <div class="row">
@@ -58,7 +61,7 @@
                 @elseif($type->name == "Transporte")
                 <i class="icon-bus"></i>
                 @endif
-                {{ $type->name }} 
+                {{ $type->name }}
             </div>
             <div class="accordion-body">
                 @foreach ($type->subtypes as $subtype)
