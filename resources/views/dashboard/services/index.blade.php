@@ -16,27 +16,6 @@
     </p>
 
     <div class="row">
-        <!-- <div class="search">
-                                <select name="services">
-                                    <option>Seleccionar una opción</option>
-                                    <optgroup label="Alojamiento">
-                                        <option>Hotel</option>
-                                        <option>Hostel</option>
-                                        <option>Cabaña</option>
-                                    </optgroup>
-                                    <optgroup label="Gastronomía">
-                                        <option>Restaurante</option>
-                                        <option>Bar</option>
-                                        <option>Cafetería</option>
-                                    </optgroup>
-                                    <optgroup label="Transporte">
-                                        <option>Transporte Público</option>
-                                        <option>Taxis y Remises</option>
-                                        <option>Terminal de Omnibus</option>
-                                        <option>Aeropuerto</option>
-                                    </optgroup>
-                                </select>
-                            </div> -->
         <div class="add-other only-button">
             <a href="{{ url('dashboard/services/create') }}"><button id="open">
                     <i class="icon-plus"></i> Nuevo servicio
