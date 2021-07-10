@@ -1,26 +1,121 @@
+const croppedContainer = document.getElementById("croppedContainer");
+const imagesToCropInput = document.getElementById("imagesToCropInput");
+
+const previewGallery = document.getElementById("previewGallery");
+const cropperContainer = document.getElementById("cropper");
+const cropImageBtn = document.getElementById("cropImageBtn");
+let cropper;
+
+let aspectRatio = 5 / 3;
+
+const setAspectRatio = (newAspectRatio) => {
+    aspectRatio = newAspectRatio;
+};
+
+const options = {
+    viewMode: 1,
+    restore: true,
+    aspectRatio: aspectRatio,
+    movable: false,
+    dragMode: "move",
+    cropBoxMovable: true,
+    cropBoxResizable: false,
+    zoomOnWheel: true /**
+    ,
+    crop: () => (cropImageButton.style.display = "block"), */,
+};
+
+const onCropInit = (e) => {
+    const photo = e.target;
+
+    const cropperImg = document.createElement("img");
+    cropperImg.src = photo.src;
+    cropperContainer.appendChild(cropperImg);
+
+    cropImageBtn.style.display = "block";
+
+    cropper = new Cropper(cropperImg, options);
+};
+
+const cleanSelection = () => {
+    previewGallery.innerHTML = "";
+    const inputsToBeDeleted =
+        croppedContainer.querySelectorAll(".photosToBeCropped");
+
+    inputsToBeDeleted.forEach((input) => input.remove());
+};
+
+const createInput = (value, index) => {
+    const photoInput = document.createElement("input");
+    photoInput.type = "hidden";
+    photoInput.name = `photos[${index}][base64]`;
+    photoInput.className = "photosToBeCropped";
+    photoInput.value = value;
+
+    croppedContainer.appendChild(photoInput);
+};
+
+const createImg = (value) => {
+    const photoContainer = document.createElement("div");
+    photoContainer.className = "singleImageCanvasContainer";
+
+    const photoImg = document.createElement("img");
+    photoImg.src = value;
+    photoImg.addEventListener("click", (photoImg) => onCropInit(photoImg));
+
+    photoContainer.appendChild(photoImg);
+    previewGallery.appendChild(photoContainer);
+};
+
+const onPhotosLoaded = () => {
+    const photos = imagesToCropInput.files;
+
+    photos.length &&
+        Array.from(photos).forEach((photo, index) => {
+            cleanSelection();
+
+            const reader = new FileReader();
+
+            reader.onloadend = () => {
+                createInput(reader.result, index);
+                createImg(reader.result);
+            };
+
+            reader.readAsDataURL(photo);
+        });
+};
+
+const onCrop = (event) => {
+    event.preventDefault();
+    console.log(cropper.getData());
+    console.log("cropping");
+};
+
+imagesToCropInput.addEventListener("change", onPhotosLoaded);
+cropImageBtn.addEventListener("click", (event) => onCrop(event));
+/**
+
 var c;
-var galleryImagesContainer = document.getElementById("galleryImages");
-var imageCropFileInput = document.getElementById("imageCropFileInput");
-var cropperImageInitCanvas = document.getElementById("cropperImg");
-var cropImageButton = document.getElementById("cropImageBtn");
+var galleryImagesContainer = document.getElementById('galleryImages');
+var imageCropFileInput = document.getElementById('imageCropFileInput');
+var cropperImageInitCanvas = document.getElementById('cropperImg');
+var cropImageButton = document.getElementById('cropImageBtn');
 
 let croppedImages = [];
 
 let aspectRatio = 5 / 3;
 
 const setAspectRatio = (newAspectRatio) => {
-    console.log("hoias");
     aspectRatio = newAspectRatio;
 };
 
 // Crop Function On change
 function imagesPreview(input) {
-    var cropper;
-    galleryImagesContainer.innerHTML = "";
+    galleryImagesContainer.innerHTML = '';
     var img = [];
     if (cropperImageInitCanvas.cropper) {
         cropperImageInitCanvas.cropper.destroy();
-        cropImageButton.style.display = "none";
+        cropImageButton.style.display = 'none';
         cropperImageInitCanvas.width = 0;
         cropperImageInitCanvas.height = 0;
     }
@@ -35,22 +130,22 @@ function imagesPreview(input) {
                 img[i].onload = function (e) {
                     // Canvas Container
                     var singleCanvasImageContainer =
-                        document.createElement("div");
+                        document.createElement('div');
                     singleCanvasImageContainer.id =
-                        "singleImageCanvasContainer" + index;
+                        'singleImageCanvasContainer' + index;
                     singleCanvasImageContainer.className =
-                        "singleImageCanvasContainer";
+                        'singleImageCanvasContainer';
                     // Canvas Close Btn
                     var singleCanvasImageCloseBtn =
-                        document.createElement("button");
+                        document.createElement('button');
                     // var singleCanvasImageCloseBtnText = document.createElement('i');
                     // singleCanvasImageCloseBtnText.className = 'fa fa-times';
                     singleCanvasImageCloseBtn.id =
-                        "singleImageCanvasCloseBtn" + index;
+                        'singleImageCanvasCloseBtn' + index;
                     singleCanvasImageCloseBtn.className =
-                        "singleImageCanvasCloseBtn";
+                        'singleImageCanvasCloseBtn';
                     singleCanvasImageCloseBtn.innerHTML =
-                        '<i class="icon-trash-empty"></i>';
+                        '<i class='icon-trash-empty'></i>';
                     singleCanvasImageCloseBtn.onclick = function () {
                         removeSingleCanvas(this);
                     };
@@ -58,9 +153,9 @@ function imagesPreview(input) {
                         singleCanvasImageCloseBtn
                     );
                     // Image Canvas
-                    var canvas = document.createElement("canvas");
-                    canvas.id = "imageCanvas" + index;
-                    canvas.className = "imageCanvas singleImageCanvas";
+                    var canvas = document.createElement('canvas');
+                    canvas.id = 'imageCanvas' + index;
+                    canvas.className = 'imageCanvas singleImageCanvas';
                     canvas.width = e.currentTarget.width;
                     canvas.height = e.currentTarget.height;
                     canvas.onclick = function () {
@@ -68,19 +163,19 @@ function imagesPreview(input) {
                     };
                     singleCanvasImageContainer.appendChild(canvas);
                     // Canvas Context
-                    var ctx = canvas.getContext("2d");
+                    var ctx = canvas.getContext('2d');
                     ctx.drawImage(e.currentTarget, 0, 0);
                     // galleryImagesContainer.append(canvas);
                     galleryImagesContainer.appendChild(
                         singleCanvasImageContainer
                     );
                     while (
-                        document.querySelectorAll(".singleImageCanvas")
+                        document.querySelectorAll('.singleImageCanvas')
                             .length == input.files.length
                     ) {
                         var allCanvasImages = document
-                            .querySelectorAll(".singleImageCanvas")[0]
-                            .getAttribute("id");
+                            .querySelectorAll('.singleImageCanvas')[0]
+                            .getAttribute('id');
                         cropInit(allCanvasImages);
                         break;
                     }
@@ -96,9 +191,9 @@ function imagesPreview(input) {
         // cropImageButton.style.display = 'block';
     }
 }
-imageCropFileInput.addEventListener("change", function (event) {
-    const currentImage = document.querySelector(".current--container");
-    if (currentImage) currentImage.style.display = "none";
+imageCropFileInput.addEventListener('change', function (event) {
+    const currentImage = document.querySelector('.current--container');
+    if (currentImage) currentImage.style.display = 'none';
     imagesPreview(event.target);
 });
 // Initialize Cropper
@@ -109,19 +204,19 @@ function cropInit(selector) {
         cropperImageInitCanvas.cropper.destroy();
     }
     var allCloseButtons = document.querySelectorAll(
-        ".singleImageCanvasCloseBtn"
+        '.singleImageCanvasCloseBtn'
     );
     for (let element of allCloseButtons) {
-        element.style.display = "block";
+        element.style.display = 'block';
     }
-    c.previousSibling.style.display = "none";
+    c.previousSibling.style.display = 'none';
     // c.id = croppedImg;
-    var ctx = c.getContext("2d");
+    var ctx = c.getContext('2d');
     var imgData = ctx.getImageData(0, 0, c.width, c.height);
     var image = cropperImageInitCanvas;
     image.width = c.width;
     image.height = c.height;
-    var ctx = image.getContext("2d");
+    var ctx = image.getContext('2d');
     ctx.putImageData(imgData, 0, 0);
 
     const options = {
@@ -129,11 +224,11 @@ function cropInit(selector) {
         restore: true,
         aspectRatio: aspectRatio,
         movable: false,
-        dragMode: "move",
+        dragMode: 'move',
         cropBoxMovable: true,
         cropBoxResizable: false,
         zoomOnWheel: true,
-        crop: () => (cropImageButton.style.display = "block"),
+        crop: () => (cropImageButton.style.display = 'block'),
     };
 
     cropper = new Cropper(image, options);
@@ -147,7 +242,7 @@ function image_crop() {
             height: 250,
         });
 
-        var ctx = cropcanvas.getContext("2d");
+        var ctx = cropcanvas.getContext('2d');
         var imgData = ctx.getImageData(
             0,
             0,
@@ -157,7 +252,7 @@ function image_crop() {
 
         c.width = cropcanvas.width;
         c.height = cropcanvas.height;
-        var ctx = c.getContext("2d");
+        var ctx = c.getContext('2d');
         ctx.putImageData(imgData, 0, 0);
 
         console.log(cropperImageInitCanvas.cropper.getData());
@@ -166,19 +261,19 @@ function image_crop() {
         cropperImageInitCanvas.cropper.destroy();
         cropperImageInitCanvas.width = 0;
         cropperImageInitCanvas.height = 0;
-        cropImageButton.style.display = "none";
+        cropImageButton.style.display = 'none';
         var allCloseButtons = document.querySelectorAll(
-            ".singleImageCanvasCloseBtn"
+            '.singleImageCanvasCloseBtn'
         );
         for (let element of allCloseButtons) {
-            element.style.display = "block";
+            element.style.display = 'block';
         }
         urlConversion();
     } else {
-        alert("Please select any Image you want to crop");
+        alert('Please select any Image you want to crop');
     }
 }
-cropImageButton.addEventListener("click", function (e) {
+cropImageButton.addEventListener('click', function (e) {
     e.preventDefault();
     image_crop();
 });
@@ -190,23 +285,25 @@ function removeSingleCanvas(selector) {
 
 // Get Converted Url
 function urlConversion() {
-    const croppedContainer = document.getElementById("croppedContainer");
-    const allImageCanvas = document.querySelectorAll(".singleImageCanvas");
+    const croppedContainer = document.getElementById('croppedContainer');
+    const allImageCanvas = document.querySelectorAll('.singleImageCanvas');
 
-    const croppedImgInputs = document.querySelectorAll(".croppedImages");
+    const croppedImgInputs = document.querySelectorAll('.croppedImages');
 
     croppedImgInputs.forEach((input) => input.remove());
 
     for (let element of allImageCanvas) {
-        const croppedImgInput = document.createElement("input");
+        const croppedImgInput = document.createElement('input');
 
-        croppedImgInput.type = "hidden";
-        croppedImgInput.name = "photos[]";
-        croppedImgInput.classList.add("croppedImages");
-        croppedImgInput.value = element.toDataURL("image/jpeg");
+        croppedImgInput.type = 'hidden';
+        croppedImgInput.name = 'photos[]';
+        croppedImgInput.classList.add('croppedImages');
+        croppedImgInput.value = element.toDataURL('image/jpeg');
 
         croppedContainer.appendChild(croppedImgInput);
     }
 }
 
 const saveData = () => {};
+
+ */

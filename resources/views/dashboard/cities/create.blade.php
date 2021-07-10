@@ -29,14 +29,14 @@
         float: left;
     }
 
+    #cropper>img {
+        width: 100%;
+        height: auto;
+    }
+
     canvas {
         max-width: 100%;
         display: inline-block;
-    }
-
-    #cropperImg {
-        /*max-width: 0;
-    max-height: 0;*/
     }
 
     #cropImageBtn {
@@ -59,10 +59,15 @@
     }
 
     .singleImageCanvasContainer {
-        max-width: 300px;
         display: inline-block;
         position: relative;
         margin: 2px;
+    }
+
+    .singleImageCanvasContainer>img {
+        width: 100%;
+        height: auto;
+        cursor: pointer;
     }
 
     .singleImageCanvasCloseBtn {
@@ -107,15 +112,14 @@
 
         <div id="croppedContainer">
             <h4>Foto:</h4><input class="@error('photo') error-input @enderror" type="file" accept="image/jpeg"
-                id="imageCropFileInput">
+                id="imagesToCropInput" multiple>
         </div>
         @error('photo') <small class="error-message">{{ $message }}</small> @enderror
 
         <div class="cropper--container">
             <input type="hidden" id="croppedImgs">
-            <div id="galleryImages"></div>
+            <div id="previewGallery"></div>
             <div id="cropper">
-                <canvas id="cropperImg" width="0" height="0"></canvas>
             </div>
             <button class="cropImageBtn cropBtn" id="cropImageBtn">Recortar</button>
         </div>
