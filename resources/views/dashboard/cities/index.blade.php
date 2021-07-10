@@ -6,8 +6,9 @@
     <div class="title">
         <h2>Localidades</h2>
     </div>
-    <p class="subtitle">Verás estos cambios en 
-        <a href="#" target="_blank">Localidades</a>
+    <p class="subtitle">Verás estos cambios en
+        <a href="{{ route('cities-page', ['district' => auth()->user()->district->slug]) }}"
+            target="_blank">Localidades</a>
     </p>
 
     <div class="row">

@@ -6,34 +6,16 @@
     <div class="title">
         <h2>Servicios</h2>
     </div>
-    <p class="subtitle">Verás estos cambios en 
-    <a href="#" target="_blank">Gastronomía</a> - 
-    <a href="#" target="_blank">Alojamiento</a> - 
-    <a href="#" target="_blank">Transporte</a>
+    <p class="subtitle">Verás estos cambios en
+        <a href="{{ route('foodservices-page', ['district' => auth()->user()->district->slug]) }}"
+            target="_blank">Gastronomía</a> -
+        <a href="{{ route('lodging-page', ['district' => auth()->user()->district->slug]) }}"
+            target="_blank">Alojamiento</a> -
+        <a href="{{ route('transport-page', ['district' => auth()->user()->district->slug]) }}"
+            target="_blank">Transporte</a>
     </p>
 
     <div class="row">
-        <!-- <div class="search">
-                                <select name="services">
-                                    <option>Seleccionar una opción</option>
-                                    <optgroup label="Alojamiento">
-                                        <option>Hotel</option>
-                                        <option>Hostel</option>
-                                        <option>Cabaña</option>
-                                    </optgroup>
-                                    <optgroup label="Gastronomía">
-                                        <option>Restaurante</option>
-                                        <option>Bar</option>
-                                        <option>Cafetería</option>
-                                    </optgroup>
-                                    <optgroup label="Transporte">
-                                        <option>Transporte Público</option>
-                                        <option>Taxis y Remises</option>
-                                        <option>Terminal de Omnibus</option>
-                                        <option>Aeropuerto</option>
-                                    </optgroup>
-                                </select>
-                            </div> -->
         <div class="add-other only-button">
             <a href="{{ url('dashboard/services/create') }}"><button id="open">
                     <i class="icon-plus"></i> Nuevo servicio
@@ -58,7 +40,7 @@
                 @elseif($type->name == "Transporte")
                 <i class="icon-bus"></i>
                 @endif
-                {{ $type->name }} 
+                {{ $type->name }}
             </div>
             <div class="accordion-body">
                 @foreach ($type->subtypes as $subtype)

@@ -1,15 +1,18 @@
 @extends('dashboard.layouts.app')
 
 @section('styles')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css">
 @endsection
 
 @section('content')
 <main>
     <div class="title-dashboard">
-        <a href="{{ URL::previous() }}"><i class="icon-reply-1"></i></a> <h2>Modificar Municipio</h2> <br>
+        <a href="{{ URL::previous() }}"><i class="icon-reply-1"></i></a>
+        <h2>Modificar Municipio</h2> <br>
     </div>
-    <p class="subtitle">Verás estos cambios en <a href="{{ url($district->slug.'/sobre-el-departamento') }}" target="_blank">sobre el departamento {{ $district->name }}</a></p>
+    <p class="subtitle">Verás estos cambios en <a
+            href="{{ route('district-about', ['district' => auth()->user()->district->slug]) }}" target="_blank">sobre
+            el departamento {{ $district->name }}</a></p>
 
     <form action="{{ url('dashboard/districts/' . $district->id) }}" method="POST" enctype="multipart/form-data"
         class="modal-body">
