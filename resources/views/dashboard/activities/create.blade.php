@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.app')
 
 @section('styles')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css">
 @endsection
 
 @section('content')
@@ -62,18 +62,15 @@
         @error('description') <small class="error-message">{{ $message }}</small> @enderror
 
         <div id="croppedContainer">
-            <h4>Foto:</h4><input class="@error('photos') error-input @enderror" type="file" id="imageCropFileInput"
-                accept="image/jpeg" multiple>
+            <h4>Foto:</h4><input class="@error('photos') error-input @enderror" type="file" accept="image/jpeg"
+                id="imagesToCropInput" multiple>
         </div>
         @error('photos') <small class="error-message">{{ $message }}</small> @enderror
 
         <div class="cropper--container">
-            <input type="hidden" id="croppedImgs">
-            <div id="galleryImages"></div>
-            <div id="cropper">
-                <canvas id="cropperImg" width="0" height="0"></canvas>
+            <div id="previewGallery"></div>
+            <div id="cropContainer">
             </div>
-            <button class="cropImageBtn cropBtn" id="cropImageBtn">Recortar</button>
         </div>
 
         <button type="submit" class="save">Guardar<i class="icon-floppy"></i>

@@ -29,17 +29,15 @@
 
 
         <div id="croppedContainer">
-            <h4>Foto:</h4><input class="@error('photo') error-input @enderror" type="file" accept="image/jpeg"
-                id="imagesToCropInput" multiple>
+            <h4>Foto:</h4><input class="@error('photos') error-input @enderror" type="file" accept="image/jpeg"
+                id="imagesToCropInput">
         </div>
-        @error('photo') <small class="error-message">{{ $message }}</small> @enderror
+        @error('photos') <small class="error-message">{{ $message }}</small> @enderror
 
         <div class="cropper--container">
-            <input type="hidden" id="croppedImgs">
             <div id="previewGallery"></div>
-            <div id="cropper">
+            <div id="cropContainer">
             </div>
-            <button class="cropImageBtn cropBtn" id="cropImageBtn">Recortar</button>
         </div>
 
         <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
