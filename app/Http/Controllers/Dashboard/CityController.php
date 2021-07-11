@@ -55,11 +55,19 @@ class CityController extends Controller
         return view('dashboard.cities.edit')->with('city', $city);
     }
 
-    public function update(Request $request, City $city)
+    public function update(Request $request, City $city, StoreImageService $service)
     {
         $city_data = $this->validatedCity($request);
 
-        $city->update($city_data);
+        DB::transaction(function () use($city_data, $city, $service) {
+            $city->update($city_data);
+
+            if(array_key_exists('photos', $city_data)){
+                foreach($city_data['photos'] as $photo){
+                    $city->image->update(['path' => $service->store($photo, 'cities')]);
+                }
+            }
+        });
 
         return redirect()->route('cities.index');
     }

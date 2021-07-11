@@ -1,5 +1,9 @@
 @extends('dashboard.layouts.app')
 
+@section('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css">
+@endsection
+
 @section('content')
 <main>
     <div class="title-dashboard">
@@ -7,7 +11,8 @@
         <h2>Modificar localidad</h2>
     </div>
 
-    <form action="{{ url('dashboard/cities/' . $city->id) }}" method="POST" enctype="multipart/form-data" class="modal-body">
+    <form action="{{ url('dashboard/cities/' . $city->id) }}" method="POST" enctype="multipart/form-data"
+        class="modal-body">
         @csrf @method('PUT')
         <div>
             <h4>Nombre:</h4><input class="@error('name') error-input @enderror" type="text" name="name"
@@ -17,8 +22,8 @@
 
         <div>
             <h4>Descripción:</h4>
-            <textarea class="@error('description') error-input @enderror msjEdit" name="description"
-                maxlength="1000" rows="6" placeholder="Escribí una descripción">{{ $city->description }}</textarea>
+            <textarea class="@error('description') error-input @enderror msjEdit" name="description" maxlength="1000"
+                rows="6" placeholder="Escribí una descripción">{{ $city->description }}</textarea>
         </div>
         @error('description') <small class="error-message">{{ $message }}</small> @enderror
 
@@ -27,16 +32,23 @@
                 {{ Str::of($city->description)->length() }}/1000</small>
         </div>
 
-        <div>
-            <h4>Foto:</h4><input class="@error('photo') error-input @enderror" type="file" name="photo"
-                accept="image/png, .jpeg, .jpg" multiple>
+        <div id="croppedContainer">
+            <h4>Foto:</h4><input class="@error('photos') error-input @enderror" type="file" accept="image/jpeg"
+                id="imagesToCropInput">
         </div>
-        <div id="city-image-container">
-            @if ($city->image)
-            <img id="city-image" src="{{ asset('storage/' . $city->image->path) }}" alt="{{ $city->name }}">
-            @endif
+        @error('photos') <small class="error-message">{{ $message }}</small> @enderror
+
+        <div class="cropper--container">
+            <div id="previewGallery">
+                @if ($city->image)
+                <div class="singleImageCanvasContainer">
+                    <img id="previewImage-0" src="{{ asset('storage/' . $city->image->path) }}" alt="{{ $city->name }}">
+                </div>
+                @endif
+            </div>
+            <div id="cropContainer">
+            </div>
         </div>
-        @error('photo') <small class="error-message">{{ $message }}</small> @enderror
 
         <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
     </form>
@@ -45,5 +57,23 @@
 
 @section('scripts')
 <script src="{{ asset('js/contcharsedit.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+<script src="{{ asset('js/cropper.js') }}"></script>
+<script>
+    const initialPreviewImage = document.getElementById('previewImage-0');
 
+    window.addEventListener("load", () => {
+      fetch(initialPreviewImage.src)
+      .then(response => {
+         return response.blob();
+      })
+      .then(blob => {
+        toCropImages = [{ index: '0', photo: blob }];
+      });
+   });
+
+    initialPreviewImage.addEventListener("click", () =>
+        showCropper("previewImage-0")
+    )
+</script>
 @endsection
