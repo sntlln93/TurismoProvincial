@@ -1,4 +1,8 @@
-const aspectRatio = 16 / 9;
+let aspectRatio = 16 / 9;
+
+const setAspectRatio = (initialAspectRatio) => {
+    aspectRatio = initialAspectRatio;
+};
 
 const options = {
     viewMode: 1,

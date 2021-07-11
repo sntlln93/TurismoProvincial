@@ -37,29 +37,25 @@
         </div>
 
         <div id="croppedContainer">
-            <h4>Foto:</h4><input class="@error('photo') error-input @enderror" type="file" id="imageCropFileInput"
-                accept="image/jpeg">
+            <h4>Foto:</h4><input class="@error('photos') error-input @enderror" type="file" accept="image/jpeg"
+                id="imagesToCropInput">
         </div>
-        @if ($district->image)
-        <div class="current--container">
-            <div class="current--images">
-                <img id="district-image" src="{{ asset('storage/' . $district->image->path) }}"
-                    alt="{{ $district->name }}">
-            </div>
-        </div>
-        @endif
-        @error('photo') <small class="error-message">{{ $message }}</small> @enderror
-
-        @endif
+        @error('photos') <small class="error-message">{{ $message }}</small> @enderror
 
         <div class="cropper--container">
-            <input type="hidden" id="croppedImgs">
-            <div id="galleryImages"></div>
-            <div id="cropper">
-                <canvas id="cropperImg" width="0" height="0"></canvas>
+            <div id="previewGallery">
+                @if ($district->image)
+                <div class="singleImageCanvasContainer">
+                    <img id="previewImage-0" src="{{ asset('storage/' . $district->image->path) }}"
+                        alt="{{ $district->name }}">
+                </div>
+                @endif
             </div>
-            <button class="cropImageBtn cropBtn" id="cropImageBtn">Recortar</button>
+            <div id="cropContainer">
+            </div>
         </div>
+
+        @endif
 
         <button type="submit" class="save">Guardar<i class="icon-floppy"></i>
     </form>
@@ -71,6 +67,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
 <script src="{{ asset('js/cropper.js') }}"></script>
 <script>
-    window.addEventListener('load', () => setAspectRatio(44/25));
+    const initialPreviewImage = document.getElementById('previewImage-0');
+
+    window.addEventListener("load", () => {
+        setAspectRatio(44/25)
+      fetch(initialPreviewImage.src)
+      .then(response => {
+         return response.blob();
+      })
+      .then(blob => {
+        toCropImages = [{ index: '0', photo: blob }];
+      });
+   });
+
+    initialPreviewImage.addEventListener("click", () =>
+        showCropper("previewImage-0")
+    );
 </script>
 @endsection

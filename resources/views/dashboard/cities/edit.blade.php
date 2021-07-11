@@ -74,6 +74,6 @@
 
     initialPreviewImage.addEventListener("click", () =>
         showCropper("previewImage-0")
-    )
+    );
 </script>
 @endsection
