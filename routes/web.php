@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 //dashboard routes
 Route::get('dashboard/', 'App\Http\Controllers\Dashboard\HomeController@index')->name('dashboard')->middleware('auth');
