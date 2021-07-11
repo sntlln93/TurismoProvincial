@@ -72,7 +72,9 @@ class Service extends Model
             return null;
         }
 
-        return $this->contacts->where('type', 'Correo electrónico')->first()->contact;
+        $contact = $this->contacts->where('type', 'Correo electrónico')->first();
+
+        return  $contact ? false : $contact;
     }
 
     public function getTypeChainAttribute()
