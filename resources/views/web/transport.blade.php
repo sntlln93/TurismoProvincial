@@ -39,8 +39,8 @@
                         <b>Dirección:</b> {{ $service->address->full_address }} </br>
                         @endif
                         <b>Horario de atención:</b> {{ $service->start }} hs a {{ $service->end }} hs </br>
-                        @if (!is_null($food_service->phones))
-                        @foreach ($food_service->phones as $phone)
+                        @if (!is_null($service->phones))
+                        @foreach ($service->phones as $phone)
                         <div class="dato">
                             <i class="icon-phone"></i>
                             <h4><b>Teléfono:</b>
