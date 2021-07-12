@@ -52,6 +52,11 @@ const showPreview = (event) => {
 
     cleanSelection();
 
+    const hint = document.createElement("p");
+    hint.innerText =
+        "Clickea una foto para mostrar la herramienta de recorte y luego clickea en el botón 'Recortar' que se encuentra al pie de la herramienta. Las fotos sin recortar no se guardarán.";
+    cropperContainer.insertBefore(hint, cropperContainer.firstChild);
+
     Array.from(photos).forEach((photo, index) => {
         toCropImages.push({ index: index, photo: photo });
         createImg(photo, index);

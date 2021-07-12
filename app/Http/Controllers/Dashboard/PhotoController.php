@@ -93,7 +93,7 @@ class PhotoController extends Controller
         return $request->validate([
             'photos' => 'required',
         ],[
-            'photos.required' => 'Debes incluir por lo menos una foto. En el caso de que no quieras añadir fotos vuelve a la página anterior.'
+            'photos.required' => 'El campo :attribute es obligatorio. Recuerda que además de seleccionar una foto, deber recortarla. En caso de que no quieras añadir fotos vuelve a la página anterior.'
         ],[
             'photos' => 'fotos'
         ]);

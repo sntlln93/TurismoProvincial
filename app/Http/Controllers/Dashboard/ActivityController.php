@@ -115,7 +115,7 @@ class ActivityController extends Controller
             'responsable' => 'required',
             'location_id' => 'nullable',
         ],[
-
+            'photos.required' => 'El campo :attribute es obligatorio. Recuerda que además de seleccionar una foto, deber recortarla.'
         ],[
             'name' => 'nombre',
             'responsable' => 'responsable',

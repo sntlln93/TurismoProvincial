@@ -57,7 +57,7 @@ class CityController extends Controller
 
     public function update(Request $request, City $city, StoreImageService $service)
     {
-        $city_data = $this->validatedCity($request);
+        $city_data = $this->validatedCity($request, 'sometimes');
 
         DB::transaction(function () use($city_data, $city, $service) {
             $city->update($city_data);
@@ -72,13 +72,15 @@ class CityController extends Controller
         return redirect()->route('cities.index');
     }
 
-    private function validatedCity($request)
+    private function validatedCity($request, $photo_rule = 'required')
     {
         return $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'photos' => 'sometimes'
-        ], [], [
+            'photos' => $photo_rule
+        ], [
+            'photos.required' => 'El campo :attribute es obligatorio. Recuerda que además de seleccionar una foto, deber recortarla.'
+        ], [
             'name' => 'nombre',
             'description' => 'descripción',
             'photos' => 'foto'

@@ -53,7 +53,9 @@ class ServiceController extends Controller
         $address_data = $this->validateAddress($request);
         $photos = $request->validate([
             'photos' => 'required',
-        ], [], [
+        ], [
+            'photos.required' => 'El campo :attribute es obligatorio. Recuerda que además de seleccionar una foto, deber recortarla.'
+        ], [
             'photos' => 'fotos'
         ])['photos'];
 

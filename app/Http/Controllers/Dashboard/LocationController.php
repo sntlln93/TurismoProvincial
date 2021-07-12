@@ -135,7 +135,9 @@ class LocationController extends Controller
             'number' => 'nullable',
             'indications' => 'nullable',
             'city_id' => 'nullable',
-        ], [], [
+        ], [
+            'photos.required' => 'El campo :attribute es obligatorio. Recuerda que además de seleccionar una foto, deber recortarla.'
+        ], [
             'name' => 'nombre',
             'start' => 'hora de inicio',
             'end' => 'hora de fin',
