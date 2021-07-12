@@ -24,6 +24,7 @@ class ServiceController extends Controller
         $localAddresses = Address::join('cities', 'addresses.city_id', 'cities.id')
             ->join('districts', 'cities.district_id', 'districts.id')
             ->where('addressable_type', 'App\\Models\\Service')
+            ->where('cities.district_id', auth()->user()->district_id   )
             ->pluck('addresses.addressable_id')
             ->toArray();
 
