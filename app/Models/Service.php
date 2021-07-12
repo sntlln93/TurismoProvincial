@@ -54,7 +54,9 @@ class Service extends Model
             return null;
         }
 
-        return $this->contacts->where('type', 'Teléfono');
+        $phone_number = $this->contacts->where('type', 'Teléfono');
+
+        return $phone_number ?? false;
     }
 
     public function getWebsiteAttribute()
@@ -63,7 +65,9 @@ class Service extends Model
             return null;
         }
 
-        return $this->contacts->where('type', 'Sitio web')->first()->contact;
+        $website = $this->contacts->where('type', 'Sitio web')->first()->contact;
+
+        return $website ?? false;
     }
 
     public function getEmailAttribute()
@@ -72,9 +76,9 @@ class Service extends Model
             return null;
         }
 
-        $contact = $this->contacts->where('type', 'Correo electrónico')->first();
+        $email = $this->contacts->where('type', 'Correo electrónico')->first();
 
-        return  $contact ? false : $contact;
+        return  $email ?? false;
     }
 
     public function getTypeChainAttribute()
