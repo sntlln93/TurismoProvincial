@@ -23,7 +23,7 @@
                 <img src="{{ findOne($activity->id, 'App\Models\Activity')->first() }}" alt="{{ $activity->slug }}">
                 <div class="info">
                     <h3>{{ $activity->name }}</h3>
-                    <p>{{ $activity->description }}</p>
+                    <p>{{ Str::limit($activity->description, 175, '...') }}</p>
                     <a href="{{ url($district->slug.'/experiencias/'.$activity->slug) }}" class="btn">Leer más</a>
                 </div>
             </div>
