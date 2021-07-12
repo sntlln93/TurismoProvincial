@@ -54,7 +54,7 @@ class Service extends Model
             return null;
         }
 
-        return $this->contacts->where('type', 'Teléfono')->get();
+        return $this->contacts->where('type', 'Teléfono');
     }
 
     public function getWebsiteAttribute()
