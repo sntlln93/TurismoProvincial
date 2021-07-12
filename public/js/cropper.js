@@ -16,6 +16,8 @@ const options = {
 };
 
 let toCropImages = [];
+let croppedImages = 0;
+
 const cropperContainer = document.querySelector(".cropper--container");
 const croppedContainer = document.getElementById("croppedContainer");
 const imagesToCropInput = document.getElementById("imagesToCropInput");
@@ -108,10 +110,25 @@ const removeCropper = () => {
     Array.from(buttons).forEach((button) => button.remove());
 };
 
+const removeError = () => {
+    const cropError = document.getElementById("cropError");
+    cropError && cropError.remove();
+};
+
+const createError = () => {
+    removeError();
+    const cropError = document.createElement("small");
+    cropError.id = "cropError";
+    cropError.className = "error-message";
+    cropError.innerText = "Debes recortar todas las imágenes seleccionadas.";
+    cropperContainer.insertBefore(cropError, cropperContainer.lastChild);
+};
+
 const showCropper = (imagePreviewId) => {
     const photo = document.getElementById(imagePreviewId);
 
     removeCropper();
+    removeError();
 
     const toCropImage = document.createElement("img");
     toCropImage.src = photo.src;
@@ -134,7 +151,7 @@ const showCropper = (imagePreviewId) => {
 
         var blob = cropper.getCroppedCanvas().toDataURL("image/jpeg");
         previewPhoto.src = blob;
-
+        croppedImages++;
         removeCropper();
     };
 
@@ -142,3 +159,16 @@ const showCropper = (imagePreviewId) => {
 };
 
 imagesToCropInput.addEventListener("change", showPreview);
+
+const shouldStopSubmit = () => {
+    return toCropImages.length === croppedImages ? false : true;
+};
+
+document
+    .querySelector("button[type=submit]")
+    .addEventListener("click", (event) => {
+        if (shouldStopSubmit()) {
+            event.preventDefault();
+            createError();
+        }
+    });
