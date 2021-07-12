@@ -39,14 +39,15 @@
                         <b>Dirección:</b> {{ $service->address->full_address }} </br>
                         @endif
                         <b>Horario de atención:</b> {{ $service->start }} hs a {{ $service->end }} hs </br>
-                        @foreach ($service->phones as $phone)
+                        @if (!is_null($service->phones))
                         <div class="dato">
-                            <i class="icon-phone"></i>
-                            <h4><b>Teléfono #{{ $loop->iteration }}:</b>
-                                {{ $phone->contact }}
+                            <h4><b>Teléfono:</b>
+                                @foreach ($service->phones as $phone)
+                                {{ $phone->contact }} @if(!$loop->last) | @endif
+                                @endforeach
                             </h4>
                         </div>
-                        @endforeach
+                        @endif
                         @if ($service->email)
                         <b>Correo electrónico:</b> {{ $service->email }} <br>
                         @endif

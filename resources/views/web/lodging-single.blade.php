@@ -28,11 +28,12 @@
                 <i class="icon-location"></i>
                 <h4><b>Dirección:</b> {{ $lodging->address->full_address }}</h4>
             </div>
-            @if ($lodging->contacts->count() > 0)
+            @if (!is_null($lodging->phones))
             <div class="dato">
                 <i class="icon-phone"></i>
                 <h4><b>Teléfono:</b>
-                    @foreach ($lodging->phones as $phone) {{ $phone->contact }}
+                    @foreach ($lodging->phones as $phone)
+                    {{ $phone->contact }} @if(!$loop->last) | @endif
                     @endforeach
                 </h4>
             </div>

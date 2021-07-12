@@ -32,7 +32,9 @@
             <div class="dato">
                 <i class="icon-phone"></i>
                 <h4><b>Teléfono:</b>
-                    380 154 457895
+                    @foreach ($food_service->phones as $phone)
+                    {{ $phone->contact }} @if(!$loop->last) | @endif
+                    @endforeach
                 </h4>
             </div>
             @endif
