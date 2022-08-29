@@ -21,7 +21,7 @@ class StoreImageService
 
         $image_name = Str::random(15).'.'.'webp';
 
-        $path = '/app/public/'.$relative_path.'/'.$image_name;
+        $path = '/workspace/storage/app/public/'.$relative_path.'/'.$image_name;
 
         Image::make($decoded_image)->crop(
             intval(ceil($photo['w'])),
