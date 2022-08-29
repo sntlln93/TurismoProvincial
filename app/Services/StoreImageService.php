@@ -22,7 +22,7 @@ class StoreImageService
             intval(ceil($photo['h'])),
             intval(ceil($photo['x'])),
             intval(ceil($photo['y'])))
-        ->save(public_path('storage/'.$path));
+        ->save(storage_path('storage/'.$path));
 
         return $path;
     }
