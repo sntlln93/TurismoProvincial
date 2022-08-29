@@ -19,7 +19,7 @@ class DistrictPhotoSeeder extends Seeder
 
         foreach ($districts as $district) {
             Image::create([
-                'path' => 'districts/' . $district->slug . '.jpg',
+                'path' => 'districts/' . $district->slug . '.png',
                 'imageable_id' => $district->id,
                 'imageable_type' => 'App\\Models\\District'
             ]);
